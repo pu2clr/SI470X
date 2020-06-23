@@ -15,7 +15,7 @@
 
 #include <SI470X.h>
 
-#define RESET_PIN 12
+#define RESET_PIN 10
 
 SI470X si470x; 
 
@@ -49,8 +49,8 @@ void setup() {
   Serial.print("\nFirmware..................:");
   Serial.print(si470x.getFirmwareVersion(),BIN);
 
-  si470x.setVolume(25);
-  si470x.setBand(1);   // 
+  si470x.setVolume(2);
+  // si470x.setBand(1);   // 
 
   si470x.setMute(false);
   si470x.setMono(false);
@@ -65,11 +65,14 @@ void setup() {
   Serial.println(si470x.getRealChannel());
   delay(5000);
 
-  for (int i = 0; i < 10; i++ ) {
+  /*
+  for (int i = 0; i < 7; i++ ) {
     Serial.print("\nSeek.");
-    si470x.seek(0,1);
+    si470x.seek(1,0);
+    Serial.print("\nCurrent Channel: ");
+    Serial.println(si470x.getRealChannel());
     delay(5000);
-  }
+  } */
 
   
 }

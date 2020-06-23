@@ -11,17 +11,25 @@
 void SI470X::getAllRegisters()
 {
     word16_to_bytes aux;
+    int i;
 
     Wire.requestFrom(this->deviceAddress, 32);
     while (Wire.available() < 32)
         ;
 
-    for (int i = 0; i < 16; i++)
-    {
+    // The registers from 0x0A to 0x0F come first
+    for (i = 0x0A; i <= 0XF; i++) {
         aux.refined.highByte = Wire.read();
         aux.refined.lowByte = Wire.read();
         deviceRegisters[i] = aux.raw;
     }
+
+    for (i = 0x00; i <= 0x09; i++) {
+        aux.refined.highByte = Wire.read();
+        aux.refined.lowByte = Wire.read();
+        deviceRegisters[i] = aux.raw;
+    }
+
 }
 
 /**
@@ -38,14 +46,14 @@ void SI470X::setAllRegisters()
 {
     word16_to_bytes aux;
     Wire.beginTransmission(this->deviceAddress);
-    for (int i = 8; i < 14; i++)
+    for (int i = 0x02; i < 0x08; i++)
     {
         aux.raw = deviceRegisters[i];
         Wire.write(aux.refined.highByte);
         Wire.write(aux.refined.lowByte);
     }
     Wire.endTransmission();
-    delayMicroseconds(6000);
+    delay(5);
 }
 
 /**
@@ -61,7 +69,19 @@ void SI470X::getStatus()
         ;
     aux.refined.highByte = Wire.read();
     aux.refined.lowByte = Wire.read();
-    deviceRegisters[0] = aux.raw;
+    deviceRegisters[0x0A] = aux.raw;
+}
+
+/**
+ * @brief Wait for Seet or Tune process 
+ * 
+ */
+void SI470X::waitTune()
+{
+    do {
+        delay(1);
+        getStatus();
+    } while ( !(reg0a->refined.STC) );
 }
 
 /**
@@ -120,22 +140,24 @@ void SI470X::reset()
     digitalWrite(this->resetPin, LOW);
     delay(10);
     digitalWrite(this->resetPin, HIGH);
-    delay(10);
+    delay(100);
 }
 
 void SI470X::powerUp()
 {
     getAllRegisters();
     reg07->refined.XOSCEN = this->oscillatorType; // Sets the Crustal
+    *reg0f = 0;
     setAllRegisters();
-    delay(500);
+    delay(600);
 
     getAllRegisters();
     reg02->refined.DMUTE = 1;  // Mutes the device;
     reg02->refined.ENABLE = 1; // Power up
     reg02->refined.DISABLE = 0;
+
     setAllRegisters();
-    delay(250);
+    delay(500);
 
     getAllRegisters(); // Gets All registers (current status after powerup)
 }
@@ -173,6 +195,17 @@ void SI470X::setup(int resetPin, int rdsInterruptPin, int seekInterruptPin, uint
     delay(100);
 
     powerUp();
+
+    reg04->refined.DE = 1;
+    reg04->refined.RDS = 0;
+    reg04->refined.STCIEN = 0;
+    reg04->refined.AGCD = 0;
+    reg05->refined.SEEKTH = 63; // RSSI Seek Threshold;
+    this->currentFMBand =   reg05->refined.BAND = 1;
+    this->currentFMSpace =  reg05->refined.SPACE = 1;
+
+    setAllRegisters();
+    delay(500);
 }
 
 /**
@@ -189,28 +222,21 @@ void SI470X::setup(int resetPin, uint8_t oscillator_type)
 
 void SI470X::setFrequency(uint16_t frequency)
 {
-
     uint16_t channel;
-    uint16_t f = frequency / this->currentFMSpace;
 
-    f = frequency - this->startBand[this->currentFMBand];
-    channel = f / this->fmSpace[this->currentFMSpace];
+    channel = (frequency - this->startBand[this->currentFMBand]) / this->fmSpace[this->currentFMSpace];
+
+    channel = 190;
 
     getAllRegisters();
     reg03->refined.CHAN = channel;
     reg03->refined.TUNE = 1;
     reg03->refined.RESERVED = 0;
     setAllRegisters();
-    do
-    {
-        delay(30);
-        getStatus();
-    } while (reg0a->refined.STC == 0);
-
+    waitTune();
     reg03->refined.TUNE = 0;
     setAllRegisters();
     delay(30);
-
     this->currentFrequency = frequency;
 }
 
@@ -239,15 +265,18 @@ uint16_t SI470X::getRealChannel()
  */
 void SI470X::seek(uint8_t seek_mode, uint8_t direction)
 {
-    do
-    {
-        reg02->refined.SEEK = 1; // Enable seek
-        reg02->refined.SKMODE = seek_mode;
-        reg02->refined.SEEKUP = direction;
-        setAllRegisters();
-        delay(30);
-        getStatus();
-    } while (reg0a->refined.STC == 0);
+    reg03->refined.TUNE = 1;
+    setAllRegisters();
+
+    reg02->refined.SEEK = 1; // Enable seek
+    reg02->refined.SKMODE = seek_mode;
+    reg02->refined.SEEKUP = direction;
+    setAllRegisters();
+    waitTune();
+    reg02->refined.SEEK = 0; // Enable seek
+    reg03->refined.TUNE = 0;
+    setAllRegisters();
+    delay(30);
 }
 
 /**
@@ -326,11 +355,11 @@ void SI470X::setRdsMode(uint8_t rds_mode)
 /**
  * @brief Sets the audio volume level
  * 
- * @param value  0 to 31 (if 0, mutes the audio)
+ * @param value  0 to 15 (if 0, mutes the audio)
  */
 void SI470X::setVolume(uint8_t value)
 {
-    if (value > 31)
+    if (value > 15)
         return;
     this->currentVolume = reg05->refined.VOLUME = value;
     setAllRegisters();
@@ -339,7 +368,7 @@ void SI470X::setVolume(uint8_t value)
 /**
  * @brief Gets the current audio volume level
  * 
- * @return uint8_t  0 to 31
+ * @return uint8_t  0 to 15
  */
 uint8_t SI470X::getVolume()
 {
@@ -352,7 +381,7 @@ uint8_t SI470X::getVolume()
  */
 void SI470X::setVolumeUp()
 {
-    if (this->currentVolume < 31)
+    if (this->currentVolume < 15)
     {
         this->currentVolume++;
         setVolume(this->currentVolume);

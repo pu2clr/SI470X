@@ -130,7 +130,7 @@ typedef union {
         uint8_t BLNDADJ : 2;    //!< Stereo/Mono Blend Level Adjustment. Sets the RSSI range for stereo/mono blend. See table above.
         uint8_t RESERVED1 : 2;  //!< Reserved; Always write to 0.
         uint8_t AGCD : 1;       //!< AGC Disable; 0 = AGC enable (default); 1 = AGC disable.
-        uint8_t DE : 1;         //!< De-emphasis; 0 = AGC enable (default); 1 = AGC disable.
+        uint8_t DE : 1;         //!< De-emphasis; 0 = 75 μs. Used in USA (default); 1 = 50 μs. Used in Europe, Australia, Japan.
         uint8_t RDS : 1;        //!< RDS Enable; 0 = Disable (default); 1 = Enable.
         uint8_t RESERVED2 : 1;  //!< Reserved; Always write to 0.
         uint8_t STCIEN : 1;     //!< Seek/Tune Complete Interrupt Enable; 0 = Disable Interrupt (default); 1 = Enable Interrupt.
@@ -406,22 +406,22 @@ class SI470X {
         uint16_t deviceRegisters[16]; //!< shadow registers
 
         // Device registers map - References to the shadow registers 
-        si470x_reg0a *reg0a = (si470x_reg0a *)&deviceRegisters[0];
-        si470x_reg0b *reg0b = (si470x_reg0b *)&deviceRegisters[1];
-        si470x_reg0c *reg0c = (si470x_reg0c *)&deviceRegisters[2];
-        si470x_reg0d *reg0d = (si470x_reg0d *)&deviceRegisters[3];
-        si470x_reg0e *reg0e = (si470x_reg0e *)&deviceRegisters[4];
-        si470x_reg0f *reg0f = (si470x_reg0f *)&deviceRegisters[5];
-        si470x_reg00 *reg00 = (si470x_reg00 *)&deviceRegisters[6];
-        si470x_reg01 *reg01 = (si470x_reg01 *)&deviceRegisters[7];
-        si470x_reg02 *reg02 = (si470x_reg02 *)&deviceRegisters[8];
-        si470x_reg03 *reg03 = (si470x_reg03 *)&deviceRegisters[9];
-        si470x_reg04 *reg04 = (si470x_reg04 *)&deviceRegisters[10];
-        si470x_reg05 *reg05 = (si470x_reg05 *)&deviceRegisters[11];
-        si470x_reg06 *reg06 = (si470x_reg06 *)&deviceRegisters[12];
-        si470x_reg07 *reg07 = (si470x_reg07 *)&deviceRegisters[13];
-        si470x_reg08 *reg08 = (si470x_reg08 *)&deviceRegisters[14];
-        si470x_reg09 *reg09 = (si470x_reg09 *)&deviceRegisters[15];
+        si470x_reg00 *reg00 = (si470x_reg00 *)&deviceRegisters[0x00];
+        si470x_reg01 *reg01 = (si470x_reg01 *)&deviceRegisters[0x01];
+        si470x_reg02 *reg02 = (si470x_reg02 *)&deviceRegisters[0x02];
+        si470x_reg03 *reg03 = (si470x_reg03 *)&deviceRegisters[0x03];
+        si470x_reg04 *reg04 = (si470x_reg04 *)&deviceRegisters[0x04];
+        si470x_reg05 *reg05 = (si470x_reg05 *)&deviceRegisters[0x05];
+        si470x_reg06 *reg06 = (si470x_reg06 *)&deviceRegisters[0x06];
+        si470x_reg07 *reg07 = (si470x_reg07 *)&deviceRegisters[0x07];
+        si470x_reg08 *reg08 = (si470x_reg08 *)&deviceRegisters[0x08];
+        si470x_reg09 *reg09 = (si470x_reg09 *)&deviceRegisters[0x09];
+        si470x_reg0a *reg0a = (si470x_reg0a *)&deviceRegisters[0x0A];
+        si470x_reg0b *reg0b = (si470x_reg0b *)&deviceRegisters[0x0B];
+        si470x_reg0c *reg0c = (si470x_reg0c *)&deviceRegisters[0x0C];
+        si470x_reg0d *reg0d = (si470x_reg0d *)&deviceRegisters[0x0D];
+        si470x_reg0e *reg0e = (si470x_reg0e *)&deviceRegisters[0x0E];
+        si470x_reg0f *reg0f = (si470x_reg0f *)&deviceRegisters[0x0F];
 
         uint16_t startBand[4] = {8750, 7600, 7600, 6400 };
         uint16_t fmSpace[4] = {20, 10, 5, 1};
@@ -441,6 +441,7 @@ class SI470X {
         void getAllRegisters();
         void setAllRegisters();
         void getStatus();
+        void waitTune();
 
         void setRegister(uint16_t reg, uint16_t value);
         uint16_t getRegister(uint16_t reg);
