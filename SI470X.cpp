@@ -84,50 +84,6 @@ void SI470X::waitTune()
     } while ( !(reg0a->refined.STC) );
 }
 
-/**
- * @ingroup GA03
- * @brief Sets the a value to a given SI470X register
- * 
- * @param reg        register number to be written (0x00  to 0x0F) - See #define REG* constants  
- * @param parameter  content you want to store 
- */
-void SI470X::setRegister(uint16_t reg, uint16_t parameter)
-{
-    word16_to_bytes param;
-
-    param.raw = parameter;
-    Wire.beginTransmission(this->deviceAddress);
-    Wire.write(reg);
-
-    Wire.write(param.refined.highByte);
-    Wire.write(param.refined.lowByte);
-
-    Wire.endTransmission();
-    delayMicroseconds(6000); // TODO: check it
-}
-
-/**
- * @brief Gets a given SI470X register content 
- * @details It is a basic function to get a value from a given SI470X device register
- * @param reg  register number to be read (0x00  to 0x0F) - See #define REG* constants 
- * @return the register content
- */
-uint16_t SI470X::getRegister(uint16_t reg)
-{
-
-    word16_to_bytes result;
-
-    Wire.beginTransmission(this->deviceAddress);
-    Wire.write(reg);
-    Wire.endTransmission();
-    delayMicroseconds(300);
-    Wire.requestFrom(this->deviceAddress, 2);
-    while (Wire.available() < 2)
-        ;
-    result.refined.highByte = Wire.read();
-    result.refined.lowByte = Wire.read();
-    return result.raw;
-}
 
 /**
  * @brief Resets the device
@@ -147,17 +103,16 @@ void SI470X::powerUp()
 {
     getAllRegisters();
     reg07->refined.XOSCEN = this->oscillatorType; // Sets the Crustal
-    *reg0f = 0;
     setAllRegisters();
     delay(600);
 
     getAllRegisters();
-    reg02->refined.DMUTE = 1;  // Mutes the device;
+    reg02->refined.DMUTE = 0;  // Mutes the device;
     reg02->refined.ENABLE = 1; // Power up
     reg02->refined.DISABLE = 0;
 
     setAllRegisters();
-    delay(500);
+    delay(150);
 
     getAllRegisters(); // Gets All registers (current status after powerup)
 }
@@ -165,9 +120,14 @@ void SI470X::powerUp()
 void SI470X::powerDown()
 {
     getAllRegisters();
-    reg07->raw = 0x7C04;
-    reg04->raw = 0x002A;
-    reg02->raw = 0x0041;
+    
+    reg07->refined.AHIZEN = 1;
+    reg07->refined.RESERVED = 0x0100;
+    reg04->refined.GPIO1 = reg04->refined.GPIO2 = reg04->refined.GPIO3 = 0;
+    reg02->refined.ENABLE = 1;
+    reg02->refined.DISABLE = 1;
+    setAllRegisters();
+    delay(100);
 }
 
 /**
@@ -193,7 +153,7 @@ void SI470X::setup(int resetPin, int rdsInterruptPin, int seekInterruptPin, uint
     reset();
 
     delay(100);
-
+    Serial.println("Chamando PowerUp");
     powerUp();
 
     reg04->refined.DE = 1;
@@ -222,21 +182,20 @@ void SI470X::setup(int resetPin, uint8_t oscillator_type)
 
 void SI470X::setFrequency(uint16_t frequency)
 {
+  
     uint16_t channel;
 
-    channel = (frequency - this->startBand[this->currentFMBand]) / this->fmSpace[this->currentFMSpace];
+    setBand(this->currentFMBand);
+
+    // channel = (frequency - this->startBand[this->currentFMBand]) / this->fmSpace[this->currentFMSpace];
 
     channel = 190;
-
     getAllRegisters();
     reg03->refined.CHAN = channel;
     reg03->refined.TUNE = 1;
     reg03->refined.RESERVED = 0;
     setAllRegisters();
     waitTune();
-    reg03->refined.TUNE = 0;
-    setAllRegisters();
-    delay(30);
     this->currentFrequency = frequency;
 }
 
@@ -427,9 +386,7 @@ uint16_t SI470X::getManufacturerId()
  */
 uint8_t SI470X::getFirmwareVersion()
 {
-    si470x_reg01 r1;
-    r1.raw = getRegister(REG01);
-    return r1.refined.FIRMWARE;
+    return reg01->refined.FIRMWARE;    
 }
 
 /**

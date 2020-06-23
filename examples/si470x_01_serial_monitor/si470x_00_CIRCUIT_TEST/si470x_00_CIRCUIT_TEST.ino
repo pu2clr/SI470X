@@ -24,19 +24,20 @@ uint32_t fmFreq = 106500;
 
 void setup() {
 
-  si470x.setup(RESET_PIN);
-  
   Serial.begin(9600);
   while(!Serial);
-  Wire.begin();
+
+  /*
   delay(500);
+  
   if ( !checkI2C() ) {
     Serial.println("\nAgain..");
     if (!checkI2C() ) {
       Serial.println("\nCheck your circuit!");
     }
-  }
+  } */
 
+  si470x.setup(RESET_PIN);
 
   Serial.print("\nPN........................:");
   Serial.print(si470x.getPartNumber(),HEX);
@@ -49,8 +50,8 @@ void setup() {
   Serial.print("\nFirmware..................:");
   Serial.print(si470x.getFirmwareVersion(),BIN);
 
-  si470x.setVolume(2);
-  // si470x.setBand(1);   // 
+  si470x.setVolume(6);
+  si470x.setBand(1);   
 
   si470x.setMute(false);
   si470x.setMono(false);

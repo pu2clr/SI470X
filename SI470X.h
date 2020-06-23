@@ -443,9 +443,6 @@ class SI470X {
         void getStatus();
         void waitTune();
 
-        void setRegister(uint16_t reg, uint16_t value);
-        uint16_t getRegister(uint16_t reg);
-
         void reset();
 
         void powerUp();
