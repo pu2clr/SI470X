@@ -84,12 +84,25 @@ void SI470X::waitTune()
     } while ( !(reg0a->refined.STC) );
 }
 
-
 /**
+ * @brief   Wait STC (Seek/Tune Complete) status becomes 0
+ * @details Should be used before processing Tune or Seek.
+ * @details The STC bit being cleared indicates that the TUNE or SEEK bits may be set again to start another tune or seek operation. Do not set the TUNE or SEEK bits until the Si470x clears the STC bit. 
+ */
+void SI470X::waitReadyTune() {
+    do
+    {
+        delay(1);
+        getStatus();
+    } while (reg0a->refined.STC == 1);
+}
+
+
+    /**
  * @brief Resets the device
  * 
  */
-void SI470X::reset()
+    void SI470X::reset()
 {
     pinMode(this->resetPin, OUTPUT);
     delay(10);
@@ -151,17 +164,18 @@ void SI470X::setup(int resetPin, int rdsInterruptPin, int seekInterruptPin, uint
     this->oscillatorType = oscillator_type;
 
     reset();
-
+    delay(10);
+    reset();
     delay(100);
-    Serial.println("Chamando PowerUp");
     powerUp();
+
 
     reg04->refined.DE = 1;
     reg04->refined.RDS = 0;
     reg04->refined.STCIEN = 0;
     reg04->refined.AGCD = 0;
     reg05->refined.SEEKTH = 63; // RSSI Seek Threshold;
-    this->currentFMBand =   reg05->refined.BAND = 1;
+    this->currentFMBand =   reg05->refined.BAND = 0;
     this->currentFMSpace =  reg05->refined.SPACE = 1;
 
     setAllRegisters();
@@ -184,18 +198,35 @@ void SI470X::setFrequency(uint16_t frequency)
 {
   
     uint16_t channel;
+    char aux[100];
 
-    setBand(this->currentFMBand);
+    // setBand(this->currentFMBand);
 
-    // channel = (frequency - this->startBand[this->currentFMBand]) / this->fmSpace[this->currentFMSpace];
+    channel = (frequency - this->startBand[this->currentFMBand]) / this->fmSpace[this->currentFMSpace];
 
-    channel = 190;
+
+    sprintf(aux, "\n %i = (%i - %i) / %i => Current FM Band: %i ", channel, frequency, this->startBand[this->currentFMBand], this->fmSpace[this->currentFMSpace], this->currentFMBand);
+    Serial.println(aux);
+
+    getStatus();
+    Serial.print("\nSeek Tune Complete: ");
+    Serial.println(reg0a->refined.STC);
+    delay(80);
+  
+
     getAllRegisters();
     reg03->refined.CHAN = channel;
     reg03->refined.TUNE = 1;
     reg03->refined.RESERVED = 0;
+    // waitReadyTune();
+    delay(80);
     setAllRegisters();
-    waitTune();
+    delay(80);
+    // waitTune();
+    reg03->refined.TUNE = 0;
+    reg03->refined.RESERVED = 0;
+    setAllRegisters();
+    delay(80);
     this->currentFrequency = frequency;
 }
 

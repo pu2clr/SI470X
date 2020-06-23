@@ -51,7 +51,7 @@ void setup() {
   Serial.print(si470x.getFirmwareVersion(),BIN);
 
   si470x.setVolume(6);
-  si470x.setBand(1);   
+  si470x.setBand(FM_BAND_USA_EU);   
 
   si470x.setMute(false);
   si470x.setMono(false);

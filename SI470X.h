@@ -23,6 +23,10 @@
 #define SEEK_DOWN 0       //!< Seek Down  Direction
 #define SEEK_UP 1         //!< Seek Up  Direction
 
+#define FM_BAND_USA_EU       0 //!< 87.5–108 MHz (US / Europe, Default)
+#define FM_BAND_JAPAN_WIDE   1 //!< 76–108 MHz (Japan wide band)
+#define FM_BAND_JAPAN        2 //!< 76–90 MHz (Japan)
+#define FM_BAND_RESERVED     3 //!< Reserved
 
 #define REG00 0x00
 #define REG01 0x01
@@ -442,6 +446,7 @@ class SI470X {
         void setAllRegisters();
         void getStatus();
         void waitTune();
+        void waitReadyTune();
 
         void reset();
 
