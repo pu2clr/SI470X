@@ -24,21 +24,54 @@ uint32_t fmFreq = 106500;
 
 void setup() {
 
-  Serial.begin(9600);
-  while(!Serial);
-
-  if ( !checkI2C() ) {
-    Serial.println("Check your circuit!");
-    while(1);
-  }
-
-  Serial.print("\nCHIP ID....................:");
-  Serial.print(si470x.getDeviceId(),HEX);
-
   si470x.setup(RESET_PIN);
   
-  si470x.setVolume(23);
- 
+  Serial.begin(9600);
+  while(!Serial);
+  Wire.begin();
+  delay(500);
+  if ( !checkI2C() ) {
+    Serial.println("\nAgain..");
+    if (!checkI2C() ) {
+      Serial.println("\nCheck your circuit!");
+    }
+  }
+
+
+  Serial.print("\nPN........................:");
+  Serial.print(si470x.getPartNumber(),HEX);
+  Serial.print("\nManufacturer..............:");
+  Serial.print(si470x.getPartNumber(),HEX);
+  Serial.print("\nCHIP Version..............:");
+  Serial.print(si470x.getChipVersion(),HEX);    
+  Serial.print("\nDevice....................:");
+  Serial.print(si470x.getDeviceId(),BIN);
+  Serial.print("\nFirmware..................:");
+  Serial.print(si470x.getFirmwareVersion(),BIN);
+
+  si470x.setVolume(25);
+  si470x.setBand(1);   // 
+
+  si470x.setMute(false);
+  si470x.setMono(false);
+  
+  
+  delay(500);
+  //****
+  Serial.print("\nEstacao 106.5MHz");
+  si470x.setFrequency(10650);
+  
+  Serial.print("\nCurrent Channel: ");
+  Serial.println(si470x.getRealChannel());
+  delay(5000);
+
+  for (int i = 0; i < 10; i++ ) {
+    Serial.print("\nSeek.");
+    si470x.seek(0,1);
+    delay(5000);
+  }
+
+  
 }
 
 void loop() {

@@ -401,44 +401,78 @@ typedef union {
 } word16_to_bytes;
 
 class SI470X {
+
+    private:
+        uint16_t deviceRegisters[16]; //!< shadow registers
+
+        // Device registers map - References to the shadow registers 
+        si470x_reg0a *reg0a = (si470x_reg0a *)&deviceRegisters[0];
+        si470x_reg0b *reg0b = (si470x_reg0b *)&deviceRegisters[1];
+        si470x_reg0c *reg0c = (si470x_reg0c *)&deviceRegisters[2];
+        si470x_reg0d *reg0d = (si470x_reg0d *)&deviceRegisters[3];
+        si470x_reg0e *reg0e = (si470x_reg0e *)&deviceRegisters[4];
+        si470x_reg0f *reg0f = (si470x_reg0f *)&deviceRegisters[5];
+        si470x_reg00 *reg00 = (si470x_reg00 *)&deviceRegisters[6];
+        si470x_reg01 *reg01 = (si470x_reg01 *)&deviceRegisters[7];
+        si470x_reg02 *reg02 = (si470x_reg02 *)&deviceRegisters[8];
+        si470x_reg03 *reg03 = (si470x_reg03 *)&deviceRegisters[9];
+        si470x_reg04 *reg04 = (si470x_reg04 *)&deviceRegisters[10];
+        si470x_reg05 *reg05 = (si470x_reg05 *)&deviceRegisters[11];
+        si470x_reg06 *reg06 = (si470x_reg06 *)&deviceRegisters[12];
+        si470x_reg07 *reg07 = (si470x_reg07 *)&deviceRegisters[13];
+        si470x_reg08 *reg08 = (si470x_reg08 *)&deviceRegisters[14];
+        si470x_reg09 *reg09 = (si470x_reg09 *)&deviceRegisters[15];
+
+        uint16_t startBand[4] = {8750, 7600, 7600, 6400 };
+        uint16_t fmSpace[4] = {20, 10, 5, 1};
+
     protected:
         int deviceAddress = I2C_DEVICE_ADDR;
         int resetPin;
         uint16_t currentFrequency;
+        uint8_t currentFMBand = 1;
+        uint8_t currentFMSpace = 1;
         uint8_t currentVolume = 0;
         int rdsInterruptPin = -1;
         int seekInterruptPin = -1;
         int oscillatorType = OSCILLATOR_TYPE_CRYSTAL;
 
     public:
+        void getAllRegisters();
+        void setAllRegisters();
+        void getStatus();
 
-    void setRegister(uint16_t reg, uint16_t value);
-    uint16_t getRegister(uint16_t reg);
+        void setRegister(uint16_t reg, uint16_t value);
+        uint16_t getRegister(uint16_t reg);
 
-    setup(int resetPin, int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL);
-    setup(int resetPin, uint8_t oscillator_type);
+        void reset();
 
-    void setFrequency(uint16_t frequency);
-    uint16_t getFrequency();
-    void seek(uint8_t seek_mode, uint8_t direction);
+        void powerUp();
+        void powerDown();
 
-    void setBand(uint8_t band);
-    int getRssi();
-    void setSoftmute(bool value);
-    void setMute(bool value);
-    void setMono(bool value);
-    void setRdsMode(uint8_t rds_mode);
+        void setup(int resetPin, int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL);
+        void setup(int resetPin, uint8_t oscillator_type);
 
+        void setFrequency(uint16_t frequency);
+        uint16_t getFrequency();
+        uint16_t getRealChannel();
+        void seek(uint8_t seek_mode, uint8_t direction);
 
-    uint8_t getPartNumber();
-    uint16_t getManufacturerId();
-    uint8_t getFirmwareVersion();
-    uint8_t getDeviceId();
-    uint8_t getCipVersion(); 
+        void setBand(uint8_t band = 1);
+        int getRssi();
+        void setSoftmute(bool value);
+        void setMute(bool value);
+        void setMono(bool value);
+        void setRdsMode(uint8_t rds_mode = 0);
 
-    void setVolume(uint8_t value);
-    uint8_t getVolume();
-    void setVolumeUp(); 
-    void setVolumeDown(); 
+        uint8_t getPartNumber();
+        uint16_t getManufacturerId();
+        uint8_t getFirmwareVersion();
+        uint8_t getDeviceId();
+        uint8_t getChipVersion();
 
+        void setVolume(uint8_t value);
+        uint8_t getVolume();
+        void setVolumeUp();
+        void setVolumeDown();
 };
