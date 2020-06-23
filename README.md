@@ -8,7 +8,7 @@ It is an Arduini Library for Si4702/03 FM tuner family.
 
 
 
-# Si4703 features implemented by this library
+## Si4703 features implemented by this library
 
 1. 76–108 MHz
 2. Seek tuning
@@ -21,6 +21,17 @@ It is an Arduini Library for Si4702/03 FM tuner family.
 
 
 # About the Si4703
+
+
+
+
+## SI470X and Registers
+
+The SI4701/02/03 can be controlled by deal with register via I2C interface.  The tebla below was extracted from Silicon Labs; document Si4702/03-C19 - "BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS"; Rev 1.1; page 22. This table shows the set of register that you can used to controle the device.
+
+
+![SI4702/03 Register Summary]()
+
 
 
 
