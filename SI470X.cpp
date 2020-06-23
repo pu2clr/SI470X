@@ -18,7 +18,7 @@ void SI470X::getAllRegisters()
         ;
 
     // The registers from 0x0A to 0x0F come first
-    for (i = 0x0A; i <= 0XF; i++) {
+    for (i = 0x0A; i <= 0x0F; i++) {
         aux.refined.highByte = Wire.read();
         aux.refined.lowByte = Wire.read();
         deviceRegisters[i] = aux.raw;
@@ -42,17 +42,18 @@ void SI470X::getAllRegisters()
  * @see BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS; pages 18 and 19.
  * @see deviceRegisters; 
  */
-void SI470X::setAllRegisters()
+void SI470X::setAllRegisters(uint8_t limit)
 {
     word16_to_bytes aux;
     Wire.beginTransmission(this->deviceAddress);
-    for (int i = 0x02; i < 0x08; i++)
+    for (int i = 0x02; i <= limit; i++)
     {
         aux.raw = deviceRegisters[i];
         Wire.write(aux.refined.highByte);
         Wire.write(aux.refined.lowByte);
     }
     Wire.endTransmission();
+
     delay(5);
 }
 
@@ -98,11 +99,11 @@ void SI470X::waitReadyTune() {
 }
 
 
-    /**
+ /**
  * @brief Resets the device
  * 
  */
-    void SI470X::reset()
+  void SI470X::reset()
 {
     pinMode(this->resetPin, OUTPUT);
     delay(10);
@@ -116,15 +117,50 @@ void SI470X::powerUp()
 {
     getAllRegisters();
     reg07->refined.XOSCEN = this->oscillatorType; // Sets the Crustal
-    setAllRegisters();
+    setAllRegisters(0x07);
     delay(600);
 
-    getAllRegisters();
-    reg02->refined.DMUTE = 0;  // Mutes the device;
+    // getAllRegisters();
+    reg02->refined.DMUTE = 1;  // Mutes the device;
+    reg02->refined.DSMUTE = 1;
+    reg02->refined.MONO = 0;
+    reg02->refined.RESERVED1 = reg02->refined.RESERVED2 = reg02->refined.RESERVED3 = 0;
+    reg02->refined.RDSM = 0;
+    reg02->refined.SKMODE = 0;
+    reg02->refined.SEEKUP = 0;
+    reg02->refined.SEEK = 0;
     reg02->refined.ENABLE = 1; // Power up
     reg02->refined.DISABLE = 0;
 
     setAllRegisters();
+    delay(100);
+
+    reg03->refined.TUNE = 0;
+    reg03->refined.RESERVED = 0;
+
+    reg04->refined.RDSIEN = 0;
+    reg04->refined.STCIEN = 0;
+    reg04->refined.RESERVED1 =  reg04->refined.RESERVED2 = 0;
+    reg04->refined.RDS = 0;
+    reg04->refined.DE = 1;
+    reg04->refined.AGCD = 1;
+    reg04->refined.BLNDADJ = 0;
+    reg04->refined.GPIO1 = reg04->refined.GPIO2 = reg04->refined.GPIO3 = 0;
+
+    reg05->refined.SEEKTH = 63; // RSSI Seek Threshold;
+    this->currentFMBand = reg05->refined.BAND = 0;
+    this->currentFMSpace = reg05->refined.SPACE = 1;
+    this->currentVolume = reg05->refined.VOLUME = 0;
+
+    reg06->refined.SMUTER = 1;
+    reg06->refined.SMUTEA = 3;
+    reg06->refined.RESERVED = 0;
+    reg06->refined.VOLEXT = 0;
+    reg06->refined.SKSNR = 0;
+    reg06->refined.SKCNT = 0;
+
+    setAllRegisters();
+
     delay(150);
 
     getAllRegisters(); // Gets All registers (current status after powerup)
@@ -162,24 +198,9 @@ void SI470X::setup(int resetPin, int rdsInterruptPin, int seekInterruptPin, uint
         this->seekInterruptPin = seekInterruptPin;
 
     this->oscillatorType = oscillator_type;
-
     reset();
-    delay(10);
-    reset();
-    delay(100);
     powerUp();
-
-
-    reg04->refined.DE = 1;
-    reg04->refined.RDS = 0;
-    reg04->refined.STCIEN = 0;
-    reg04->refined.AGCD = 0;
-    reg05->refined.SEEKTH = 63; // RSSI Seek Threshold;
-    this->currentFMBand =   reg05->refined.BAND = 0;
-    this->currentFMSpace =  reg05->refined.SPACE = 1;
-
-    setAllRegisters();
-    delay(500);
+    delay(100);
 }
 
 /**
@@ -194,6 +215,31 @@ void SI470X::setup(int resetPin, uint8_t oscillator_type)
     setup(resetPin, -1, -1, oscillator_type);
 }
 
+void SI470X::setChannel(uint16_t channel)
+{
+    getAllRegisters();
+
+    reg05->refined.BAND = this->currentFMBand;
+    reg05->refined.SPACE = this->currentFMSpace;
+
+    reg03->refined.CHAN = channel;
+    reg03->refined.TUNE = 1;
+    reg03->refined.RESERVED = 0;
+    // waitReadyTune();
+    setAllRegisters();
+    delay(61);
+    // waitTune();
+    delay(61);
+    reg03->refined.TUNE = 0;
+    reg03->refined.RESERVED = 0;
+    setAllRegisters();
+    delay(61);
+    reg03->refined.TUNE = 0;
+    reg03->refined.RESERVED = 0;
+    setAllRegisters();
+    delay(61);
+}
+
 void SI470X::setFrequency(uint16_t frequency)
 {
   
@@ -203,32 +249,15 @@ void SI470X::setFrequency(uint16_t frequency)
     // setBand(this->currentFMBand);
 
     channel = (frequency - this->startBand[this->currentFMBand]) / this->fmSpace[this->currentFMSpace];
-
+    setChannel(channel);
 
     sprintf(aux, "\n %i = (%i - %i) / %i => Current FM Band: %i ", channel, frequency, this->startBand[this->currentFMBand], this->fmSpace[this->currentFMSpace], this->currentFMBand);
     Serial.println(aux);
 
-    getStatus();
-    Serial.print("\nSeek Tune Complete: ");
-    Serial.println(reg0a->refined.STC);
-    delay(80);
-  
-
-    getAllRegisters();
-    reg03->refined.CHAN = channel;
-    reg03->refined.TUNE = 1;
-    reg03->refined.RESERVED = 0;
-    // waitReadyTune();
-    delay(80);
-    setAllRegisters();
-    delay(80);
-    // waitTune();
-    reg03->refined.TUNE = 0;
-    reg03->refined.RESERVED = 0;
-    setAllRegisters();
-    delay(80);
     this->currentFrequency = frequency;
 }
+
+
 
 uint16_t SI470X::getFrequency()
 {

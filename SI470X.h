@@ -434,8 +434,8 @@ class SI470X {
         int deviceAddress = I2C_DEVICE_ADDR;
         int resetPin;
         uint16_t currentFrequency;
-        uint8_t currentFMBand = 1;
-        uint8_t currentFMSpace = 1;
+        uint8_t currentFMBand = 0;
+        uint8_t currentFMSpace = 0;
         uint8_t currentVolume = 0;
         int rdsInterruptPin = -1;
         int seekInterruptPin = -1;
@@ -443,7 +443,7 @@ class SI470X {
 
     public:
         void getAllRegisters();
-        void setAllRegisters();
+        void setAllRegisters(uint8_t limit = 0x06);
         void getStatus();
         void waitTune();
         void waitReadyTune();
@@ -459,6 +459,7 @@ class SI470X {
         void setFrequency(uint16_t frequency);
         uint16_t getFrequency();
         uint16_t getRealChannel();
+        void setChannel(uint16_t channel);
         void seek(uint8_t seek_mode, uint8_t direction);
 
         void setBand(uint8_t band = 1);

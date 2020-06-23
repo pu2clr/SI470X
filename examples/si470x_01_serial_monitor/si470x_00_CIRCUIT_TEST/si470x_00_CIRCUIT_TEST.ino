@@ -24,6 +24,10 @@ uint32_t fmFreq = 106500;
 
 void setup() {
 
+  pinMode(A4, OUTPUT);    
+  digitalWrite(A4, LOW);
+
+
   Serial.begin(9600);
   while(!Serial);
 
@@ -64,7 +68,20 @@ void setup() {
   
   Serial.print("\nCurrent Channel: ");
   Serial.println(si470x.getRealChannel());
+  delay(15000);
+
+
+  Serial.print("\nEstacao 95.5MHz");
+  si470x.setFrequency(9550);
+  
+  Serial.print("\nCurrent Channel: ");
+  Serial.println(si470x.getRealChannel());
   delay(5000);
+  
+  for ( int i = si470x.getRealChannel(); i < 192; i++ ) {
+    si470x.setChannel(i);
+    delay(2000);
+  }
 
   /*
   for (int i = 0; i < 7; i++ ) {
@@ -79,7 +96,8 @@ void setup() {
 }
 
 void loop() {
-  
+
+ 
 
 }
 
