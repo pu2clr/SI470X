@@ -53,6 +53,15 @@ The SI4701/02/03 can be controlled by deal with register via I2C interface.  The
 Source: Silicon Labs; document Si4702/03-C19 - "BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS"; Rev 1.1; Page 22.
 
 
+__Except that you need something very specific, the PU2CLR SI470X Arduino Library offers all the functions necessary for you to build your own FM receiver using an Arduino Board__.
+
+If you need something else, this library implemented two basic functions to deal direct with the device registers shown above. See setAllRegister and getAllRegister functions on [https://pu2clr.github.io/SI470X/extras/apidoc/html/](https://pu2clr.github.io/SI470X/extras/apidoc/html/).
+
+
+
+
+
+
 
 
 
