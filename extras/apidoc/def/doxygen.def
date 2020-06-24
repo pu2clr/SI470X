@@ -1,0 +1,4916 @@
+AutoGen Definitions dummy;
+class = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'SI470X';
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1afcecfb8b743da7df2ca993d733487d3f';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'setDelayAfterCrystalOn';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'ms_value';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '489';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Set the Delay After Crystal On (default 500ms)
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@param ms_value  Value in milliseconds 
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a88702e9ed11d428d9f4c8d0c445fe6a9';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getAllRegisters';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '491';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+PU2CLR SI470X Arduino Library.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+SI470X Arduino Library implementation. This is an Arduino library for the SI470X, BROADCAST RECEIVER.  
+<br>
+
+
+It works with I2C protocol and can provide an easier interface to control the SI470X device.<br>
+
+
+This library was built based on "AN230 - Si4700/01/02/03 PROGRAMMING GUIDE" and  "Si4702/03-C19 - BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS"
+
+
+This library can be freely distributed using the MIT Free Software model.
+@copyright Copyright (c) 2020 Ricardo Lima Caratti. 
+@author Ricardo LIma Caratti (pu2clr@gmail.com)
+
+@section GA03 Basic 
+
+
+Low level functions used to operate with the SI470X registers
+
+
+Gets all current register content of the device
+
+
+For read operations, the device acknowledge is followed by an eight bit data word shifted out on falling SCLK edges. An internal address counter automatically increments to allow continuous data byte reads, starting with the upper byte of register 0Ah, followed by the lower byte of register 0Ah, and onward until the lower byte of the last register is reached. The internal address counter then automatically wraps around to the upper byte of register 00h and proceeds from there until continuous reads cease. 
+
+@see BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS; page 19.
+@see shadowRegisters;  
+<br>
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referencedby = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1a6459a4e812ebfc92d6dca2b2f5b4f915';
+        sec-mem-ref-line = '276';
+        sec-mem-ref-name = 'getRealChannel';
+    };
+      sec-mem-referencedby = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1abe3dc193ede8ee6ebf4bae3728046bb8';
+        sec-mem-ref-line = '183';
+        sec-mem-ref-name = 'powerDown';
+    };
+      sec-mem-referencedby = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1a3fabcb452602ea372d759fe3ba20bec8';
+        sec-mem-ref-line = '132';
+        sec-mem-ref-name = 'powerUp';
+    };
+      sec-mem-referencedby = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1a80abdafabf55be7717ebc19138431adb';
+        sec-mem-ref-line = '305';
+        sec-mem-ref-name = 'seek';
+    };
+      sec-mem-referencedby = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ac1adddefa79fcd3b1b1ed16df7870d85';
+        sec-mem-ref-line = '97';
+        sec-mem-ref-name = 'waitAndFinishTune';
+    };
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a4370f98521b96480e9cebc4f90681e06';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'setAllRegisters';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'limit';
+        sec-mem-param-defval = <<_EnD_oF_dEf_TeXt_
+0x07
+_EnD_oF_dEf_TeXt_;
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '492';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Sets values to the device registers from 0x02 to 0x07.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+For write operations, the device acknowledge is followed by an eight bit data word latched internally on rising edges of SCLK. The device acknowledges each byte of data written by driving SDIO low after the next falling SCLK edge, for 1 cycle.
+
+
+An internal address counter automatically increments to allow continuous data byte writes, starting with the upper byte of register 02h, followed by the lower byte of register 02h, and onward until the lower byte of the last register is reached. The internal address counter then automatically wraps around to the upper byte of register 00h and proceeds from there until continuous writes end.
+
+
+The registers from 0x2 to 0x07 are used to setup the device. This method writes the array  shadowRegisters, elements 8 to 14 (corresponding the registers 0x2 to 0x7 respectively)  into the device. See Device registers map  in SI470X.h file.
+
+
+To implement this, a register maping was created to deal with each register structure. For each type of register, there is a reference to the array element. 
+
+@see BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS; pages 18 and 19.
+@see shadowRegisters; 
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a8b7c324942f8caa5ca00470b4aed5b2a';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getStatus';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '493';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Gets the value of the 0x0A register.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+This function also updates the value of shadowRegisters[0];
+@return si470x_reg0a 
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referencedby = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1a4f1e1aec94964d00fde66b2af31516ee';
+        sec-mem-ref-line = '359';
+        sec-mem-ref-name = 'getRssi';
+    };
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1ac1adddefa79fcd3b1b1ed16df7870d85';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'waitAndFinishTune';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '494';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Wait STC (Seek/Tune Complete) status becomes 0.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+Should be used before processing Tune or Seek.
+
+
+The STC bit being cleared indicates that the TUNE or SEEK bits may be set again to start another tune or seek operation. Do not set the TUNE or SEEK bits until the Si470x clears the STC bit. 
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referenceto = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1a88702e9ed11d428d9f4c8d0c445fe6a9';
+        sec-mem-ref-line = '27';
+        sec-mem-ref-name = 'getAllRegisters';
+    };
+      sec-mem-referencedby = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1a80abdafabf55be7717ebc19138431adb';
+        sec-mem-ref-line = '305';
+        sec-mem-ref-name = 'seek';
+    };
+      sec-mem-referencedby = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1adf162646f957df7cf5c4b542b5b4b344';
+        sec-mem-ref-line = '238';
+        sec-mem-ref-name = 'setChannel';
+    };
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1af11efb6ed0306cd67e8a7feab37519de';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reset';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '496';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Resets the device.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referencedby = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1acee94a3ad9f453741efe86af6ccd9b31';
+        sec-mem-ref-line = '204';
+        sec-mem-ref-name = 'setup';
+    };
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a3fabcb452602ea372d759fe3ba20bec8';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'powerUp';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '498';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Powers the receiver on.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+Starts the receiver with some default configurations 
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referenceto = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1a88702e9ed11d428d9f4c8d0c445fe6a9';
+        sec-mem-ref-line = '27';
+        sec-mem-ref-name = 'getAllRegisters';
+    };
+      sec-mem-referencedby = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1acee94a3ad9f453741efe86af6ccd9b31';
+        sec-mem-ref-line = '204';
+        sec-mem-ref-name = 'setup';
+    };
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1abe3dc193ede8ee6ebf4bae3728046bb8';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'powerDown';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '499';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Powers the receiver off.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referenceto = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1a88702e9ed11d428d9f4c8d0c445fe6a9';
+        sec-mem-ref-line = '27';
+        sec-mem-ref-name = 'getAllRegisters';
+    };
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1acee94a3ad9f453741efe86af6ccd9b31';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'setup';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'resetPin';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'rdsInterruptPin';
+        sec-mem-param-defval = <<_EnD_oF_dEf_TeXt_
+-1
+_EnD_oF_dEf_TeXt_;
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'seekInterruptPin';
+        sec-mem-param-defval = <<_EnD_oF_dEf_TeXt_
+-1
+_EnD_oF_dEf_TeXt_;
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'oscillator_type';
+        sec-mem-param-defval = <<_EnD_oF_dEf_TeXt_
+OSCILLATOR_TYPE_CRYSTAL
+_EnD_oF_dEf_TeXt_;
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '501';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Starts the device.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+sets the reset pin, interrupt pins and oscillator type you are using in your project.
+@param resetPin         // Arduino pin used to reset control.     
+<br>
+@param rdsInterruptPin  // optional. Sets the Arduino pin used to RDS function control.
+@param seekInterruptPin // optional. Sets the Arduino pin used to Seek function control. 
+@param oscillator_type  // optional. Sets the Oscillator type used (Default Crystal or Ref. Clock). 
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referenceto = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1a3fabcb452602ea372d759fe3ba20bec8';
+        sec-mem-ref-line = '132';
+        sec-mem-ref-name = 'powerUp';
+    };
+      sec-mem-referenceto = {
+        sec-mem-ref-id = '_s_i470_x_8h_1aa59c92a9c5e03282cb6373927bdd291d';
+        sec-mem-ref-line = '477';
+        sec-mem-ref-name = 'rdsInterruptPin';
+    };
+      sec-mem-referenceto = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1af11efb6ed0306cd67e8a7feab37519de';
+        sec-mem-ref-line = '118';
+        sec-mem-ref-name = 'reset';
+    };
+      sec-mem-referenceto = {
+        sec-mem-ref-id = '_s_i470_x_8h_1a1eac2b850fae351182e53c85fa79923c';
+        sec-mem-ref-line = '472';
+        sec-mem-ref-name = 'resetPin';
+    };
+      sec-mem-referenceto = {
+        sec-mem-ref-id = '_s_i470_x_8h_1a35dfecb716dde56692bebf1572d969b3';
+        sec-mem-ref-line = '478';
+        sec-mem-ref-name = 'seekInterruptPin';
+    };
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a2376cbd67cc2a65a0f9608941f73419a';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'setup';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'resetPin';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'oscillator_type';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '502';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Starts the device.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+Use this if you are not using interrupt pins in your project
+@param resetPin         // Arduino pin used to reset control.     
+<br>
+@param rdsInterruptPin  // optional. Sets the Arduino pin used to RDS function control.
+@param seekInterruptPin // optional. Sets the Arduino pin used to Seek function control. 
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a615b6785ddf6985a362ab0862f3e5513';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'setFrequency';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'frequency';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '504';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Sets the frequency.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@param frequency 
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a89180830a5e01de15ab22e0d8157c34a';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getFrequency';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '505';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Gets the current frequency.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@return uint16_t 
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1ae2df536f699b4406da46d739200dff7a';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getRealFrequency';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '506';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Gets the frequency based on READCHAN register (0x0B)
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+Unlike getFrequency method, this method queries the device. 
+
+@return uint16_t 
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a6459a4e812ebfc92d6dca2b2f5b4f915';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getRealChannel';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '507';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Gets the current channel stored in register 0x0B.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+This method is useful to query the current channel during the seek operations. 
+@return uint16_t 
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referenceto = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1a88702e9ed11d428d9f4c8d0c445fe6a9';
+        sec-mem-ref-line = '27';
+        sec-mem-ref-name = 'getAllRegisters';
+    };
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1adf162646f957df7cf5c4b542b5b4b344';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'setChannel';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'channel';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '508';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Sets the channel.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@param channel 
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referenceto = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ac1adddefa79fcd3b1b1ed16df7870d85';
+        sec-mem-ref-line = '97';
+        sec-mem-ref-name = 'waitAndFinishTune';
+    };
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a80abdafabf55be7717ebc19138431adb';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'seek';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'seek_mode';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'direction';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '509';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Seek function.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+Seek begins at the current channel, and goes in the direction specified with the SEEKUP bit. Seek operation stops when a channel is qualified as valid according to the seek parameters, the entire band has been searched (SKMODE = 0), or the upper or lower band limit has been reached (SKMODE = 1).
+
+
+The STC bit is set high when the seek operation completes and/or the SF/BL bit is set high if the seek operation was unable to find a channel qualified as valid according to the seek parameters. The STC and SF/BL bits must be set low by setting the SEEK bit low before the next seek or tune may begin.
+
+
+Seek performance for 50 kHz channel spacing varies according to RCLK tolerance. Silicon Laboratories recommends ±50 ppm RCLK crystal tolerance for 50 kHz seek performance.
+
+
+A seek operation may be aborted by setting SEEK = 0.
+
+@param seek_mode  Seek Mode; 0 = Wrap at the upper or lower band limit and continue seeking (default); 1 = Stop seeking at the upper or lower band limit.
+@param direction  Seek Direction; 0 = Seek down (default); 1 = Seek up.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referenceto = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1a88702e9ed11d428d9f4c8d0c445fe6a9';
+        sec-mem-ref-line = '27';
+        sec-mem-ref-name = 'getAllRegisters';
+    };
+      sec-mem-referenceto = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ac1adddefa79fcd3b1b1ed16df7870d85';
+        sec-mem-ref-line = '97';
+        sec-mem-ref-name = 'waitAndFinishTune';
+    };
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a01abda714595dca938b452d2a3f04678';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'setBand';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'band';
+        sec-mem-param-defval = <<_EnD_oF_dEf_TeXt_
+1
+_EnD_oF_dEf_TeXt_;
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '511';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Sets the FM Band  
+<br>
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+<table class="markdownTable">  <tr class="markdownTableHead">    <th class="markdownTableHeadNone"> BAND value</th>    <th class="markdownTableHeadNone"> Description</th>  </tr>
+<tr class="markdownTableRowOdd">    <td class="markdownTableBodyNone"> 0</td>    <td class="markdownTableBodyNone"> 00 = 87.5–108 MHz (USA, Europe) (Default)</td>  </tr>
+<tr class="markdownTableRowEven">    <td class="markdownTableBodyNone"> 1 (default)</td>    <td class="markdownTableBodyNone"> 01 = 76–108 MHz (Japan wide band)</td>  </tr>
+<tr class="markdownTableRowOdd">    <td class="markdownTableBodyNone"> 2</td>    <td class="markdownTableBodyNone"> 10 = 76–90 MHz (Japan)</td>  </tr>
+<tr class="markdownTableRowEven">    <td class="markdownTableBodyNone"> 3</td>    <td class="markdownTableBodyNone"> 11 = Reserved</td>  </tr>
+</table>
+
+@param band  See the table above. If you do not set a parameter, will be considered 1 (76-108MHz)
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a6ee8140d156a52a34b66944b58fa9ac5';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'setSpace';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'space';
+        sec-mem-param-defval = <<_EnD_oF_dEf_TeXt_
+0
+_EnD_oF_dEf_TeXt_;
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '512';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Sets the FM Space  
+<br>
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+The SI470x device supports 3 different settings as shown below
+<table class="markdownTable">  <tr class="markdownTableHead">    <th class="markdownTableHeadNone"> BAND value</th>    <th class="markdownTableHeadNone"> Description</th>  </tr>
+<tr class="markdownTableRowOdd">    <td class="markdownTableBodyNone"> 0</td>    <td class="markdownTableBodyNone"> 00 - 200 kHz (US / Australia, Default)</td>  </tr>
+<tr class="markdownTableRowEven">    <td class="markdownTableBodyNone"> 1 (default)</td>    <td class="markdownTableBodyNone"> 01 - 100 kHz (Europe / Japan)</td>  </tr>
+<tr class="markdownTableRowOdd">    <td class="markdownTableBodyNone"> 2</td>    <td class="markdownTableBodyNone"> 02 - 50 kHz</td>  </tr>
+<tr class="markdownTableRowEven">    <td class="markdownTableBodyNone"> 3</td>    <td class="markdownTableBodyNone"> 03 - Reserved (Do not use)</td>  </tr>
+</table>
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a4f1e1aec94964d00fde66b2af31516ee';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getRssi';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '513';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Gets the Rssi.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@return int 
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referenceto = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1a8b7c324942f8caa5ca00470b4aed5b2a';
+        sec-mem-ref-line = '80';
+        sec-mem-ref-name = 'getStatus';
+    };
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a346802c295b6b1e0a186763627d04afa';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'setSoftmute';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+bool
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'value';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '514';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Sets the Softmute true or false.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@param value  TRUE or FALSE
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a6c3cb96a721e4bb10a492d6fcad9df8a';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'setMute';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+bool
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'value';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '515';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Sets the Mute true or false.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@param value TRUE or FALSE
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a15530e43b7ebcf5f31e8bd4cab3a37eb';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'setMono';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+bool
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'value';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '516';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Sets the Mono true or false (stereo)
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@param value TRUE or FALSE
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1ae03992e0bc0ea4bc10a06aea4321dbe6';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'setRdsMode';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'rds_mode';
+        sec-mem-param-defval = <<_EnD_oF_dEf_TeXt_
+0
+_EnD_oF_dEf_TeXt_;
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '517';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Sets the Rds Mode Standard or Verbose.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@param rds_mode  0 = Standard (default); 1 = Verbose
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a0a7c87000231645bdf30225f394c0465';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getPartNumber';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '519';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Gets the Part Number.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+If it returns 0x01, so the device is: Si4702/03
+@return the part number 
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a99a61da13a8ce2baec1bf99721410fcf';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getManufacturerId';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '520';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Gets the Manufacturer ID.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@return number  
+<br>
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a8cdfc81d9489e40a0f7de26e3f717fa1';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getFirmwareVersion';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '521';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Gets the Firmware Version.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+The return velue before powerup will be 0. After powerup should be 010011 (19)
+@return number 
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a63c3e2fec424ed70ca0d4df87d1cae2d';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getDeviceId';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '522';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Gets the Device identification.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@return number 
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1aa61e3a0dddf49f7a8037ebd030cee6b1';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getChipVersion';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '523';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Gets the Chip Version.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@return number 
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a26ce2b1ed9f5f7ea870dbc7827ee0bda';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'setVolume';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-declname = 'value';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '525';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Sets the audio volume level.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@param value  0 to 15 (if 0, mutes the audio)
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1a1d5ac34dcd1b22bb4c41c196f0775670';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'getVolume';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '526';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Gets the current audio volume level.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@return uint8_t  0 to 15
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1abde2fdb0be5e3544648d265572a864b0';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'setVolumeUp';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '527';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Increments the audio volume.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a01_1aef326f8dda60206fe260b11b801c3765';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'setVolumeDown';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '528';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Decrements the audio volume.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'protected-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a74f4814275d0ccb39f8fb0bf19a18a84';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'deviceAddress';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= I2C_DEVICE_ADDR
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '471';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a1eac2b850fae351182e53c85fa79923c';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'resetPin';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '472';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referencedby = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1acee94a3ad9f453741efe86af6ccd9b31';
+        sec-mem-ref-line = '204';
+        sec-mem-ref-name = 'setup';
+    };
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a7b864611b6e7a17ec77d1bec8da21e92';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'currentFrequency';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '473';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a0922bf41fa04ccf82bc472b17cac76f2';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'currentFMBand';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= 0
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '474';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a1c33548c38a4be6ddb979486709ab114';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'currentFMSpace';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= 0
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '475';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1aa9f5dcdb30bf41e0e97501c6cfdef914';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'currentVolume';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= 0
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '476';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1aa59c92a9c5e03282cb6373927bdd291d';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'rdsInterruptPin';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= -1
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '477';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referencedby = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1acee94a3ad9f453741efe86af6ccd9b31';
+        sec-mem-ref-line = '204';
+        sec-mem-ref-name = 'setup';
+    };
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a35dfecb716dde56692bebf1572d969b3';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'seekInterruptPin';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= -1
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '478';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referencedby = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1acee94a3ad9f453741efe86af6ccd9b31';
+        sec-mem-ref-line = '204';
+        sec-mem-ref-name = 'setup';
+    };
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a32c5736f9934bb9adbe33303bee31b61';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'oscillatorType';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= OSCILLATOR_TYPE_CRYSTAL
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '479';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a7e14d52c55c03bff9031382c6b1a0e0f';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'maxDelayAftarCrystalOn';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= MAX_DELAY_AFTER_OSCILLATOR
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '480';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'private-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a3962c373ce884bffc27db78a5f3e23ad';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'shadowRegisters';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '447';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+shadow registers
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1abe69615d0e3448a828bebea826935caa';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+si470x_reg00 *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reg00';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= (si470x_reg00 *)&shadowRegisters[REG00]
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '450';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a2a5026c2db43f2e39804efed3daa40f7';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+si470x_reg01 *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reg01';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= (si470x_reg01 *)&shadowRegisters[REG01]
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '451';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1afe5e5bcf0650ff543fd7b4857a89f047';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+si470x_reg02 *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reg02';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= (si470x_reg02 *)&shadowRegisters[REG02]
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '452';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a8b82ff3e508c09aadbb1290af0b32991';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+si470x_reg03 *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reg03';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= (si470x_reg03 *)&shadowRegisters[REG03]
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '453';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1aeeb1abef79479e76ae6b46640177de4f';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+si470x_reg04 *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reg04';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= (si470x_reg04 *)&shadowRegisters[REG04]
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '454';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a8d02fc10a405ac471af314b69680b419';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+si470x_reg05 *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reg05';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= (si470x_reg05 *)&shadowRegisters[REG05]
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '455';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1aa70f063232edfec07e32a41f4eca4dec';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+si470x_reg06 *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reg06';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= (si470x_reg06 *)&shadowRegisters[REG06]
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '456';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1acf97465e12e27fa599abf7466b3c24cd';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+si470x_reg07 *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reg07';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= (si470x_reg07 *)&shadowRegisters[REG07]
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '457';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a3fc3030fdf2e1792abb3fb117c87c9dc';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+si470x_reg08 *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reg08';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= (si470x_reg08 *)&shadowRegisters[REG08]
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '458';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a3b73e5a9dc8e1864b2c50f0930ffe589';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+si470x_reg09 *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reg09';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= (si470x_reg09 *)&shadowRegisters[REG09]
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '459';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1af3b09bbe2d1caf0e0661f282929016e3';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+si470x_reg0a *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reg0a';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= (si470x_reg0a *)&shadowRegisters[REG0A]
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '460';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a82f95cd683a1159c5c2ac341f8dc155f';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+si470x_reg0b *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reg0b';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= (si470x_reg0b *)&shadowRegisters[REG0B]
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '461';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a81aafdb25ecf5dd31d44c7756a85779c';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+si470x_reg0c *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reg0c';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= (si470x_reg0c *)&shadowRegisters[REG0C]
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '462';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a387763147b9438f6b06fb320dfeb36d3';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+si470x_reg0d *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reg0d';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= (si470x_reg0d *)&shadowRegisters[REG0D]
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '463';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1adf166f9b4275ebe714fd71023201294b';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+si470x_reg0e *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reg0e';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= (si470x_reg0e *)&shadowRegisters[REG0E]
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '464';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1ae4a268ac3b5827c693ff44a3a78264f4';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+si470x_reg0f *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reg0f';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= (si470x_reg0f *)&shadowRegisters[REG0F]
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '465';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a6b5277c6b29e0e47befd4cc42b855fa9';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'startBand';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= {8750, 7600, 7600, 6400 }
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '467';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a09a6c3dcbb4faa3ce279729539aa717c';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'fmSpace';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+= {20, 10, 5, 1}
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '468';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '444';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+KT0915 Class.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+<br>
+
+
+This class implements all functions that will help you to control the KT0915 devices. 
+
+@author PU2CLR - Ricardo Lima Caratti 
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+union = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg00';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a8d57190ac4d77b7b4f69f86d8da8426f';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct si470x_reg00::__anonymous__
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'refined';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '71';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1afb411b73e91910c74fe8357deef66f5d';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'raw';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '72';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '67';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+Device ID.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* union */
+struct = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg00.refined';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1ae33e103130f0c35dc7df2b736b3a1243';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'MFGID';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '69';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Manufacturer ID.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a7b6166324dc52f374d908e03602b1daf';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'PN';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '70';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Part Number.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '68';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+union = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg01';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a08f3926ebfd8f4de2df11dc5bdbff163';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct si470x_reg01::__anonymous__
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'refined';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '86';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a329b4968a3f4e1813c953b7e32375b43';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'raw';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '87';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '80';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+Chip ID.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* union */
+struct = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg01.refined';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1ae69283e6e6bd475ce96a37d62e61c08b';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'FIRMWARE';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '83';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Firmware Version.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1abfeddf560ff988c07141df6135a9bfcf';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'DEV';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '84';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+0 before powerup; 0001 after powerup = Si4702; 1000 before powerup = Si4703; 1001 after powerup = Si4703.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1ad51e4632904a9c370000c19748a91d66';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'REV';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '85';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Chip Version; 0x04 = Rev C.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '82';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+union = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg02';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a74d09de6855eff615cdbe32bca639700';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct si470x_reg02::__anonymous__
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'refined';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '110';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1aead6bc5a10c4e8c48c2e006574194133';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'raw';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '111';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '95';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+Power Configuratio.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* union */
+struct = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg02.refined';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1ab332708e4304e13c9b424e7465254954';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'ENABLE';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '98';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Powerup Enable; Refer to “4.9. Reset, Powerup, and Powerdown”; Default = 0.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1ad8179a090910d4923b044cbce813c8ea';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'RESERVED1';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '99';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Reserved; Always write to 0.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1afc93ea58f6d27ffed2b6518ffecf3e4e';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'DISABLE';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '100';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Powerup Disable; Refer to “4.9. Reset, Powerup, and Powerdown”; Default = 0.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a0b5885d29a74762639e4b55c51ce2d85';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'RESERVED2';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '101';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Reserved; Always write to 0.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a71fa98cecf9e896e77d11325dbe19dc6';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'SEEK';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '102';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+0 = Disable (default); 1 = Enable;
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1aed8a1fd68dec9364930b51d020ba07d6';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'SEEKUP';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '103';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Seek Direction; 0 = Seek down (default); 1 = Seek up.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a3afc70c9a6693899b152ca51a42f07b7';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'SKMODE';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '104';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Seek Mode; 0 = Wrap at the upper or lower band limit and continue seeking (default); 1 = Stop seeking at the upper or lower band limit.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1ae9bda4fbcc2fd74774287a6be3b0aa7c';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'RDSM';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '105';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+RDS Mode; 0 = Standard (default); 1 = Verbose; Refer to “4.4. RDS/RBDS Processor and Functionality”.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1aeb65411a7ccd9efc5037b3d1ca03b8b3';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'RESERVED3';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '106';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Reserved; Always write to 0.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1af5f75f1b95652443e4398974b82c3f7c';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'MONO';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '107';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Mono Select; 0 = Stereo (default); 1 = Force mono.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1af7dd74521218c605e3553fdeb618e6eb';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'DMUTE';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '108';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Mute Disable; 0 = Mute enable (default); 1 = Mute disable.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a2c29ac0910f16c2e2668e5c2fa01be87';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'DSMUTE';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '109';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Softmute Disable; 0 = Softmute enable (default); 1 = Softmute disable.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '97';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+union = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg03';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a4402ccf799a125ed4809d351509298b5';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct si470x_reg03::__anonymous__
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'refined';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '128';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1ac7916395cdc9ad30f8fee81c8dac8aec';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'raw';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '129';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '122';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+Channe.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+Channel value for tune operation. If BAND 05h[7:6] = 00, then Freq (MHz) = Spacing (MHz) x Channel + 87.5 MHz.
+
+
+If BAND 05h[7:6] = 01, BAND 05h[7:6] = 10, then Freq (MHz) = Spacing (MHz) x Channel + 76 MHz.
+
+
+CHAN[9:0] is not updated during a seek operation. READCHAN[9:0] provides the current tuned channel and is updated during a seek operation and after a seek or tune operation completes. Channel spacing is set with the bits SPACE 05h[5:4].
+
+
+The tune operation begins when the TUNE bit is set high. The STC bit is set high when the tune operation completes. The STC bit must be set low by setting the TUNE bit low before the next tune or seek may begin.
+_EnD_oF_dEf_TeXt_;
+}; /* union */
+struct = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg03.refined';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1adf21771052967392286eeab054755423';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'CHAN';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '125';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Channel Select;.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a83c7f2aa8c3ac10ed8beb75cad162827';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'RESERVED';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '126';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Reserved; Always write to 0;.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a05069c0e15b79590b44ff985487037b7';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'TUNE';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '127';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Tune. 0 = Disable (default); 1 = Enable.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '124';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+union = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg04';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a140c3bbef205ac3a06a299dd78fc4ff2';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct si470x_reg04::__anonymous__
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'refined';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '160';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a59b8d78321584838421a8a964e634e4e';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'raw';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '161';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '146';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+System Configuration 1.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+Setting STCIEN = 1 will generate a 5 ms low pulse on GPIO2 when the STC 0Ah[14] bit is set. 
+
+
+Setting RDSIEN = 1 will generate a 5 ms low pulse on GPIO2 when the RDSR 0Ah[15] bit is set.
+
+
+Setting STCIEN = 1 and GPIO2[1:0] = 01 will generate a 5 ms low pulse on GPIO2 when the STC 0Ah[14] bit is set.
+<table class="markdownTable">  <tr class="markdownTableHead">    <th class="markdownTableHeadNone"> BLNDADJ value</th>    <th class="markdownTableHeadNone"> Description</th>  </tr>
+<tr class="markdownTableRowOdd">    <td class="markdownTableBodyNone"> 0</td>    <td class="markdownTableBodyNone"> 31–49 RSSI dBμV (default)</td>  </tr>
+<tr class="markdownTableRowEven">    <td class="markdownTableBodyNone"> 1</td>    <td class="markdownTableBodyNone"> 37–55 RSSI dBμV (+6 dB)</td>  </tr>
+<tr class="markdownTableRowOdd">    <td class="markdownTableBodyNone"> 2</td>    <td class="markdownTableBodyNone"> 19–37 RSSI dBμV (–12 dB)</td>  </tr>
+<tr class="markdownTableRowEven">    <td class="markdownTableBodyNone"> 3</td>    <td class="markdownTableBodyNone"> 25–43 RSSI dBμV (–6 dB)</td>  </tr>
+</table>
+_EnD_oF_dEf_TeXt_;
+}; /* union */
+struct = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg04.refined';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a0ed149a12d2a87f1496cdc90c23bfb1c';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'GPIO1';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '149';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+General Purpose I/O 1; 00 = High impedance (default); 01 = Reserved; 10 = Low; 11 = High.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1ac8715973930ed16be4d52340ef11181b';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'GPIO2';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '150';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+General Purpose I/O 2. 00 = High impedance (default); 01 = Reserved; 10 = Low; 11 = High.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1af2d579fe9d83fc7fe6f55c570c02af38';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'GPIO3';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '151';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+General Purpose I/O 2. 00 = High impedance (default); 01 = Reserved; 10 = Low; 11 = High.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a847f0a9653ef12fd2d6443b0c9b998d0';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'BLNDADJ';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '152';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Stereo/Mono Blend Level Adjustment. Sets the RSSI range for stereo/mono blend. See table above.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1ad8179a090910d4923b044cbce813c8ea';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'RESERVED1';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '153';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Reserved; Always write to 0.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1aec7f3d304ef980157d98c73fd6003a09';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'AGCD';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '154';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+AGC Disable; 0 = AGC enable (default); 1 = AGC disable.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a3a52f3c22ed6fcde5bf696a6c02c9e73';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'DE';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '155';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+De-emphasis; 0 = 75 μs. Used in USA (default); 1 = 50 μs. Used in Europe, Australia, Japan.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a0f41d6f36f8eaee87ea08d9f4b1159e2';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'RDS';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '156';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+RDS Enable; 0 = Disable (default); 1 = Enable.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a0b5885d29a74762639e4b55c51ce2d85';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'RESERVED2';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '157';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Reserved; Always write to 0.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1ab09bf67829bc4d5914945a87be624698';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'STCIEN';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '158';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Seek/Tune Complete Interrupt Enable; 0 = Disable Interrupt (default); 1 = Enable Interrupt.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a3a8446a4e8c38de91d77cfbd4ac385c9';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'RDSIEN';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '159';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+RDS Interrupt Enable; 0 = Disable Interrupt (default); 1 = Enable Interrupt.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '148';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+union = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg05';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a7761f36cae85c62b924b2f39e46d22b9';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct si470x_reg05::__anonymous__
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'refined';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '183';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1ac82cf38127a8333f76abe0ab32ac4695';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'raw';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '184';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '176';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+System Configuration 2.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+SEEKTH presents the logarithmic RSSI threshold for the seek operation. The Si4702/03-C19 will not validate channels with RSSI below the SEEKTH value. SEEKTH is one of multiple parameters that can be used to validate channels. For more information, see "AN284: Si4700/01 Firmware 15 Seek Adjustability and Set- tings."
+
+<table class="markdownTable">  <tr class="markdownTableHead">    <th class="markdownTableHeadNone"> BAND value</th>    <th class="markdownTableHeadNone"> Description</th>  </tr>
+<tr class="markdownTableRowOdd">    <td class="markdownTableBodyNone"> 0</td>    <td class="markdownTableBodyNone"> 00 = 87.5–108 MHz (USA, Europe) (Default)</td>  </tr>
+<tr class="markdownTableRowEven">    <td class="markdownTableBodyNone"> 1</td>    <td class="markdownTableBodyNone"> 01 = 76–108 MHz (Japan wide band)</td>  </tr>
+<tr class="markdownTableRowOdd">    <td class="markdownTableBodyNone"> 2</td>    <td class="markdownTableBodyNone"> 10 = 76–90 MHz (Japan)</td>  </tr>
+<tr class="markdownTableRowEven">    <td class="markdownTableBodyNone"> 3</td>    <td class="markdownTableBodyNone"> 11 = Reserved</td>  </tr>
+</table>
+_EnD_oF_dEf_TeXt_;
+}; /* union */
+struct = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg05.refined';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a730956af87021c351084317bbc63eea6';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'VOLUME';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '179';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Relative value of volume is shifted –30 dBFS with the VOLEXT 06h[8] bit; 0000 = mute (default);.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a6506ae39fdca9845e3a6de3865183e57';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'SPACE';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '180';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Channel Spacing; 00 = 200 kHz (USA, Australia) (default); 01 = 100 kHz (Europe, Japan); 10 = 50 kHz.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1aa8a5bbeedca093b94b7f0d3f185b98f7';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'BAND';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '181';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Band Select. See table above.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a991f75a1bf4d56192acecdf31ad3db47';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'SEEKTH';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '182';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+RSSI Seek Threshold. 0x00 = min RSSI (default); 0x7F = max RSSI.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '178';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+union = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg06';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a7af2bf7070ff2dd57cbfdd5c2a0ed176';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct si470x_reg06::__anonymous__
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'refined';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '215';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a5f41f272701a3f1fef41eeb432396300';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'raw';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '216';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '206';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+System Configuration 3.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+The VOLEXT  bit attenuates the output by 30 dB. With the bit set to 0, the 15 volume settings adjust the volume between 0 and –28 dBFS. With the bit set to 1, the 15 volume set- tings adjust the volume between –30 and –58 dBFS.
+
+
+Refer to 4.5. "Stereo Audio Processing" on page 16.
+
+| Softmute Attenuation   | Description | 
+|            0           | 16 dB (default) |
+|            1           | 14 dB | 
+|            2           | 12 dB |
+|            3           | 10 dB |
+
+| Softmute Attack/Recover Rate   | Description | 
+|            0           | fastest (default) |
+|            1           | fast | 
+|            2           | slow |
+|            3           | slowest |
+_EnD_oF_dEf_TeXt_;
+}; /* union */
+struct = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg06.refined';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1aa8fc45ef83e3d988d30d6c9eb3fd0d85';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'SKCNT';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '209';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Seek FM Impulse Detection Threshold; 0000 = disabled (default); 0001 = max (most stops); 1111 = min (fewest stops). Allowable number of FM impulses for a valid seek channel.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a1e93209bd9a5874f3e90477fff0d01e3';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'SKSNR';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '210';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Seek SNR Threshold; 0000 = disabled (default); 0001 = min (most stops); 0111 = max (fewest stops); Required channel SNR for a valid seek channel.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1ae9d9897c4d060783fda5efbd51555ec9';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'VOLEXT';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '211';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Extended Volume Range; 0 = disabled (default); 1 = enabled.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a83c7f2aa8c3ac10ed8beb75cad162827';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'RESERVED';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '212';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Reserved; Always write to zero.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a782739a830fd256ba3140eb7a4c520a4';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'SMUTEA';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '213';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Softmute Attenuation; See table above.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a8ef471dbb0e593fa371a742b26f52656';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'SMUTER';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '214';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Softmute Attack/Recover Rate; See table above.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '208';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+union = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg07';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1adf1931da734cb10ce9078dcd71a30570';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct si470x_reg07::__anonymous__
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'refined';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '234';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a8db4bc0235b7f4a12c1fd709e1a5d657';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'raw';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '235';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '228';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+Test 1.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+Setting AHIZEN maintains a dc bias of 0.5 x VIO on the LOUT and ROUT pins to pre- vent the ESD diodes from clamping to the VIO or GND rail in response to the output swing of another device. 
+
+
+Register 07h containing the AHIZEN bit must not be written during the powerup sequence and high-Z only takes effect when in powerdown and VIO is supplied. Bits 13:0 of register 07h must be preserved as 0x0100 while in pow- erdown and as 0x3C04 while in powerup.
+
+
+The internal crystal oscillator requires an external 32.768 kHz crystal as shown in "Typical Application Schematic" on page 14. 
+
+
+The oscillator must be enabled before powerup (ENABLE = 1) as shown in Figure 9, “Initialization Sequence,” on page 21. It should only be disabled after powerdown (ENABLE = 0).
+
+
+Bits 13:0 of register 07h must be preserved as 0x0100 while in powerdown and as 0x3C04 while in powerup. Refer to Si4702/03 Internal Crystal Oscillator Errata.
+_EnD_oF_dEf_TeXt_;
+}; /* union */
+struct = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg07.refined';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a83c7f2aa8c3ac10ed8beb75cad162827';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'RESERVED';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '231';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Reserved; If written, these bits should be read first and then written with their pre-existing val- ues. Do not write during powerup.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a237eb5a74c1d61570ea880387db3cf2e';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'AHIZEN';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '232';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Audio High-Z Enable; 0 = Disable (default); 1 = Enable.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a22c9aef8785be330d7e1faf88bcfd4b1';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'XOSCEN';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '233';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Crystal Oscillator Enable; 0 = Disable (default); 1 = Enable.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '230';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+union = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg08';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a7b40522a9614f06216f6a8c6afefa9a2';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct si470x_reg08::__anonymous__
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'refined';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '248';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1adebc6a84da6127a99eaba9cee0d857ce';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'raw';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '249';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '243';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+Test 2.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+If written, these bits should be read first and then written with their pre-existing val- ues. Do not write during powerup.
+_EnD_oF_dEf_TeXt_;
+}; /* union */
+struct = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg08.refined';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a51ab88497cad20027df936afa223b23d';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'lowByte';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '246';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Reserved.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a7b99e4a5dc723242645ede8c604610df';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'highByte';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '247';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Reserved.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '245';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+union = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg09';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1afa6487ac0cd3ec47202ea232d7495db2';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct si470x_reg09::__anonymous__
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'refined';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '262';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1aa53b128295519fed36b6381e9cd9c437';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'raw';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '263';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '257';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+Boot Configuration.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+If written, these bits should be read first and then written with their pre-existing val- ues. Do not write during powerup.
+_EnD_oF_dEf_TeXt_;
+}; /* union */
+struct = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg09.refined';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a51ab88497cad20027df936afa223b23d';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'lowByte';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '260';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Reserved.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a7b99e4a5dc723242645ede8c604610df';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'highByte';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '261';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Reserved.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '259';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+union = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg0a';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a2a3f8fc1fbc45d0feeab5739f57c58fd';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct si470x_reg0a::__anonymous__
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'refined';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '294';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a487faf746b37c6fa2d66c346b1c8ded4';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'raw';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '295';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '283';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+Status RSSI.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+RSSI is measured units of dBμV in 1 dB increments with a maximum of approximately 75 dBμV. Si4702/03-C19 does not report RSSI levels greater than 75 dBuV.
+
+
+AFCRL is updated after a tune or seek operation completes and indicates a valid or invalid channel. During normal operation, AFCRL is updated to reflect changing RF envi- ronments.
+
+
+The SF/BL flag is set high when SKMODE 02h[10] = 0 and the seek operation fails to find a channel qualified as valid according to the seek parameters.
+
+
+The SF/BL flag is set high when SKMODE 02h[10] = 1 and the upper or lower band limit has been reached. The SEEK 02h[8] bit must be set low to clear SF/BL.
+
+
+The seek/tune complete flag is set when the seek or tune operation completes. Setting the SEEK 02h[8] or TUNE 03h[15] bit low will clear STC.
+
+<table class="markdownTable">  <tr class="markdownTableHead">    <th class="markdownTableHeadNone"> RDS Block A Errors</th>    <th class="markdownTableHeadNone"> Description</th>  </tr>
+<tr class="markdownTableRowOdd">    <td class="markdownTableBodyNone"> 0</td>    <td class="markdownTableBodyNone"> 0 errors requiring correction</td>  </tr>
+<tr class="markdownTableRowEven">    <td class="markdownTableBodyNone"> 1</td>    <td class="markdownTableBodyNone"> 1–2 errors requiring correction</td>  </tr>
+<tr class="markdownTableRowOdd">    <td class="markdownTableBodyNone"> 2</td>    <td class="markdownTableBodyNone"> 3–5 errors requiring correction</td>  </tr>
+<tr class="markdownTableRowEven">    <td class="markdownTableBodyNone"> 3</td>    <td class="markdownTableBodyNone"> 6+ errors or error in checkword, correction not possible</td>  </tr>
+</table>
+_EnD_oF_dEf_TeXt_;
+}; /* union */
+struct = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg0a.refined';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a6833f5d3374c1679bea428b50dbad9cc';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'RSSI';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '286';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+RSSI (Received Signal Strength Indicator).
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1aec8e57d71f07e31203035548b79d03c8';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'ST';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '287';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Stereo Indicator; 0 = Mono; 1 = Stereo.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a5cf5d2b056255cb2235ce6c52c0e9795';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'BLERA';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '288';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+RDS Block A Errors; See table above.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a3928b702beefaf125960c8f1f7fceac7';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'RDSS';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '289';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+RDS Synchronized; 0 = RDS decoder not synchronized (default); 1 = RDS decoder synchronized.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a4f37d8e1a484e1ac152858e71923f86c';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'AFCRL';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '290';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+AFC Rail; 0 = AFC not railed; 1 = AFC railed, indicating an invalid channel. Audio output is softmuted when set.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a2b31e70c6afaef56b6f30b2f50cccca4';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'SF_BL';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '291';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Seek Fail/Band Limit; 0 = Seek successful; 1 = Seek failure/Band limit reached.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a3a247d1d806ebfcd27b09041e3186b4e';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'STC';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '292';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Seek/Tune Complete; 0 = Not complete (default); 1 = Complete.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1accd030164321bb71a36d491b2e6cd424';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'RDSR';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '293';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+RDS Ready; 0 = No RDS group ready (default); 1 = New RDS group ready.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '285';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+union = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg0b';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a6609128af064ed1e5570d2293e44aae4';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct si470x_reg0b::__anonymous__
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'refined';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '319';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1ab281b94e8384263aba0a72c75eff6be7';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'raw';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '320';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '312';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+Read Channel.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+If BAND 05h[7:6] = 00, then Freq (MHz) = Spacing (MHz) x Channel + 87.5 MHz. If BAND 05h[7:6] = 01, BAND 05h[7:6] = 10, then Freq (MHz) = Spacing (MHz) x Channel + 76 MHz.
+
+
+READCHAN[9:0] provides the current tuned channel and is updated during a seek operation and after a seek or tune operation completes. Spacing and channel are set with the bits SPACE 05h[5:4] and CHAN 03h[9:0].
+
+<table class="markdownTable">  <tr class="markdownTableHead">    <th class="markdownTableHeadNone"> RDS block Errors</th>    <th class="markdownTableHeadNone"> Description</th>  </tr>
+<tr class="markdownTableRowOdd">    <td class="markdownTableBodyNone"> 0</td>    <td class="markdownTableBodyNone"> 0 errors requiring correction</td>  </tr>
+<tr class="markdownTableRowEven">    <td class="markdownTableBodyNone"> 1</td>    <td class="markdownTableBodyNone"> 1–2 errors requiring correction</td>  </tr>
+<tr class="markdownTableRowOdd">    <td class="markdownTableBodyNone"> 2</td>    <td class="markdownTableBodyNone"> 3–5 errors requiring correction</td>  </tr>
+<tr class="markdownTableRowEven">    <td class="markdownTableBodyNone"> 3</td>    <td class="markdownTableBodyNone"> 6+ errors or error in checkword, correction not possible</td>  </tr>
+</table>
+_EnD_oF_dEf_TeXt_;
+}; /* union */
+struct = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si470x_reg0b.refined';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1abe63df93c3d4af07359a55d5902f0f7a';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'READCHAN';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '315';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Read Channel.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1acdbca7cc1b7652544f91348f7486af0d';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'BLERD';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '316';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+RDS Block D Errors. See table above.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1acc1666a0cdb0ba6975ec0d79f971e5a3';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'BLERC';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '317';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+RDS Block C Errors. See table above.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1abf73094dcea591929f5c4ffe912d6750';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'BLERB';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '318';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+RDS Block B Errors. See table above.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '314';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+union = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si47x_rds_blockb';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a8edf530f6dac5b6d090b2ea4f962c981';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct si47x_rds_blockb::__anonymous__
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'group0';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '378';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1aac2ce72059b9fc40a84d5e81425ad7c8';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct si47x_rds_blockb::__anonymous__
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'group2';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '387';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a38b1d1a92e06bfbf77a5e3ec61fb531d';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct si47x_rds_blockb::__anonymous__
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'refined';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '396';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1adbbb9a428f874a1504fab6718ecd216e';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+si470x_reg0d
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'blockB';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '397';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '367';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+RDS Block B data type.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+For GCC on System-V ABI on 386-compatible (32-bit processors), the following stands:
+
+1) Bit-fields are allocated from right to left (least to most significant).
+2) A bit-field must entirely reside in a storage unit appropriate for its declared type.
+   Thus a bit-field never crosses its unit boundary.
+3) Bit-fields may share a storage unit with other struct/union members, including members that are not bit-fields.
+   Of course, struct members occupy different parts of the storage unit.
+4) Unnamed bit-fields' types do not affect the alignment of a structure or union, although individual 
+   bit-fields' member offsets obey the alignment constraints.   
+<br>
+
+@see also https://en.wikipedia.org/wiki/Radio_Data_System
+_EnD_oF_dEf_TeXt_;
+}; /* union */
+struct = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si47x_rds_blockb.group0';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a884d9804999fc47a3c2694e49ad2536a';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'address';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '370';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1aa1b1c0cd777edd2e5cfcaf8e2e7dcab8';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'DI';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '371';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a7a663caea1b722a63dc2868158ed584d';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'MS';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '372';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a890a10788493e3d572586e991cd43543';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'TA';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '373';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a264bd2c2ca8c895803767b0d39ff4a09';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'programType';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '374';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a59e69d63ce38754ea53c4461b5cba1e2';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'trafficProgramCode';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '375';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a20583dcf173525a78f726ef45329c5ae';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'versionCode';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '376';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a19223bd3731a4215ead3ba6a1eb8bbe8';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'groupType';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '377';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '369';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+struct = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si47x_rds_blockb.group2';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a884d9804999fc47a3c2694e49ad2536a';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'address';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '381';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a652bfdc159637b708ac6e6f92d7650bc';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'textABFlag';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '382';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a264bd2c2ca8c895803767b0d39ff4a09';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'programType';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '383';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a59e69d63ce38754ea53c4461b5cba1e2';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'trafficProgramCode';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '384';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a20583dcf173525a78f726ef45329c5ae';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'versionCode';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '385';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a19223bd3731a4215ead3ba6a1eb8bbe8';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'groupType';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '386';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '380';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+struct = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si47x_rds_blockb.refined';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a9a0364b9e99bb480dd25e1f0284c8555';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'content';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '390';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a652bfdc159637b708ac6e6f92d7650bc';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'textABFlag';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '391';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a264bd2c2ca8c895803767b0d39ff4a09';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'programType';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '392';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a59e69d63ce38754ea53c4461b5cba1e2';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'trafficProgramCode';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '393';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a20583dcf173525a78f726ef45329c5ae';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'versionCode';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '394';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a19223bd3731a4215ead3ba6a1eb8bbe8';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'groupType';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '395';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '389';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+union = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si47x_rds_date_time';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a2794d29b3c8280ce264c494df1570801';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct si47x_rds_date_time::__anonymous__
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'refined';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '420';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a4632acc947ded9cc9577df163fabba69';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'raw';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '421';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '410';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+Group RDS type 4A ( RDS Date and Time)
+When group type 4A is used by the station, it shall be transmitted every minute according to EN 50067.
+This Structure uses blocks 2,3 and 5 (B,C,D)
+
+ATTENTION: 
+To make it compatible with 8, 16 and 32 bits platforms and avoid Crosses boundary, it was necessary to
+split minute and hour representation. 
+_EnD_oF_dEf_TeXt_;
+}; /* union */
+struct = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'si47x_rds_date_time.refined';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a7a86c157ee9713c34fbd7a1ee40f0c5a';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'offset';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '413';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a5ba6e404c489ff4f757e7c77cb9fa310';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'offset_sense';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '414';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a756bdae430708e155654a844c2bcc33b';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'minute1';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '415';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a57b42af48e9b3407c002d157d89f50ad';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'minute2';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '416';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a0351524e66b386b6638dd47c0d00de65';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'hour1';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '417';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a38034b153ffba397eebfcd07b4a50414';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'hour2';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '418';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a7f7685b39180278dd0fa69f523c7bd24';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint32_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'mjd';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '419';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '412';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+union = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'word16_to_bytes';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a9773e2b57371cfde7fb723984c7f8e44';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct word16_to_bytes::__anonymous__
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'refined';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '433';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1abed44166b8c3d82c0c44fb317d3b650a';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'raw';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '434';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '428';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+Converts 16 bits word to two bytes.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* union */
+struct = {
+  cp-id     = 'group___g_a01';
+  cp-name   = 'word16_to_bytes.refined';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a51ab88497cad20027df936afa223b23d';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'lowByte';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '431';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'group___g_a01_1a7b99e4a5dc723242645ede8c604610df';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+uint8_t
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'highByte';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '432';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  cp-fileline  = '430';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+file = {
+  file-id   = '_s_i470_x_8cpp';
+  file-name = 'SI470X.cpp';
+  file-full-name  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.cpp';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = '_s_i470_x_8h';
+  file-name = 'SI470X.h';
+    define = {
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1afb81dd661d531fa5c5422549fab7588f';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'MAX_DELAY_AFTER_OSCILLATOR';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+500
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '17';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1af1732013854882f94b02e77b8a6106ec';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'I2C_DEVICE_ADDR';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0x10
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '20';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1ad0763fd256db4ec1ecc62f84bbff56e2';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'OSCILLATOR_TYPE_CRYSTAL';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+1
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '21';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1ad079e38ccae2f64aa341332e2ccb8b8e';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'OSCILLATOR_TYPE_REFCLK';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '22';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a128f40c85c30594203fd937611ba5f2c';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'RDS_STANDARD';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '24';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+RDS Mode.
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1acdc3372b73fee284997dbef795123257';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'RDS_VERBOSE';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+1
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '25';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+RDS Mode.
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a73871eb4fd3cf8830e9e23b44c0d9e71';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'SEEK_DOWN';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '26';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Seek Down  Direction.
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a6af70605e17fdcdeea166d59672d2a54';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'SEEK_UP';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+1
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '27';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Seek Up  Direction.
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a7417bf6a10c7dd58227fc91601825691';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'FM_BAND_USA_EU';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '29';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+87.5–108 MHz (US / Europe, Default)
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a52b160692c66b326ce004ef59a9c7384';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'FM_BAND_JAPAN_WIDE';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+1
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '30';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+76–108 MHz (Japan wide band)
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a3e920d475d85c9c6ccd907ba332f94fc';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'FM_BAND_JAPAN';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+2
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '31';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+76–90 MHz (Japan)
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a24d7b9791b3d1eea6bb86b0d1596da19';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'FM_BAND_RESERVED';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+3
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '32';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Reserved.
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a748ad53bef975af9c1edbcacc58e5be4';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'REG00';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0x00
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '34';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1afc04faecdab9e0d1751466b6c53fdaf1';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'REG01';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0x01
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '35';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a09a3d3fef9f53f0dbe1dd0072f02c1d4';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'REG02';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0x02
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '36';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1ac2446f96334b533154259a21c13950e6';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'REG03';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0x03
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '37';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a88dee04c27a51e335798ab012dccbea1';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'REG04';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0x04
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '38';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a848ac333ddfea97bc1f16a2e69eaf953';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'REG05';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0x05
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '39';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1ac5641e8e0c3254714bcd533a4b0111ca';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'REG06';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0x06
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '40';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a2a41df49654ae321f569bfabfa74de24';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'REG07';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0x07
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '41';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a96f1c217ac648e08bc64dd3b9086612c';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'REG08';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0x08
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '42';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a48be4d4aa3bde15da7a8145c0f64fd7f';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'REG09';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0x09
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '43';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a5ec596211175cecd682755f5e996b6dd';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'REG0A';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0x0A
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '44';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a76c73d8e23848f8d73679450c2d7264b';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'REG0B';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0x0B
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '45';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a0e3b6e600782d453f87223f87784c54d';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'REG0C';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0x0C
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '46';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a41b7a4f7b9e629eb87dba4152995a616';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'REG0D';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0x0D
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '47';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a1a5322c7bc447986d2d3b4d13de95315';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'REG0E';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0x0E
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '48';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = '_s_i470_x_8h_1a949846d6974a39c871614c2f15ee0691';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'REG0F';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+0x0F
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      define-mem-desc-line = '49';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    };
+    typedef = {
+    typedef-member = {
+      typedef-mem-kind = 'typedef';
+      typedef-mem-id   = 'group___g_a01_1ga9bafa0795de70ab39084aba079c5893a';
+      typedef-mem-virt = normal;
+      typedef-mem-prot = public;
+      typedef-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      typedef-mem-name = 'si470x_reg0c';
+      typedef-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      typedef-mem-desc-line = '328';
+      typedef-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+RDS Block A.
+_EnD_oF_dEf_TeXt_;
+      typedef-mem-documentation = <<_EnD_oF_dEf_TeXt_
+RDS Block A Data.
+_EnD_oF_dEf_TeXt_;
+    }; /* typedef-member */
+    typedef-member = {
+      typedef-mem-kind = 'typedef';
+      typedef-mem-id   = 'group___g_a01_1ga6bae6dc2bcd63ac6e45ddf13dbb46e34';
+      typedef-mem-virt = normal;
+      typedef-mem-prot = public;
+      typedef-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      typedef-mem-name = 'si470x_reg0d';
+      typedef-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      typedef-mem-desc-line = '335';
+      typedef-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+RDS Block B.
+_EnD_oF_dEf_TeXt_;
+      typedef-mem-documentation = <<_EnD_oF_dEf_TeXt_
+RDS Block B Data.
+_EnD_oF_dEf_TeXt_;
+    }; /* typedef-member */
+    typedef-member = {
+      typedef-mem-kind = 'typedef';
+      typedef-mem-id   = 'group___g_a01_1gacf8aa985a458924c7fa862f6ff761953';
+      typedef-mem-virt = normal;
+      typedef-mem-prot = public;
+      typedef-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      typedef-mem-name = 'si470x_reg0e';
+      typedef-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      typedef-mem-desc-line = '342';
+      typedef-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+RDS Block C.
+_EnD_oF_dEf_TeXt_;
+      typedef-mem-documentation = <<_EnD_oF_dEf_TeXt_
+RDS Block C Data.
+_EnD_oF_dEf_TeXt_;
+    }; /* typedef-member */
+    typedef-member = {
+      typedef-mem-kind = 'typedef';
+      typedef-mem-id   = 'group___g_a01_1ga7545751e439a94a29e434c97932943fc';
+      typedef-mem-virt = normal;
+      typedef-mem-prot = public;
+      typedef-mem-type = <<_EnD_oF_dEf_TeXt_
+uint16_t
+_EnD_oF_dEf_TeXt_;
+      typedef-mem-name = 'si470x_reg0f';
+      typedef-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      typedef-mem-desc-line = '349';
+      typedef-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+RDS Block D.
+_EnD_oF_dEf_TeXt_;
+      typedef-mem-documentation = <<_EnD_oF_dEf_TeXt_
+RDS Block D Data.
+_EnD_oF_dEf_TeXt_;
+    }; /* typedef-member */
+    };
+  file-full-name  = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
