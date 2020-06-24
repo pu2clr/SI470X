@@ -7,7 +7,7 @@ var indexSectionsWithContent =
   4: "bcdgmors",
   5: "s",
   6: "fimors",
-  7: "u",
+  7: "bu",
   8: "p"
 };
 

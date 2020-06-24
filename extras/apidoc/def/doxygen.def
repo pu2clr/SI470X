@@ -30,7 +30,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a88702e9ed11d428d9f4c8d0c445fe6a9';
+      sec-mem-id   = 'group___g_a03_1ga88702e9ed11d428d9f4c8d0c445fe6a9';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -40,32 +40,9 @@ _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
       sec-mem-desc-line = '491';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
-PU2CLR SI470X Arduino Library.
+Gets all current register content of the device.
 _EnD_oF_dEf_TeXt_;
       sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
-SI470X Arduino Library implementation. This is an Arduino library for the SI470X, BROADCAST RECEIVER.  
-<br>
-
-
-It works with I2C protocol and can provide an easier interface to control the SI470X device.<br>
-
-
-This library was built based on "AN230 - Si4700/01/02/03 PROGRAMMING GUIDE" and  "Si4702/03-C19 - BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS"
-
-
-This library can be freely distributed using the MIT Free Software model.
-@copyright Copyright (c) 2020 Ricardo Lima Caratti. 
-@author Ricardo LIma Caratti (pu2clr@gmail.com)
-
-@section GA03 Basic 
-
-
-Low level functions used to operate with the SI470X registers
-
-
-Gets all current register content of the device
-
-
 For read operations, the device acknowledge is followed by an eight bit data word shifted out on falling SCLK edges. An internal address counter automatically increments to allow continuous data byte reads, starting with the upper byte of register 0Ah, followed by the lower byte of register 0Ah, and onward until the lower byte of the last register is reached. The internal address counter then automatically wraps around to the upper byte of register 00h and proceeds from there until continuous reads cease. 
 
 @see BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS; page 19.
@@ -73,34 +50,34 @@ For read operations, the device acknowledge is followed by an eight bit data wor
 <br>
 _EnD_oF_dEf_TeXt_;
       sec-mem-referencedby = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1a6459a4e812ebfc92d6dca2b2f5b4f915';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ga6459a4e812ebfc92d6dca2b2f5b4f915';
         sec-mem-ref-line = '276';
         sec-mem-ref-name = 'getRealChannel';
     };
       sec-mem-referencedby = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1abe3dc193ede8ee6ebf4bae3728046bb8';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1gabe3dc193ede8ee6ebf4bae3728046bb8';
         sec-mem-ref-line = '183';
         sec-mem-ref-name = 'powerDown';
     };
       sec-mem-referencedby = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1a3fabcb452602ea372d759fe3ba20bec8';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ga3fabcb452602ea372d759fe3ba20bec8';
         sec-mem-ref-line = '132';
         sec-mem-ref-name = 'powerUp';
     };
       sec-mem-referencedby = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1a80abdafabf55be7717ebc19138431adb';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ga80abdafabf55be7717ebc19138431adb';
         sec-mem-ref-line = '305';
         sec-mem-ref-name = 'seek';
     };
       sec-mem-referencedby = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1ac1adddefa79fcd3b1b1ed16df7870d85';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1gac1adddefa79fcd3b1b1ed16df7870d85';
         sec-mem-ref-line = '97';
         sec-mem-ref-name = 'waitAndFinishTune';
     };
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a4370f98521b96480e9cebc4f90681e06';
+      sec-mem-id   = 'group___g_a03_1ga4370f98521b96480e9cebc4f90681e06';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -139,7 +116,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a8b7c324942f8caa5ca00470b4aed5b2a';
+      sec-mem-id   = 'group___g_a03_1ga8b7c324942f8caa5ca00470b4aed5b2a';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -156,14 +133,14 @@ This function also updates the value of shadowRegisters[0];
 @return si470x_reg0a 
 _EnD_oF_dEf_TeXt_;
       sec-mem-referencedby = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1a4f1e1aec94964d00fde66b2af31516ee';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ga4f1e1aec94964d00fde66b2af31516ee';
         sec-mem-ref-line = '359';
         sec-mem-ref-name = 'getRssi';
     };
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1ac1adddefa79fcd3b1b1ed16df7870d85';
+      sec-mem-id   = 'group___g_a03_1gac1adddefa79fcd3b1b1ed16df7870d85';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -182,24 +159,24 @@ Should be used before processing Tune or Seek.
 The STC bit being cleared indicates that the TUNE or SEEK bits may be set again to start another tune or seek operation. Do not set the TUNE or SEEK bits until the Si470x clears the STC bit. 
 _EnD_oF_dEf_TeXt_;
       sec-mem-referenceto = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1a88702e9ed11d428d9f4c8d0c445fe6a9';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ga88702e9ed11d428d9f4c8d0c445fe6a9';
         sec-mem-ref-line = '27';
         sec-mem-ref-name = 'getAllRegisters';
     };
       sec-mem-referencedby = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1a80abdafabf55be7717ebc19138431adb';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ga80abdafabf55be7717ebc19138431adb';
         sec-mem-ref-line = '305';
         sec-mem-ref-name = 'seek';
     };
       sec-mem-referencedby = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1adf162646f957df7cf5c4b542b5b4b344';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1gadf162646f957df7cf5c4b542b5b4b344';
         sec-mem-ref-line = '238';
         sec-mem-ref-name = 'setChannel';
     };
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1af11efb6ed0306cd67e8a7feab37519de';
+      sec-mem-id   = 'group___g_a03_1gaf11efb6ed0306cd67e8a7feab37519de';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -215,14 +192,14 @@ _EnD_oF_dEf_TeXt_;
 
 _EnD_oF_dEf_TeXt_;
       sec-mem-referencedby = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1acee94a3ad9f453741efe86af6ccd9b31';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1gacee94a3ad9f453741efe86af6ccd9b31';
         sec-mem-ref-line = '204';
         sec-mem-ref-name = 'setup';
     };
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a3fabcb452602ea372d759fe3ba20bec8';
+      sec-mem-id   = 'group___g_a03_1ga3fabcb452602ea372d759fe3ba20bec8';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -238,19 +215,19 @@ _EnD_oF_dEf_TeXt_;
 Starts the receiver with some default configurations 
 _EnD_oF_dEf_TeXt_;
       sec-mem-referenceto = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1a88702e9ed11d428d9f4c8d0c445fe6a9';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ga88702e9ed11d428d9f4c8d0c445fe6a9';
         sec-mem-ref-line = '27';
         sec-mem-ref-name = 'getAllRegisters';
     };
       sec-mem-referencedby = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1acee94a3ad9f453741efe86af6ccd9b31';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1gacee94a3ad9f453741efe86af6ccd9b31';
         sec-mem-ref-line = '204';
         sec-mem-ref-name = 'setup';
     };
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1abe3dc193ede8ee6ebf4bae3728046bb8';
+      sec-mem-id   = 'group___g_a03_1gabe3dc193ede8ee6ebf4bae3728046bb8';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -266,14 +243,14 @@ _EnD_oF_dEf_TeXt_;
 
 _EnD_oF_dEf_TeXt_;
       sec-mem-referenceto = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1a88702e9ed11d428d9f4c8d0c445fe6a9';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ga88702e9ed11d428d9f4c8d0c445fe6a9';
         sec-mem-ref-line = '27';
         sec-mem-ref-name = 'getAllRegisters';
     };
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1acee94a3ad9f453741efe86af6ccd9b31';
+      sec-mem-id   = 'group___g_a03_1gacee94a3ad9f453741efe86af6ccd9b31';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -327,7 +304,7 @@ sets the reset pin, interrupt pins and oscillator type you are using in your pro
 @param oscillator_type  // optional. Sets the Oscillator type used (Default Crystal or Ref. Clock). 
 _EnD_oF_dEf_TeXt_;
       sec-mem-referenceto = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1a3fabcb452602ea372d759fe3ba20bec8';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ga3fabcb452602ea372d759fe3ba20bec8';
         sec-mem-ref-line = '132';
         sec-mem-ref-name = 'powerUp';
     };
@@ -337,7 +314,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-ref-name = 'rdsInterruptPin';
     };
       sec-mem-referenceto = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1af11efb6ed0306cd67e8a7feab37519de';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1gaf11efb6ed0306cd67e8a7feab37519de';
         sec-mem-ref-line = '118';
         sec-mem-ref-name = 'reset';
     };
@@ -354,7 +331,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a2376cbd67cc2a65a0f9608941f73419a';
+      sec-mem-id   = 'group___g_a03_1ga2376cbd67cc2a65a0f9608941f73419a';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -388,7 +365,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a615b6785ddf6985a362ab0862f3e5513';
+      sec-mem-id   = 'group___g_a03_1ga615b6785ddf6985a362ab0862f3e5513';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -412,7 +389,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a89180830a5e01de15ab22e0d8157c34a';
+      sec-mem-id   = 'group___g_a03_1ga89180830a5e01de15ab22e0d8157c34a';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -430,7 +407,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1ae2df536f699b4406da46d739200dff7a';
+      sec-mem-id   = 'group___g_a03_1gae2df536f699b4406da46d739200dff7a';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -450,7 +427,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a6459a4e812ebfc92d6dca2b2f5b4f915';
+      sec-mem-id   = 'group___g_a03_1ga6459a4e812ebfc92d6dca2b2f5b4f915';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -467,14 +444,14 @@ This method is useful to query the current channel during the seek operations.
 @return uint16_t 
 _EnD_oF_dEf_TeXt_;
       sec-mem-referenceto = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1a88702e9ed11d428d9f4c8d0c445fe6a9';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ga88702e9ed11d428d9f4c8d0c445fe6a9';
         sec-mem-ref-line = '27';
         sec-mem-ref-name = 'getAllRegisters';
     };
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1adf162646f957df7cf5c4b542b5b4b344';
+      sec-mem-id   = 'group___g_a03_1gadf162646f957df7cf5c4b542b5b4b344';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -496,14 +473,14 @@ _EnD_oF_dEf_TeXt_;
 @param channel 
 _EnD_oF_dEf_TeXt_;
       sec-mem-referenceto = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1ac1adddefa79fcd3b1b1ed16df7870d85';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1gac1adddefa79fcd3b1b1ed16df7870d85';
         sec-mem-ref-line = '97';
         sec-mem-ref-name = 'waitAndFinishTune';
     };
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a80abdafabf55be7717ebc19138431adb';
+      sec-mem-id   = 'group___g_a03_1ga80abdafabf55be7717ebc19138431adb';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -543,19 +520,19 @@ A seek operation may be aborted by setting SEEK = 0.
 @param direction  Seek Direction; 0 = Seek down (default); 1 = Seek up.
 _EnD_oF_dEf_TeXt_;
       sec-mem-referenceto = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1a88702e9ed11d428d9f4c8d0c445fe6a9';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ga88702e9ed11d428d9f4c8d0c445fe6a9';
         sec-mem-ref-line = '27';
         sec-mem-ref-name = 'getAllRegisters';
     };
       sec-mem-referenceto = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1ac1adddefa79fcd3b1b1ed16df7870d85';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1gac1adddefa79fcd3b1b1ed16df7870d85';
         sec-mem-ref-line = '97';
         sec-mem-ref-name = 'waitAndFinishTune';
     };
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a01abda714595dca938b452d2a3f04678';
+      sec-mem-id   = 'group___g_a03_1ga01abda714595dca938b452d2a3f04678';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -590,7 +567,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a6ee8140d156a52a34b66944b58fa9ac5';
+      sec-mem-id   = 'group___g_a03_1ga6ee8140d156a52a34b66944b58fa9ac5';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -624,7 +601,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a4f1e1aec94964d00fde66b2af31516ee';
+      sec-mem-id   = 'group___g_a03_1ga4f1e1aec94964d00fde66b2af31516ee';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -640,14 +617,14 @@ _EnD_oF_dEf_TeXt_;
 @return int 
 _EnD_oF_dEf_TeXt_;
       sec-mem-referenceto = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1a8b7c324942f8caa5ca00470b4aed5b2a';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ga8b7c324942f8caa5ca00470b4aed5b2a';
         sec-mem-ref-line = '80';
         sec-mem-ref-name = 'getStatus';
     };
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a346802c295b6b1e0a186763627d04afa';
+      sec-mem-id   = 'group___g_a03_1ga346802c295b6b1e0a186763627d04afa';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -671,7 +648,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a6c3cb96a721e4bb10a492d6fcad9df8a';
+      sec-mem-id   = 'group___g_a03_1ga6c3cb96a721e4bb10a492d6fcad9df8a';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -695,7 +672,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a15530e43b7ebcf5f31e8bd4cab3a37eb';
+      sec-mem-id   = 'group___g_a03_1ga15530e43b7ebcf5f31e8bd4cab3a37eb';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -719,7 +696,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1ae03992e0bc0ea4bc10a06aea4321dbe6';
+      sec-mem-id   = 'group___g_a03_1gae03992e0bc0ea4bc10a06aea4321dbe6';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -746,7 +723,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a0a7c87000231645bdf30225f394c0465';
+      sec-mem-id   = 'group___g_a03_1ga0a7c87000231645bdf30225f394c0465';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -765,7 +742,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a99a61da13a8ce2baec1bf99721410fcf';
+      sec-mem-id   = 'group___g_a03_1ga99a61da13a8ce2baec1bf99721410fcf';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -784,7 +761,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a8cdfc81d9489e40a0f7de26e3f717fa1';
+      sec-mem-id   = 'group___g_a03_1ga8cdfc81d9489e40a0f7de26e3f717fa1';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -803,7 +780,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a63c3e2fec424ed70ca0d4df87d1cae2d';
+      sec-mem-id   = 'group___g_a03_1ga63c3e2fec424ed70ca0d4df87d1cae2d';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -821,7 +798,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1aa61e3a0dddf49f7a8037ebd030cee6b1';
+      sec-mem-id   = 'group___g_a03_1gaa61e3a0dddf49f7a8037ebd030cee6b1';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -839,7 +816,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a26ce2b1ed9f5f7ea870dbc7827ee0bda';
+      sec-mem-id   = 'group___g_a03_1ga26ce2b1ed9f5f7ea870dbc7827ee0bda';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -863,7 +840,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1a1d5ac34dcd1b22bb4c41c196f0775670';
+      sec-mem-id   = 'group___g_a03_1ga1d5ac34dcd1b22bb4c41c196f0775670';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -881,7 +858,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1abde2fdb0be5e3544648d265572a864b0';
+      sec-mem-id   = 'group___g_a03_1gabde2fdb0be5e3544648d265572a864b0';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -899,7 +876,7 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a01_1aef326f8dda60206fe260b11b801c3765';
+      sec-mem-id   = 'group___g_a03_1gaef326f8dda60206fe260b11b801c3765';
       sec-mem-virt = normal;
       sec-mem-prot = public;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
@@ -957,7 +934,7 @@ _EnD_oF_dEf_TeXt_;
 
 _EnD_oF_dEf_TeXt_;
       sec-mem-referencedby = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1acee94a3ad9f453741efe86af6ccd9b31';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1gacee94a3ad9f453741efe86af6ccd9b31';
         sec-mem-ref-line = '204';
         sec-mem-ref-name = 'setup';
     };
@@ -1064,7 +1041,7 @@ _EnD_oF_dEf_TeXt_;
 
 _EnD_oF_dEf_TeXt_;
       sec-mem-referencedby = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1acee94a3ad9f453741efe86af6ccd9b31';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1gacee94a3ad9f453741efe86af6ccd9b31';
         sec-mem-ref-line = '204';
         sec-mem-ref-name = 'setup';
     };
@@ -1090,7 +1067,7 @@ _EnD_oF_dEf_TeXt_;
 
 _EnD_oF_dEf_TeXt_;
       sec-mem-referencedby = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1acee94a3ad9f453741efe86af6ccd9b31';
+        sec-mem-ref-id = '_s_i470_x_8cpp_1gacee94a3ad9f453741efe86af6ccd9b31';
         sec-mem-ref-line = '204';
         sec-mem-ref-name = 'setup';
     };
