@@ -5,7 +5,7 @@ It is an Arduini Library for Si4702/03 FM tuner family.
 
 ## Contents
 
-1. [Preface]()
+1. [Preface](https://pu2clr.github.io/SI470X#preface)
 2. [API Documentation](https://pu2clr.github.io/SI470X/extras/apidoc/html)
 
 
@@ -24,6 +24,10 @@ It is an Arduini Library for Si4702/03 FM tuner family.
 
 
 ## Preface 
+
+The SI470X is a FM DSP receiver with RDS/RBDS support.  This document you will give you Arduino source codes, schematics, examples and tips to help you to build a receiver based on Arduino board and the SI470X Shield. The following figure shows a very common kit sold on eBay and AliExpress.
+
+![SI4703 Shield](https://github.com/pu2clr/SI470X/blob/master/extras/images/si4703_module0.png)
 
 
 ### See also
