@@ -11,9 +11,9 @@
 #include <SI470X.h>
 
 /** 
- * @ingroup GA03
- * @section  GA03 Basic 
- * @details  Low level functions used to operate with the SI470X registers
+ * @defgroup GA03 Basic Functions
+ * @section GA03 Basic
+ * @details Low level functions used to operate with the SI470X registers
  */
 
 /**
