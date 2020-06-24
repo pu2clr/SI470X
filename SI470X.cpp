@@ -141,7 +141,7 @@ void SI470X::powerUp()
     // TODO - link the GPIO with interrupt pins
     reg04->refined.GPIO1 = reg04->refined.GPIO2 = reg04->refined.GPIO3 = 0;
   
-    reg05->refined.SEEKTH = 63; // RSSI Seek Threshold;
+    reg05->refined.SEEKTH = 0; // RSSI Seek Threshold;
     this->currentFMBand = reg05->refined.BAND = 0;
     this->currentFMSpace = reg05->refined.SPACE = 1;
     this->currentVolume = reg05->refined.VOLUME = 0;

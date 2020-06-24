@@ -163,7 +163,7 @@ typedef union {
         uint8_t VOLUME : 4;     //!< Relative value of volume is shifted –30 dBFS with the VOLEXT 06h[8] bit; 0000 = mute (default);
         uint8_t SPACE : 2;      //!< Channel Spacing; 00 = 200 kHz (USA, Australia) (default); 01 = 100 kHz (Europe, Japan); 10 = 50 kHz.
         uint8_t BAND : 2;       //!< Band Select. See table above.
-        uint8_t SEEKTH;     //!< RSSI Seek Threshold. 0x00 = min RSSI (default); 0x7F = max RSSI. 
+        uint8_t SEEKTH;         //!< RSSI Seek Threshold. 0x00 = min RSSI (default); 0x7F = max RSSI. 
     } refined;
     uint16_t raw;
 } si470x_reg05;

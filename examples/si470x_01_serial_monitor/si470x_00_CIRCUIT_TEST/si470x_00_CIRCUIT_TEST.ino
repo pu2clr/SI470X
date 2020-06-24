@@ -77,12 +77,21 @@ void setup() {
 
   
   // Mute test
-  Serial.print("\nAfter 5s device will mute during 2s");
+  Serial.print("\nAfter 5s device will mute during 3s");
   delay(5000);
   rx.setMute(true);
-  delay(5000);
+  delay(3000);
   rx.setMute(false);
+  Serial.print("\nMute test has finished.");
 
+  // Seek test
+  Serial.print("\nSeek station");
+  for (int i = 0; i < 10; i++ ) { 
+    rx.seek(1,0);
+    Serial.print("\nReal Frequency.: ");
+    Serial.print(rx.getRealFrequency());
+    delay(5000);
+  }
   
 }
 
