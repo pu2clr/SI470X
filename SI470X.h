@@ -14,6 +14,9 @@
 #include <Wire.h>
 
 
+#define MAX_DELAY_AFTER_OSCILLATOR 500  // Max delay after the crystal oscilator becomes active
+
+
 #define I2C_DEVICE_ADDR 0x10
 #define OSCILLATOR_TYPE_CRYSTAL  1 // Crystal
 #define OSCILLATOR_TYPE_REFCLK   0 // Reference clock    
@@ -52,7 +55,7 @@
 typedef union {
     struct {
         uint16_t MFGID : 12; //!< Manufacturer ID.
-        uint8_t PN: 4; //!< Part Number.
+        uint16_t PN: 4;      //!< Part Number.
     } refined;
     uint16_t raw; 
 } si470x_reg00;
@@ -65,9 +68,9 @@ typedef union {
 typedef union {
     struct
     {
-        uint8_t FIRMWARE : 6; //!< Firmware Version.
-        uint8_t DEV : 4;      //!< 0 before powerup; 0001 after powerup = Si4702; 1000 before powerup = Si4703; 1001 after powerup = Si4703.
-        uint8_t REV : 6;      //!< Chip Version; 0x04 = Rev C
+        uint16_t FIRMWARE : 6; //!< Firmware Version.
+        uint16_t DEV : 4;      //!< 0 before powerup; 0001 after powerup = Si4702; 1000 before powerup = Si4703; 1001 after powerup = Si4703.
+        uint16_t REV : 6;      //!< Chip Version; 0x04 = Rev C
     } refined;
     uint16_t raw;
 } si470x_reg01;
@@ -106,8 +109,8 @@ typedef union {
     struct
     {
         uint16_t CHAN : 10;      //!< Channel Select;
-        uint8_t RESERVED : 5;   //!< Reserved; Always write to 0;
-        uint8_t TUNE : 1;       //!< Tune. 0 = Disable (default); 1 = Enable.
+        uint16_t RESERVED : 5;   //!< Reserved; Always write to 0;
+        uint16_t TUNE : 1;       //!< Tune. 0 = Disable (default); 1 = Enable.
     } refined;
     uint16_t raw;
 } si470x_reg03;
@@ -160,7 +163,7 @@ typedef union {
         uint8_t VOLUME : 4;     //!< Relative value of volume is shifted –30 dBFS with the VOLEXT 06h[8] bit; 0000 = mute (default);
         uint8_t SPACE : 2;      //!< Channel Spacing; 00 = 200 kHz (USA, Australia) (default); 01 = 100 kHz (Europe, Japan); 10 = 50 kHz.
         uint8_t BAND : 2;       //!< Band Select. See table above.
-        uint8_t SEEKTH : 8;     //!< RSSI Seek Threshold. 0x00 = min RSSI (default); 0x7F = max RSSI. 
+        uint8_t SEEKTH;     //!< RSSI Seek Threshold. 0x00 = min RSSI (default); 0x7F = max RSSI. 
     } refined;
     uint16_t raw;
 } si470x_reg05;
@@ -208,8 +211,8 @@ typedef union {
     struct
     {
         uint16_t RESERVED : 14;  //!< Reserved; If written, these bits should be read first and then written with their pre-existing val- ues. Do not write during powerup.
-        uint8_t AHIZEN : 1;     //!< Audio High-Z Enable; 0 = Disable (default); 1 = Enable.
-        uint8_t XOSCEN : 1;     //!< Crystal Oscillator Enable; 0 = Disable (default); 1 = Enable.
+        uint16_t AHIZEN : 1;     //!< Audio High-Z Enable; 0 = Disable (default); 1 = Enable.
+        uint16_t XOSCEN : 1;     //!< Crystal Oscillator Enable; 0 = Disable (default); 1 = Enable.
     } refined;
     uint16_t raw;
 } si470x_reg07;
@@ -221,8 +224,8 @@ typedef union {
 typedef union {
     struct
     {
-        uint8_t lowByte : 8;    //!< Reserved
-        uint8_t highByte : 8;   //!< Reserved
+        uint8_t lowByte;    //!< Reserved
+        uint8_t highByte;   //!< Reserved
     } refined;
     uint16_t raw;
 } si470x_reg08;
@@ -234,8 +237,8 @@ typedef union {
 typedef union {
     struct
     {
-        uint8_t lowByte : 8;    //!< Reserved
-        uint8_t highByte : 8;   //!< Reserved
+        uint8_t lowByte;    //!< Reserved
+        uint8_t highByte;   //!< Reserved
     } refined;
     uint16_t raw;
 } si470x_reg09;
@@ -259,7 +262,7 @@ typedef union {
 typedef union {
     struct
     {
-        uint8_t RSSI : 8;    //!< RSSI (Received Signal Strength Indicator).
+        uint8_t RSSI;    //!< RSSI (Received Signal Strength Indicator).
         uint8_t ST : 1;      //!< Stereo Indicator; 0 = Mono; 1 = Stereo.
         uint8_t BLERA : 2;   //!< RDS Block A Errors; See table above.
         uint8_t RDSS : 1;    //!< RDS Synchronized; 0 = RDS decoder not synchronized (default); 1 = RDS decoder synchronized.
@@ -288,9 +291,9 @@ typedef union {
     struct
     {
         uint16_t READCHAN : 10;  //!< Read Channel.
-        uint8_t BLERD : 2;      //!< RDS Block D Errors. See table above.
-        uint8_t BLERC : 2;      //!< RDS Block C Errors. See table above.
-        uint8_t BLERB : 2;      //!< RDS Block B Errors. See table above.
+        uint16_t BLERD : 2;      //!< RDS Block D Errors. See table above.
+        uint16_t BLERC : 2;      //!< RDS Block C Errors. See table above.
+        uint16_t BLERB : 2;      //!< RDS Block B Errors. See table above.
     } refined;
     uint16_t raw;
 } si470x_reg0b;
@@ -407,25 +410,25 @@ typedef union {
 class SI470X {
 
     private:
-        uint16_t deviceRegisters[16]; //!< shadow registers
+        uint16_t shadowRegisters[17]; //!< shadow registers
 
-        // Device registers map - References to the shadow registers 
-        si470x_reg00 *reg00 = (si470x_reg00 *)&deviceRegisters[0x00];
-        si470x_reg01 *reg01 = (si470x_reg01 *)&deviceRegisters[0x01];
-        si470x_reg02 *reg02 = (si470x_reg02 *)&deviceRegisters[0x02];
-        si470x_reg03 *reg03 = (si470x_reg03 *)&deviceRegisters[0x03];
-        si470x_reg04 *reg04 = (si470x_reg04 *)&deviceRegisters[0x04];
-        si470x_reg05 *reg05 = (si470x_reg05 *)&deviceRegisters[0x05];
-        si470x_reg06 *reg06 = (si470x_reg06 *)&deviceRegisters[0x06];
-        si470x_reg07 *reg07 = (si470x_reg07 *)&deviceRegisters[0x07];
-        si470x_reg08 *reg08 = (si470x_reg08 *)&deviceRegisters[0x08];
-        si470x_reg09 *reg09 = (si470x_reg09 *)&deviceRegisters[0x09];
-        si470x_reg0a *reg0a = (si470x_reg0a *)&deviceRegisters[0x0A];
-        si470x_reg0b *reg0b = (si470x_reg0b *)&deviceRegisters[0x0B];
-        si470x_reg0c *reg0c = (si470x_reg0c *)&deviceRegisters[0x0C];
-        si470x_reg0d *reg0d = (si470x_reg0d *)&deviceRegisters[0x0D];
-        si470x_reg0e *reg0e = (si470x_reg0e *)&deviceRegisters[0x0E];
-        si470x_reg0f *reg0f = (si470x_reg0f *)&deviceRegisters[0x0F];
+        // Device registers map - References to the shadow registers
+        si470x_reg00 *reg00 = (si470x_reg00 *)&shadowRegisters[REG00];
+        si470x_reg01 *reg01 = (si470x_reg01 *)&shadowRegisters[REG01];
+        si470x_reg02 *reg02 = (si470x_reg02 *)&shadowRegisters[REG02];
+        si470x_reg03 *reg03 = (si470x_reg03 *)&shadowRegisters[REG03];
+        si470x_reg04 *reg04 = (si470x_reg04 *)&shadowRegisters[REG04];
+        si470x_reg05 *reg05 = (si470x_reg05 *)&shadowRegisters[REG05];
+        si470x_reg06 *reg06 = (si470x_reg06 *)&shadowRegisters[REG06];
+        si470x_reg07 *reg07 = (si470x_reg07 *)&shadowRegisters[REG07];
+        si470x_reg08 *reg08 = (si470x_reg08 *)&shadowRegisters[REG08];
+        si470x_reg09 *reg09 = (si470x_reg09 *)&shadowRegisters[REG09];
+        si470x_reg0a *reg0a = (si470x_reg0a *)&shadowRegisters[REG0A];
+        si470x_reg0b *reg0b = (si470x_reg0b *)&shadowRegisters[REG0B];
+        si470x_reg0c *reg0c = (si470x_reg0c *)&shadowRegisters[REG0C];
+        si470x_reg0d *reg0d = (si470x_reg0d *)&shadowRegisters[REG0D];
+        si470x_reg0e *reg0e = (si470x_reg0e *)&shadowRegisters[REG0E];
+        si470x_reg0f *reg0f = (si470x_reg0f *)&shadowRegisters[REG0F];
 
         uint16_t startBand[4] = {8750, 7600, 7600, 6400 };
         uint16_t fmSpace[4] = {20, 10, 5, 1};
@@ -440,43 +443,57 @@ class SI470X {
         int rdsInterruptPin = -1;
         int seekInterruptPin = -1;
         int oscillatorType = OSCILLATOR_TYPE_CRYSTAL;
+        uint16_t maxDelayAftarCrystalOn = MAX_DELAY_AFTER_OSCILLATOR;
 
-    public:
-        void getAllRegisters();
-        void setAllRegisters(uint8_t limit = 0x06);
-        void getStatus();
-        void waitTune();
-        void waitReadyTune();
+        public :
 
-        void reset();
+            /**
+             * @brief Set the Delay After Crystal On (default 500ms)
+             * 
+             * @param ms_value  Value in milliseconds 
+             */
+            inline void setDelayAfterCrystalOn(uint8_t ms_value) { maxDelayAftarCrystalOn = ms_value; };
 
-        void powerUp();
-        void powerDown();
+            void getAllRegisters();
+            void setAllRegisters(uint8_t limit = 0x07);
+            void getStatus();
+            void waitAndFinishTune();
 
-        void setup(int resetPin, int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL);
-        void setup(int resetPin, uint8_t oscillator_type);
+            void reset();
 
-        void setFrequency(uint16_t frequency);
-        uint16_t getFrequency();
-        uint16_t getRealChannel();
-        void setChannel(uint16_t channel);
-        void seek(uint8_t seek_mode, uint8_t direction);
+            void powerUp();
+            void powerDown();
 
-        void setBand(uint8_t band = 1);
-        int getRssi();
-        void setSoftmute(bool value);
-        void setMute(bool value);
-        void setMono(bool value);
-        void setRdsMode(uint8_t rds_mode = 0);
+            void setup(int resetPin, int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL);
+            void setup(int resetPin, uint8_t oscillator_type);
 
-        uint8_t getPartNumber();
-        uint16_t getManufacturerId();
-        uint8_t getFirmwareVersion();
-        uint8_t getDeviceId();
-        uint8_t getChipVersion();
+            void setFrequency(uint16_t frequency);
+            uint16_t getFrequency();
+            uint16_t getRealFrequency();
+            uint16_t getRealChannel();
+            void setChannel(uint16_t channel);
+            void seek(uint8_t seek_mode, uint8_t direction);
 
-        void setVolume(uint8_t value);
-        uint8_t getVolume();
-        void setVolumeUp();
-        void setVolumeDown();
+            void setBand(uint8_t band = 1);
+            void setSpace(uint8_t space = 0);
+            int getRssi();
+            void setSoftmute(bool value);
+            void setMute(bool value);
+            void setMono(bool value);
+            void setRdsMode(uint8_t rds_mode = 0);
+
+            uint8_t getPartNumber();
+            uint16_t getManufacturerId();
+            uint8_t getFirmwareVersion();
+            uint8_t getDeviceId();
+            uint8_t getChipVersion();
+
+            void setVolume(uint8_t value);
+            uint8_t getVolume();
+            void setVolumeUp();
+            void setVolumeDown();
+
+
+
+
 };

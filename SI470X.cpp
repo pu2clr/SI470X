@@ -6,7 +6,7 @@
  * @details For read operations, the device acknowledge is followed by an eight bit data word shifted out on falling SCLK edges. An internal address counter automatically increments to allow continuous data byte reads, starting with the upper byte of register 0Ah, followed by the lower byte of register 0Ah, and onward until the lower byte of the last register is reached. The internal address counter then automatically wraps around to the upper byte of register 00h and proceeds from there until continuous reads cease. 
  *
  * @see BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS; page 19.
- * @see deviceRegisters;  
+ * @see shadowRegisters;  
  */
 void SI470X::getAllRegisters()
 {
@@ -21,13 +21,13 @@ void SI470X::getAllRegisters()
     for (i = 0x0A; i <= 0x0F; i++) {
         aux.refined.highByte = Wire.read();
         aux.refined.lowByte = Wire.read();
-        deviceRegisters[i] = aux.raw;
+        shadowRegisters[i] = aux.raw;
     }
 
     for (i = 0x00; i <= 0x09; i++) {
         aux.refined.highByte = Wire.read();
         aux.refined.lowByte = Wire.read();
-        deviceRegisters[i] = aux.raw;
+        shadowRegisters[i] = aux.raw;
     }
 
 }
@@ -36,11 +36,11 @@ void SI470X::getAllRegisters()
  * @brief   Sets values to the device registers from 0x02 to 0x07
  * @details For write operations, the device acknowledge is followed by an eight bit data word latched internally on rising edges of SCLK. The device acknowledges each byte of data written by driving SDIO low after the next falling SCLK edge, for 1 cycle.
  * @details An internal address counter automatically increments to allow continuous data byte writes, starting with the upper byte of register 02h, followed by the lower byte of register 02h, and onward until the lower byte of the last register is reached. The internal address counter then automatically wraps around to the upper byte of register 00h and proceeds from there until continuous writes end.
- *  @details The registers from 0x2 to 0x07 are used to setup the device. This method writes the array  deviceRegisters, elements 8 to 14 (corresponding the registers 0x2 to 0x7 respectively)  into the device. See Device registers map  in SI470X.h file.
+ *  @details The registers from 0x2 to 0x07 are used to setup the device. This method writes the array  shadowRegisters, elements 8 to 14 (corresponding the registers 0x2 to 0x7 respectively)  into the device. See Device registers map  in SI470X.h file.
  * @details To implement this, a register maping was created to deal with each register structure. For each type of register, there is a reference to the array element. 
  *  
  * @see BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS; pages 18 and 19.
- * @see deviceRegisters; 
+ * @see shadowRegisters; 
  */
 void SI470X::setAllRegisters(uint8_t limit)
 {
@@ -48,18 +48,17 @@ void SI470X::setAllRegisters(uint8_t limit)
     Wire.beginTransmission(this->deviceAddress);
     for (int i = 0x02; i <= limit; i++)
     {
-        aux.raw = deviceRegisters[i];
+        aux.raw = shadowRegisters[i];
         Wire.write(aux.refined.highByte);
         Wire.write(aux.refined.lowByte);
     }
     Wire.endTransmission();
 
-    delay(5);
 }
 
 /**
  * @brief Gets the value of the 0x0A register
- * @details This function also updates the value of deviceRegisters[0];
+ * @details This function also updates the value of shadowRegisters[0];
  * @return si470x_reg0a 
  */
 void SI470X::getStatus()
@@ -70,19 +69,7 @@ void SI470X::getStatus()
         ;
     aux.refined.highByte = Wire.read();
     aux.refined.lowByte = Wire.read();
-    deviceRegisters[0x0A] = aux.raw;
-}
-
-/**
- * @brief Wait for Seet or Tune process 
- * 
- */
-void SI470X::waitTune()
-{
-    do {
-        delay(1);
-        getStatus();
-    } while ( !(reg0a->refined.STC) );
+    shadowRegisters[0x0A] = aux.raw;
 }
 
 /**
@@ -90,14 +77,22 @@ void SI470X::waitTune()
  * @details Should be used before processing Tune or Seek.
  * @details The STC bit being cleared indicates that the TUNE or SEEK bits may be set again to start another tune or seek operation. Do not set the TUNE or SEEK bits until the Si470x clears the STC bit. 
  */
-void SI470X::waitReadyTune() {
+void SI470X::waitAndFinishTune()
+{
     do
     {
-        delay(1);
         getStatus();
-    } while (reg0a->refined.STC == 1);
-}
+    } while (reg0a->refined.STC == 0);
 
+    getAllRegisters();
+    reg02->refined.SEEK = 0;
+    reg03->refined.TUNE = 0;
+    setAllRegisters();
+    do
+    {
+        getStatus();
+    } while (reg0a->refined.STC != 0);
+}
 
  /**
  * @brief Resets the device
@@ -106,25 +101,30 @@ void SI470X::waitReadyTune() {
   void SI470X::reset()
 {
     pinMode(this->resetPin, OUTPUT);
-    delay(10);
     digitalWrite(this->resetPin, LOW);
-    delay(10);
+    delay(1);
     digitalWrite(this->resetPin, HIGH);
-    delay(100);
+    delay(1);
 }
 
+/**
+ * @brief Powers the receiver on 
+ * @details Starts the receiver with some default configurations 
+ */
 void SI470X::powerUp()
 {
     getAllRegisters();
     reg07->refined.XOSCEN = this->oscillatorType; // Sets the Crustal
-    setAllRegisters(0x07);
-    delay(600);
+    reg07->refined.AHIZEN = 0;
+    setAllRegisters();
+    delay(this->maxDelayAftarCrystalOn); // You can set this value. See inline function setDelayAfterCrystalOn
 
-    // getAllRegisters();
+    getAllRegisters();
+
     reg02->refined.DMUTE = 1;  // Mutes the device;
-    reg02->refined.DSMUTE = 1;
     reg02->refined.MONO = 0;
-    reg02->refined.RESERVED1 = reg02->refined.RESERVED2 = reg02->refined.RESERVED3 = 0;
+    reg02->refined.DSMUTE = 1;
+
     reg02->refined.RDSM = 0;
     reg02->refined.SKMODE = 0;
     reg02->refined.SEEKUP = 0;
@@ -132,46 +132,41 @@ void SI470X::powerUp()
     reg02->refined.ENABLE = 1; // Power up
     reg02->refined.DISABLE = 0;
 
-    setAllRegisters();
-    delay(100);
-
-    reg03->refined.TUNE = 0;
-    reg03->refined.RESERVED = 0;
-
     reg04->refined.RDSIEN = 0;
     reg04->refined.STCIEN = 0;
-    reg04->refined.RESERVED1 =  reg04->refined.RESERVED2 = 0;
     reg04->refined.RDS = 0;
-    reg04->refined.DE = 1;
+    reg04->refined.DE = 0;
     reg04->refined.AGCD = 1;
-    reg04->refined.BLNDADJ = 0;
+    reg04->refined.BLNDADJ = 1;
+    // TODO - link the GPIO with interrupt pins
     reg04->refined.GPIO1 = reg04->refined.GPIO2 = reg04->refined.GPIO3 = 0;
-
+  
     reg05->refined.SEEKTH = 63; // RSSI Seek Threshold;
     this->currentFMBand = reg05->refined.BAND = 0;
     this->currentFMSpace = reg05->refined.SPACE = 1;
     this->currentVolume = reg05->refined.VOLUME = 0;
 
-    reg06->refined.SMUTER = 1;
-    reg06->refined.SMUTEA = 3;
-    reg06->refined.RESERVED = 0;
+    reg06->refined.SMUTER = 0;
+    reg06->refined.SMUTEA = 0;
+
     reg06->refined.VOLEXT = 0;
     reg06->refined.SKSNR = 0;
     reg06->refined.SKCNT = 0;
 
-    setAllRegisters();
-
-    delay(150);
-
+    setAllRegisters(); 
+    delay(60);
     getAllRegisters(); // Gets All registers (current status after powerup)
 }
 
+/**
+ * @brief Powers the receiver off
+ * 
+ */
 void SI470X::powerDown()
 {
-    getAllRegisters();
-    
+    getAllRegisters(); 
     reg07->refined.AHIZEN = 1;
-    reg07->refined.RESERVED = 0x0100;
+    // reg07->refined.RESERVED = 0x0100;
     reg04->refined.GPIO1 = reg04->refined.GPIO2 = reg04->refined.GPIO3 = 0;
     reg02->refined.ENABLE = 1;
     reg02->refined.DISABLE = 1;
@@ -189,8 +184,6 @@ void SI470X::powerDown()
  */
 void SI470X::setup(int resetPin, int rdsInterruptPin, int seekInterruptPin, uint8_t oscillator_type)
 {
-    Wire.begin();
-
     this->resetPin = resetPin;
     if (rdsInterruptPin >= 0)
         this->rdsInterruptPin = rdsInterruptPin;
@@ -198,9 +191,11 @@ void SI470X::setup(int resetPin, int rdsInterruptPin, int seekInterruptPin, uint
         this->seekInterruptPin = seekInterruptPin;
 
     this->oscillatorType = oscillator_type;
+
     reset();
+    Wire.begin();
+    delay(1);
     powerUp();
-    delay(100);
 }
 
 /**
@@ -215,60 +210,60 @@ void SI470X::setup(int resetPin, uint8_t oscillator_type)
     setup(resetPin, -1, -1, oscillator_type);
 }
 
+/**
+ * @brief Sets the channel 
+ * @param channel 
+ */
 void SI470X::setChannel(uint16_t channel)
 {
-    getAllRegisters();
-
-    reg05->refined.BAND = this->currentFMBand;
-    reg05->refined.SPACE = this->currentFMSpace;
-
     reg03->refined.CHAN = channel;
     reg03->refined.TUNE = 1;
-    reg03->refined.RESERVED = 0;
-    // waitReadyTune();
     setAllRegisters();
-    delay(61);
-    // waitTune();
-    delay(61);
-    reg03->refined.TUNE = 0;
-    reg03->refined.RESERVED = 0;
-    setAllRegisters();
-    delay(61);
-    reg03->refined.TUNE = 0;
-    reg03->refined.RESERVED = 0;
-    setAllRegisters();
-    delay(61);
+    delayMicroseconds(60000);
+    waitAndFinishTune();
 }
 
+/**
+ * @brief Sets the frequency 
+ * @param frequency 
+ */
 void SI470X::setFrequency(uint16_t frequency)
 {
-  
     uint16_t channel;
-    char aux[100];
-
-    // setBand(this->currentFMBand);
-
     channel = (frequency - this->startBand[this->currentFMBand]) / this->fmSpace[this->currentFMSpace];
     setChannel(channel);
-
-    sprintf(aux, "\n %i = (%i - %i) / %i => Current FM Band: %i ", channel, frequency, this->startBand[this->currentFMBand], this->fmSpace[this->currentFMSpace], this->currentFMBand);
-    Serial.println(aux);
-
     this->currentFrequency = frequency;
 }
 
-
-
+/**
+ * @brief Gets the current frequency. 
+ * 
+ * @return uint16_t 
+ */
 uint16_t SI470X::getFrequency()
 {
-
     return this->currentFrequency;
 }
 
+/**
+ * @brief Gets the current channel stored in register 0x0B
+ * @details This method is useful to query the current channel during the seek operations. 
+ * @return uint16_t 
+ */
 uint16_t SI470X::getRealChannel()
 {
     getAllRegisters();
     return reg0b->refined.READCHAN;
+}
+
+/**
+ * @brief Gets the frequency based on READCHAN register (0x0B)
+ * @details Unlike getFrequency method, this method queries the device. 
+ * 
+ * @return uint16_t 
+ */
+uint16_t SI470X::getRealFrequency() {
+    return getRealChannel() * this->fmSpace[this->currentFMSpace] + this->startBand[this->currentFMBand];
 }
 
 /**
@@ -284,18 +279,13 @@ uint16_t SI470X::getRealChannel()
  */
 void SI470X::seek(uint8_t seek_mode, uint8_t direction)
 {
+    getAllRegisters();
     reg03->refined.TUNE = 1;
-    setAllRegisters();
-
     reg02->refined.SEEK = 1; // Enable seek
     reg02->refined.SKMODE = seek_mode;
     reg02->refined.SEEKUP = direction;
     setAllRegisters();
-    waitTune();
-    reg02->refined.SEEK = 0; // Enable seek
-    reg03->refined.TUNE = 0;
-    setAllRegisters();
-    delay(30);
+    waitAndFinishTune();
 }
 
 /**
@@ -318,14 +308,31 @@ void SI470X::setBand(uint8_t band)
 }
 
 /**
+ * @brief Sets the FM Space  
+ * @details The SI470x device supports 3 different settings as shown below
+ * | BAND value     | Description | 
+ * | ----------     | ----------- | 
+ * |    0           | 00 - 200 kHz (US / Australia, Default) |
+ * |    1 (default) | 01 - 100 kHz (Europe / Japan) | 
+ * |    2           | 02 - 50 kHz | 
+ * |    3           | 03 - Reserved (Do not use)| 
+ */
+void SI470X::setSpace(uint8_t space)
+{
+    this->currentFMBand = reg05->refined.SPACE = space;
+    setAllRegisters();
+}
+
+/**
  * @todo 
  * @brief Gets the Rssi
  * 
  * @return int 
  */
-int getRssi()
+int SI470X::getRssi()
 {
-    return 0;
+    getStatus();
+    return reg0a->refined.RSSI;
 }
 
 /**

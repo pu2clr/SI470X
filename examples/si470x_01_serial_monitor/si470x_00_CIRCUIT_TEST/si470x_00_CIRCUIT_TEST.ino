@@ -17,16 +17,19 @@
 
 #define RESET_PIN 10
 
-SI470X si470x; 
+SI470X rx; 
 
-// Set your FM station frequency. Default is 107.5MHz (107500KHz)
 uint32_t fmFreq = 106500;
 
 void setup() {
 
   pinMode(A4, OUTPUT);    
   digitalWrite(A4, LOW);
-
+  pinMode(RESET_PIN,OUTPUT);
+  digitalWrite(RESET_PIN, LOW);
+  delay(10);
+  digitalWrite(RESET_PIN, HIGH);
+  
 
   Serial.begin(9600);
   while(!Serial);
@@ -41,56 +44,44 @@ void setup() {
     }
   } */
 
-  si470x.setup(RESET_PIN);
+  rx.setup(RESET_PIN);
 
   Serial.print("\nPN........................:");
-  Serial.print(si470x.getPartNumber(),HEX);
+  Serial.print(rx.getPartNumber(),HEX);
   Serial.print("\nManufacturer..............:");
-  Serial.print(si470x.getPartNumber(),HEX);
+  Serial.print(rx.getPartNumber(),HEX);
   Serial.print("\nCHIP Version..............:");
-  Serial.print(si470x.getChipVersion(),HEX);    
+  Serial.print(rx.getChipVersion(),HEX);    
   Serial.print("\nDevice....................:");
-  Serial.print(si470x.getDeviceId(),BIN);
+  Serial.print(rx.getDeviceId(),BIN);
   Serial.print("\nFirmware..................:");
-  Serial.print(si470x.getFirmwareVersion(),BIN);
+  Serial.print(rx.getFirmwareVersion(),BIN);
 
-  si470x.setVolume(6);
-  si470x.setBand(FM_BAND_USA_EU);   
+  rx.setVolume(6);  
 
-  si470x.setMute(false);
-  si470x.setMono(false);
-  
   
   delay(500);
   //****
   Serial.print("\nEstacao 106.5MHz");
-  si470x.setFrequency(10650);
+  rx.setFrequency(10650);
   
   Serial.print("\nCurrent Channel: ");
-  Serial.println(si470x.getRealChannel());
-  delay(15000);
+  Serial.print(rx.getRealChannel());
+  delay(500);
 
-
-  Serial.print("\nEstacao 95.5MHz");
-  si470x.setFrequency(9550);
+  Serial.print("\nReal Frequency.: ");
+  Serial.print(rx.getRealFrequency());
   
-  Serial.print("\nCurrent Channel: ");
-  Serial.println(si470x.getRealChannel());
+  Serial.print("\nRSSI: ");
+  Serial.print(rx.getRssi());
+
+  
+  // Mute test
+  Serial.print("\nAfter 5s device will mute during 2s");
   delay(5000);
-  
-  for ( int i = si470x.getRealChannel(); i < 192; i++ ) {
-    si470x.setChannel(i);
-    delay(2000);
-  }
-
-  /*
-  for (int i = 0; i < 7; i++ ) {
-    Serial.print("\nSeek.");
-    si470x.seek(1,0);
-    Serial.print("\nCurrent Channel: ");
-    Serial.println(si470x.getRealChannel());
-    delay(5000);
-  } */
+  rx.setMute(true);
+  delay(5000);
+  rx.setMute(false);
 
   
 }
