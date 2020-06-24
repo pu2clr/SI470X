@@ -1,5 +1,5 @@
 /**
- * @brief  PU2CLR SI470X Arduino Library
+ * @mainpage SI470X Arduino Library implementation 
  * @details SI470X Arduino Library implementation. This is an Arduino library for the SI470X, BROADCAST RECEIVER.  
  * @details It works with I2C protocol and can provide an easier interface to control the SI470X device.<br>
  * @details This library was built based on "AN230 - Si4700/01/02/03 PROGRAMMING GUIDE" and  "Si4702/03-C19 - BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS"
@@ -14,6 +14,7 @@
  * @defgroup GA03 Basic Functions
  * @section GA03 Basic
  */
+
 
 /**
  * @ingroup GA03
