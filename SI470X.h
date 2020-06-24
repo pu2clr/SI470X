@@ -507,14 +507,20 @@ class SI470X {
             uint16_t getRealChannel();
             void setChannel(uint16_t channel);
             void seek(uint8_t seek_mode, uint8_t direction);
+            void setSeekThreshold(uint8_t value);
 
             void setBand(uint8_t band = 1);
             void setSpace(uint8_t space = 0);
             int getRssi();
+
             void setSoftmute(bool value);
-            void setMute(bool value);
+            void setSoftmuteAttack(uint8_t value);
+            void setSoftmuteAttenuation(uint8_t value);
+            void setAgc(bool value);
+
             void setMono(bool value);
             void setRdsMode(uint8_t rds_mode = 0);
+            void setRds(bool value);
 
             uint8_t getPartNumber();
             uint16_t getManufacturerId();
@@ -522,12 +528,12 @@ class SI470X {
             uint8_t getDeviceId();
             uint8_t getChipVersion();
 
+            void setMute(bool value);
             void setVolume(uint8_t value);
             uint8_t getVolume();
             void setVolumeUp();
             void setVolumeDown();
+            void setExtendedVolumeRange(bool value);
 
-
-
-
+            void setFmDeemphasis(uint8_t de);
 };

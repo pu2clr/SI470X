@@ -315,6 +315,21 @@ void SI470X::seek(uint8_t seek_mode, uint8_t direction)
 
 /**
  * @ingroup GA03
+ * @brief Sets RSSI Seek Threshold
+ * @details SEEKTH presents the logarithmic RSSI threshold for the seek operation. 
+ * @details The Si4702/03-C19 will not validate channels with RSSI below the SEEKTH value. 
+ * @details SEEKTH is one of multiple parameters that can be used to validate channels.
+ * @details For more information, see "AN284: Si4700/01 Firmware 15 Seek Adjustability and Set- tings."
+ * @param  value between 0 and 127
+ */
+void SI470X::setSeekThreshold(uint8_t value)
+{
+    reg05->refined.SEEKTH = value;
+    setAllRegisters();
+}
+
+/**
+ * @ingroup GA03
  * @brief Sets the FM Band  
  * @details 
  * 
@@ -375,6 +390,54 @@ void SI470X::setSoftmute(bool value)
 
 /**
  * @ingroup GA03
+ * @brief Sets Softmute Attack/Recover Rate.
+ * 
+ *  | Value | Description |
+ *  | ----- | ----------- | 
+ *  |   0   | fastest (default) |
+ *  |   1   | fast |
+ *  |   2   | slow | 
+ *  |   3   | slowest |       
+ * 
+ * @param value See table above
+ */
+void SI470X::setSoftmuteAttack(uint8_t value){ 
+    reg06->refined.SMUTER = value;
+    setAllRegisters();
+}
+
+/**
+ * @ingroup GA03
+ * @brief Sets  Softmute Attenuation..
+ * 
+ *  | Value | Description |
+ *  | ----- | ----------- | 
+ *  |   0   | 16 dB (default) |
+ *  |   1   | 14 dB |
+ *  |   2   | 12 dB | 
+ *  |   3   | 10 dB |       
+ * 
+ * @param value See table above
+ */
+void SI470X::setSoftmuteAttenuation(uint8_t value)
+{
+    reg06->refined.SMUTEA = value;
+    setAllRegisters();
+}
+
+/**
+ * @ingroup GA03
+ * @brief Sets the AGC enable or disable
+ * @param value true = enable; fale = disable
+ */
+void SI470X::setAgc(bool value) {
+    reg04->refined.AGCD = !value;
+    setAllRegisters();
+}
+
+
+/**
+ * @ingroup GA03
  * @brief Sets the Mute true or false
  * 
  * @param value TRUE or FALSE
@@ -394,6 +457,19 @@ void SI470X::setMute(bool value)
 void SI470X::setMono(bool value)
 {
     reg02->refined.MONO = value; // If true, it has not be disabled
+    setAllRegisters();
+}
+
+/**
+ * @ingroup GA03
+ * @brief Sets the RDS operation 
+ * @details Enable or Disable the RDS
+ * 
+ * @param true = turns the RDS ON; false  = turns the RDS OFF
+ */
+void SI470X::setRds(bool value)
+{
+    reg04->refined.RDS = value;
     setAllRegisters();
 }
 
@@ -464,6 +540,18 @@ void SI470X::setVolumeDown()
 
 /**
  * @ingroup GA03
+ * @brief Sets Extended Volume Range.
+ * @details This bit attenuates the output by 30 dB. With the bit set to 0, the 15 volume settings adjust the volume between 0 and –28 dBFS. With the bit set to 1, the 15 volume set- tings adjust the volume between –30 and –58 dBFS.
+ * @param value false = disabled (default); true = enabled.
+ */
+void SI470X::setExtendedVolumeRange(bool value)
+{
+    reg06->refined.VOLEXT = value;
+    setAllRegisters();
+}
+
+/**
+ * @ingroup GA03
  * @brief Gets the Part Number
  * @details If it returns 0x01, so the device is: Si4702/03
  * @return the part number 
@@ -512,4 +600,14 @@ uint8_t SI470X::getDeviceId()
 uint8_t SI470X::getChipVersion()
 {
     return reg01->refined.REV;
+}
+
+/**
+ * @brief Sets De-emphasis.
+ * @details 75 μs. Used in USA (default); 50 μs. Used in Europe, Australia, Japan.
+ * 
+ * @param de  0 = 75 μs; 1 = 50 μs
+ */
+void SI470X::setFmDeemphasis(uint8_t de) {
+    reg04->refined.DE = de;
 }

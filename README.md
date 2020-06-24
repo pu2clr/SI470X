@@ -15,7 +15,7 @@ It is an Arduini Library for Si4702/03 FM tuner family.
 1. 76–108 MHz
 2. Seek tuning
 3. Automatic frequency control (AFC)
-4. Automatic gain control (AGC
+4. Automatic gain control (AGC)
 5. Programmable de-emphasis (50/75 μs)
 6. Adaptive noise suppression
 7. Volume control
