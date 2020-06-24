@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pu2clr_20si470x_20arduino_20library_231',['PU2CLR SI470X Arduino Library',['../index.html',1,'']]]
+  ['si470x_20arduino_20library_20implementation_231',['SI470X Arduino Library implementation',['../index.html',1,'']]]
 ];
