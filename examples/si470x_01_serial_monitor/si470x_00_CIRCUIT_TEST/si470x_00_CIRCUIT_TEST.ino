@@ -92,6 +92,11 @@ void setup() {
     Serial.print(rx.getRealFrequency());
     delay(5000);
   }
+
+
+  Serial.print("\nEstacao 106.5MHz");
+  rx.setFrequency(10650);
+  
   
 }
 

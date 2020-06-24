@@ -49,6 +49,18 @@
 #define REG0F 0x0F
 
 /**
+ * @defgroup GA01 Union, Structure and Defined Data Types  
+ * @brief   SI470X Defined Data Types 
+ * @details Defined Data Types is a way to represent the SI470X registers information
+ * @details Some information appears to be inaccurate due to translation problems from Chinese to English.
+ * @details The information shown here was extracted from Datasheet:
+ * @details SI470X stereo FM digital tuning radio documentation.
+ * @details Other information seems incomplete even in the original Chinese Datasheet. 
+ * @details For example: Reg 10 (0x0A). There is no information about it. The Reg11 and 12 seem wrong  
+ */
+
+/**
+ * @ingroup GA01
  * @brief Device ID
  * 
  */
@@ -60,8 +72,8 @@ typedef union {
     uint16_t raw; 
 } si470x_reg00;
 
-
 /**
+ * @ingroup GA01
  * @brief Chip ID
  * 
  */
@@ -76,6 +88,7 @@ typedef union {
 } si470x_reg01;
 
 /**
+ * @ingroup GA01
  * @brief Power Configuratio
  * 
  */
@@ -99,6 +112,7 @@ typedef union {
 } si470x_reg02;
 
 /**
+ * @ingroup GA01
  * @brief Channe
  * @details Channel value for tune operation. If BAND 05h[7:6] = 00, then Freq (MHz) = Spacing (MHz) x Channel + 87.5 MHz.
  * @details If BAND 05h[7:6] = 01, BAND 05h[7:6] = 10, then Freq (MHz) = Spacing (MHz) x Channel + 76 MHz.
@@ -116,6 +130,7 @@ typedef union {
 } si470x_reg03;
 
 /**
+ * @ingroup GA01
  * @brief  System Configuration 1
  * @details Setting STCIEN = 1 will generate a 5 ms low pulse on GPIO2 when the STC 0Ah[14] bit is set. 
  * @details Setting RDSIEN = 1 will generate a 5 ms low pulse on GPIO2 when the RDSR 0Ah[15] bit is set.
@@ -147,6 +162,7 @@ typedef union {
 } si470x_reg04;
 
 /**
+ * @ingroup GA01
  * @brief System Configuration 2
  * @details SEEKTH presents the logarithmic RSSI threshold for the seek operation. The Si4702/03-C19 will not validate channels with RSSI below the SEEKTH value. SEEKTH is one of multiple parameters that can be used to validate channels. For more information, see "AN284: Si4700/01 Firmware 15 Seek Adjustability and Set- tings."
  * 
@@ -169,6 +185,7 @@ typedef union {
 } si470x_reg05;
 
 /**
+ * @ingroup GA01
  * @brief  System Configuration 3
  * @details The VOLEXT  bit attenuates the output by 30 dB. With the bit set to 0, the 15 volume settings adjust the volume between 0 and –28 dBFS. With the bit set to 1, the 15 volume set- tings adjust the volume between –30 and –58 dBFS.
  * @details Refer to 4.5. "Stereo Audio Processing" on page 16.
@@ -200,6 +217,7 @@ typedef union {
 } si470x_reg06;
 
 /**
+ * @ingroup GA01
  * @brief Test 1
  * @details Setting AHIZEN maintains a dc bias of 0.5 x VIO on the LOUT and ROUT pins to pre- vent the ESD diodes from clamping to the VIO or GND rail in response to the output swing of another device. 
  * @details Register 07h containing the AHIZEN bit must not be written during the powerup sequence and high-Z only takes effect when in powerdown and VIO is supplied. Bits 13:0 of register 07h must be preserved as 0x0100 while in pow- erdown and as 0x3C04 while in powerup.
@@ -218,6 +236,7 @@ typedef union {
 } si470x_reg07;
 
 /**
+ * @ingroup GA01
  * @brief Test 2
  * @details If written, these bits should be read first and then written with their pre-existing val- ues. Do not write during powerup.
  */
@@ -231,6 +250,7 @@ typedef union {
 } si470x_reg08;
 
 /**
+ * @ingroup GA01
  * @brief Boot Configuration
  * @details If written, these bits should be read first and then written with their pre-existing val- ues. Do not write during powerup.
  */
@@ -244,6 +264,7 @@ typedef union {
 } si470x_reg09;
 
 /**
+ * @ingroup GA01
  * @brief Status RSSI
  * @details RSSI is measured units of dBμV in 1 dB increments with a maximum of approximately 75 dBμV. Si4702/03-C19 does not report RSSI levels greater than 75 dBuV.
  * @details AFCRL is updated after a tune or seek operation completes and indicates a valid or invalid channel. During normal operation, AFCRL is updated to reflect changing RF envi- ronments.
@@ -275,6 +296,7 @@ typedef union {
 } si470x_reg0a;
 
 /**
+ * @ingroup GA01
  * @brief Read Channel
  * @details If BAND 05h[7:6] = 00, then Freq (MHz) = Spacing (MHz) x Channel + 87.5 MHz. If BAND 05h[7:6] = 01, BAND 05h[7:6] = 10, then Freq (MHz) = Spacing (MHz) x Channel + 76 MHz.
  * @details READCHAN[9:0] provides the current tuned channel and is updated during a seek operation and after a seek or tune operation completes. Spacing and channel are set with the bits SPACE 05h[5:4] and CHAN 03h[9:0].
@@ -299,32 +321,35 @@ typedef union {
 } si470x_reg0b;
 
 /**
+ * @ingroup GA01
  * @brief RDS Block A
  * 
  */
 typedef uint16_t si470x_reg0c; //!< RDS Block A Data.
 
 /**
+ * @ingroup GA01
  * @brief RDS Block B
  * 
  */
 typedef uint16_t si470x_reg0d; //!< RDS Block B Data.
 
 /**
+ * @ingroup GA01
  * @brief RDS Block C
  * 
  */
 typedef uint16_t si470x_reg0e; //!< RDS Block C Data.
 
 /**
+ * @ingroup GA01
  * @brief RDS Block D
  * 
  */
 typedef uint16_t si470x_reg0f; //!< RDS Block D Data.
 
-
 /**
- * 
+ * @ingroup GA01
  * @brief RDS Block B data type
  * 
  * @details For GCC on System-V ABI on 386-compatible (32-bit processors), the following stands:
@@ -373,6 +398,7 @@ typedef union {
 } si47x_rds_blockb;
 
 /**
+ * @ingroup GA01
  * Group RDS type 4A ( RDS Date and Time)
  * When group type 4A is used by the station, it shall be transmitted every minute according to EN 50067.
  * This Structure uses blocks 2,3 and 5 (B,C,D)
@@ -396,6 +422,7 @@ typedef union {
 } si47x_rds_date_time;
 
 /**
+ * @ingroup GA01
  * @brief Converts 16 bits word to two bytes 
  */
 typedef union {
@@ -407,6 +434,13 @@ typedef union {
     uint16_t raw;
 } word16_to_bytes;
 
+/**
+ * @ingroup GA01  
+ * @brief KT0915 Class 
+ * @details This class implements all functions that will help you to control the KT0915 devices. 
+ * 
+ * @author PU2CLR - Ricardo Lima Caratti 
+ */
 class SI470X {
 
     private:

@@ -1,7 +1,23 @@
+/**
+ * @brief  PU2CLR SI470X Arduino Library
+ * @details SI470X Arduino Library implementation. This is an Arduino library for the SI470X, BROADCAST RECEIVER.  
+ * @details It works with I2C protocol and can provide an easier interface to control the SI470X device.<br>
+ * @details This library was built based on "AN230 - Si4700/01/02/03 PROGRAMMING GUIDE" and  "Si4702/03-C19 - BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS"
+ * @details This library can be freely distributed using the MIT Free Software model.
+ * @copyright Copyright (c) 2020 Ricardo Lima Caratti. 
+ * @author Ricardo LIma Caratti (pu2clr@gmail.com)
+ */
 
 #include <SI470X.h>
 
+/** 
+ * @ingroup GA03
+ * @section  GA03 Basic 
+ * @details  Low level functions used to operate with the SI470X registers
+ */
+
 /**
+ * @ingroup GA03
  * @brief Gets all current register content of the device
  * @details For read operations, the device acknowledge is followed by an eight bit data word shifted out on falling SCLK edges. An internal address counter automatically increments to allow continuous data byte reads, starting with the upper byte of register 0Ah, followed by the lower byte of register 0Ah, and onward until the lower byte of the last register is reached. The internal address counter then automatically wraps around to the upper byte of register 00h and proceeds from there until continuous reads cease. 
  *
@@ -29,10 +45,10 @@ void SI470X::getAllRegisters()
         aux.refined.lowByte = Wire.read();
         shadowRegisters[i] = aux.raw;
     }
-
 }
 
 /**
+ * @ingroup GA03
  * @brief   Sets values to the device registers from 0x02 to 0x07
  * @details For write operations, the device acknowledge is followed by an eight bit data word latched internally on rising edges of SCLK. The device acknowledges each byte of data written by driving SDIO low after the next falling SCLK edge, for 1 cycle.
  * @details An internal address counter automatically increments to allow continuous data byte writes, starting with the upper byte of register 02h, followed by the lower byte of register 02h, and onward until the lower byte of the last register is reached. The internal address counter then automatically wraps around to the upper byte of register 00h and proceeds from there until continuous writes end.
@@ -53,10 +69,10 @@ void SI470X::setAllRegisters(uint8_t limit)
         Wire.write(aux.refined.lowByte);
     }
     Wire.endTransmission();
-
 }
 
 /**
+ * @ingroup GA03
  * @brief Gets the value of the 0x0A register
  * @details This function also updates the value of shadowRegisters[0];
  * @return si470x_reg0a 
@@ -73,6 +89,7 @@ void SI470X::getStatus()
 }
 
 /**
+ * @ingroup GA03
  * @brief   Wait STC (Seek/Tune Complete) status becomes 0
  * @details Should be used before processing Tune or Seek.
  * @details The STC bit being cleared indicates that the TUNE or SEEK bits may be set again to start another tune or seek operation. Do not set the TUNE or SEEK bits until the Si470x clears the STC bit. 
@@ -94,11 +111,11 @@ void SI470X::waitAndFinishTune()
     } while (reg0a->refined.STC != 0);
 }
 
- /**
+/**
+ * @ingroup GA03
  * @brief Resets the device
- * 
  */
-  void SI470X::reset()
+void SI470X::reset()
 {
     pinMode(this->resetPin, OUTPUT);
     digitalWrite(this->resetPin, LOW);
@@ -108,6 +125,7 @@ void SI470X::waitAndFinishTune()
 }
 
 /**
+ * @ingroup GA03
  * @brief Powers the receiver on 
  * @details Starts the receiver with some default configurations 
  */
@@ -159,8 +177,8 @@ void SI470X::powerUp()
 }
 
 /**
+ * @ingroup GA03
  * @brief Powers the receiver off
- * 
  */
 void SI470X::powerDown()
 {
@@ -175,6 +193,7 @@ void SI470X::powerDown()
 }
 
 /**
+ * @ingroup GA03
  * @brief Starts the device 
  * @details sets the reset pin, interrupt pins and oscillator type you are using in your project.
  * @param resetPin         // Arduino pin used to reset control.     
@@ -199,6 +218,7 @@ void SI470X::setup(int resetPin, int rdsInterruptPin, int seekInterruptPin, uint
 }
 
 /**
+ * @ingroup GA03
  * @brief Starts the device 
  * @details Use this if you are not using interrupt pins in your project
  * @param resetPin         // Arduino pin used to reset control.     
@@ -211,6 +231,7 @@ void SI470X::setup(int resetPin, uint8_t oscillator_type)
 }
 
 /**
+ * @ingroup GA03
  * @brief Sets the channel 
  * @param channel 
  */
@@ -224,6 +245,7 @@ void SI470X::setChannel(uint16_t channel)
 }
 
 /**
+ * @ingroup GA03
  * @brief Sets the frequency 
  * @param frequency 
  */
@@ -236,8 +258,8 @@ void SI470X::setFrequency(uint16_t frequency)
 }
 
 /**
+ * @ingroup GA03
  * @brief Gets the current frequency. 
- * 
  * @return uint16_t 
  */
 uint16_t SI470X::getFrequency()
@@ -246,6 +268,7 @@ uint16_t SI470X::getFrequency()
 }
 
 /**
+ * @ingroup GA03
  * @brief Gets the current channel stored in register 0x0B
  * @details This method is useful to query the current channel during the seek operations. 
  * @return uint16_t 
@@ -257,6 +280,7 @@ uint16_t SI470X::getRealChannel()
 }
 
 /**
+ * @ingroup GA03
  * @brief Gets the frequency based on READCHAN register (0x0B)
  * @details Unlike getFrequency method, this method queries the device. 
  * 
@@ -267,6 +291,7 @@ uint16_t SI470X::getRealFrequency() {
 }
 
 /**
+ * @ingroup GA03
  * @brief Seek function
  * 
  * @details Seek begins at the current channel, and goes in the direction specified with the SEEKUP bit. Seek operation stops when a channel is qualified as valid according to the seek parameters, the entire band has been searched (SKMODE = 0), or the upper or lower band limit has been reached (SKMODE = 1).
@@ -289,6 +314,7 @@ void SI470X::seek(uint8_t seek_mode, uint8_t direction)
 }
 
 /**
+ * @ingroup GA03
  * @brief Sets the FM Band  
  * @details 
  * 
@@ -308,6 +334,7 @@ void SI470X::setBand(uint8_t band)
 }
 
 /**
+ * @ingroup GA03
  * @brief Sets the FM Space  
  * @details The SI470x device supports 3 different settings as shown below
  * | BAND value     | Description | 
@@ -324,7 +351,7 @@ void SI470X::setSpace(uint8_t space)
 }
 
 /**
- * @todo 
+ * @ingroup GA03
  * @brief Gets the Rssi
  * 
  * @return int 
@@ -336,6 +363,7 @@ int SI470X::getRssi()
 }
 
 /**
+ * @ingroup GA03
  * @brief Sets the Softmute true or false
  * @param value  TRUE or FALSE
  */
@@ -346,6 +374,7 @@ void SI470X::setSoftmute(bool value)
 }
 
 /**
+ * @ingroup GA03
  * @brief Sets the Mute true or false
  * 
  * @param value TRUE or FALSE
@@ -357,6 +386,7 @@ void SI470X::setMute(bool value)
 }
 
 /**
+ * @ingroup GA03
  * @brief Sets the Mono true or false (stereo)
  * 
  * @param value TRUE or FALSE
@@ -368,6 +398,7 @@ void SI470X::setMono(bool value)
 }
 
 /**
+ * @ingroup GA03
  * @brief Sets the Rds Mode Standard or Verbose
  * 
  * @param rds_mode  0 = Standard (default); 1 = Verbose
@@ -379,6 +410,7 @@ void SI470X::setRdsMode(uint8_t rds_mode)
 }
 
 /**
+ * @ingroup GA03
  * @brief Sets the audio volume level
  * 
  * @param value  0 to 15 (if 0, mutes the audio)
@@ -392,6 +424,7 @@ void SI470X::setVolume(uint8_t value)
 }
 
 /**
+ * @ingroup GA03
  * @brief Gets the current audio volume level
  * 
  * @return uint8_t  0 to 15
@@ -402,6 +435,7 @@ uint8_t SI470X::getVolume()
 }
 
 /**
+ * @ingroup GA03
  * @brief Increments the audio volume
  * 
  */
@@ -415,6 +449,7 @@ void SI470X::setVolumeUp()
 }
 
 /**
+ * @ingroup GA03
  * @brief Decrements the audio volume
  * 
  */
@@ -428,6 +463,7 @@ void SI470X::setVolumeDown()
 }
 
 /**
+ * @ingroup GA03
  * @brief Gets the Part Number
  * @details If it returns 0x01, so the device is: Si4702/03
  * @return the part number 
@@ -438,6 +474,7 @@ uint8_t SI470X::getPartNumber()
 }
 
 /**
+ * @ingroup GA03
  * @brief Gets the Manufacturer ID
  * @return number  
  */
@@ -447,6 +484,7 @@ uint16_t SI470X::getManufacturerId()
 }
 
 /**
+ * @ingroup GA03
  * @brief Gets the Firmware Version
  * @details The return velue before powerup will be 0. After powerup should be 010011 (19)
  * @return number 
@@ -457,6 +495,7 @@ uint8_t SI470X::getFirmwareVersion()
 }
 
 /**
+ * @ingroup GA03
  * @brief Gets the Device identification
  * @return number 
  */
@@ -466,6 +505,7 @@ uint8_t SI470X::getDeviceId()
 }
 
 /**
+ * @ingroup GA03
  * @brief Gets the Chip Version
  * @return number 
  */
