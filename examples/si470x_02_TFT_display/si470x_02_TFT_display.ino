@@ -113,7 +113,8 @@ void showTemplate()
     int maxY1 = tft.height() - 5;
 
     tft.fillScreen(COLOR_BLACK);        
-    
+
+    tft.drawRect(2,  2, maxX1, maxY1, COLOR_YELLOW);
     tft.drawLine(2, 40, maxX1,40, COLOR_YELLOW);
     tft.drawLine(2, 60, maxX1,60, COLOR_YELLOW);
 
@@ -186,7 +187,7 @@ void showFrequency()
   currentFrequency = rx.getFrequency();
   sprintf(tmp, "%5.5u", currentFrequency);
 
-  freq[0] = tmp[0];
+  freq[0] = (tmp[0] == '0')? ' ': tmp[0];
   freq[1] = tmp[1];
   freq[2] = tmp[2];
   freq[3] = '.';
@@ -196,7 +197,7 @@ void showFrequency()
 
   tft.setFont(&FreeSerif9pt7b);
   tft.setTextSize(2);
-  printValue(20,33, oldFreq, freq,20, COLOR_YELLOW);
+  printValue(15,33, oldFreq, freq,22, COLOR_YELLOW);
 
 }
 
