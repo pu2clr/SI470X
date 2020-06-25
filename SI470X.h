@@ -465,6 +465,8 @@ class SI470X {
         si470x_reg0f *reg0f = (si470x_reg0f *)&shadowRegisters[REG0F];
 
         uint16_t startBand[4] = {8750, 7600, 7600, 6400 };
+        uint16_t endBand[4] = {10800, 10800, 9000, 10800};
+
         uint16_t fmSpace[4] = {20, 10, 5, 1};
 
     protected:
@@ -502,6 +504,8 @@ class SI470X {
             void setup(int resetPin, int sdaPin, uint8_t oscillator_type);
 
             void setFrequency(uint16_t frequency);
+            void setFrequencyUp();
+            void setFrequencyDown();
             uint16_t getFrequency();
             uint16_t getRealFrequency();
             uint16_t getRealChannel();

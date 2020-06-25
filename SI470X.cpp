@@ -174,6 +174,7 @@ void SI470X::powerUp()
     setAllRegisters(); 
     delay(60);
     getAllRegisters(); // Gets All registers (current status after powerup)
+    delay(60);
 }
 
 /**
@@ -265,6 +266,35 @@ void SI470X::setFrequency(uint16_t frequency)
 
 /**
  * @ingroup GA03
+ * @brief Increments the current frequency
+ * @details The increment uses the band space as step. See array: uint16_t fmSpace[4] = {20, 10, 5, 1};
+ */
+void SI470X::setFrequencyUp() {
+     if (this->currentFrequency < this->endBand[this->currentFMBand]) 
+        this->currentFrequency += this->fmSpace[currentFMSpace];
+     else
+        this->currentFrequency = this->startBand[this->currentFMBand];
+
+     setFrequency(this->currentFrequency);
+}
+
+/**
+ * @ingroup GA03
+ * @brief Decrements the current frequency
+ * @details The drecrement uses the band space as step. See array: uint16_t fmSpace[4] = {20, 10, 5, 1};
+ */
+void SI470X::setFrequencyDown()
+{
+    if (this->currentFrequency > this->startBand[this->currentFMBand])
+        this->currentFrequency -= this->fmSpace[currentFMSpace];
+    else
+        this->currentFrequency = this->endBand[this->currentFMBand];
+
+    setFrequency(this->currentFrequency);    
+}
+
+/**
+ * @ingroup GA03
  * @brief Gets the current frequency. 
  * @return uint16_t 
  */
@@ -317,6 +347,7 @@ void SI470X::seek(uint8_t seek_mode, uint8_t direction)
     reg02->refined.SEEKUP = direction;
     setAllRegisters();
     waitAndFinishTune();
+    this->currentFrequency = getRealFrequency();
 }
 
 /**
