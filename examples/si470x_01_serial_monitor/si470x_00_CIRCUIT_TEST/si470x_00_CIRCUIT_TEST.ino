@@ -2,7 +2,9 @@
    Test and validation of the circuit.
    This sketch will check the I2C communication bus and try to tune the receiver on a given frequency.
  
-   ATTENTION:  Please, avoid using the computer connected to the mains during testing.
+   ATTENTION:  
+   Please, avoid using the computer connected to the mains during testing. Used just the battery of your computer. 
+   This sketch was tested on ATmega328 based board. If you are not using a ATmega328, please check the pins of your board.
 
    The main advantages of using this sketch are: 
     1) It is a easy way to check if your circuit is working;
@@ -15,28 +17,25 @@
 
 #include <SI470X.h>
 
-#define RESET_PIN 10
+#define RESET_PIN 14 // On Arduino Atmega328 based board, this pin is labeled as A0 (14 means digital pin instead analog)
 
 SI470X rx; 
-
-uint32_t fmFreq = 106500;
 
 void setup() {
 
   Serial.begin(9600);
   while(!Serial);
 
-  /*
   delay(500);
   
-  if ( !checkI2C() ) {
-    Serial.println("\nAgain..");
-    if (!checkI2C() ) {
-      Serial.println("\nCheck your circuit!");
-    }
-  } */
 
   rx.setup(RESET_PIN, A4);
+
+  if (!checkI2C())
+  {
+      Serial.println("\nCheck your circuit!");
+      while(1);
+  }
 
   Serial.print("\nPN........................:");
   Serial.print(rx.getPartNumber(),HEX);
@@ -55,7 +54,7 @@ void setup() {
   delay(500);
   //****
   Serial.print("\nEstacao 106.5MHz");
-  rx.setFrequency(10650);
+  rx.setFrequency(10650); // The frequency you want to select in MHz multiplied by 100.
   
   Serial.print("\nCurrent Channel: ");
   Serial.print(rx.getRealChannel());

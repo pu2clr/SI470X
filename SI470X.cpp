@@ -251,8 +251,9 @@ void SI470X::setChannel(uint16_t channel)
 
 /**
  * @ingroup GA03
- * @brief Sets the frequency 
- * @param frequency 
+ * @brief Sets the FM frequency 
+ * @details If you want to select 106.5 MHz, send the integer number 10650 (frequency 106.5MHz multiplied by 100).
+ * @param frequency  7600 to 1080 (means 76Mhz to 108Mhz)
  */
 void SI470X::setFrequency(uint16_t frequency)
 {
