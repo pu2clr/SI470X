@@ -395,7 +395,7 @@ typedef union {
         uint8_t groupType : 4;          // Group Type code.
     } refined;
     si470x_reg0d blockB;
-} si47x_rds_blockb;
+} si470x_rds_blockb;
 
 /**
  * @ingroup GA01
@@ -419,7 +419,7 @@ typedef union {
         uint32_t mjd : 17;        // Modified Julian Day Code
     } refined;
     uint8_t raw[6];
-} si47x_rds_date_time;
+} si470x_rds_date_time;
 
 /**
  * @ingroup GA01
@@ -498,8 +498,8 @@ class SI470X {
             void powerUp();
             void powerDown();
 
-            void setup(int resetPin, int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL);
-            void setup(int resetPin, uint8_t oscillator_type);
+            void setup(int resetPin, int sdaPin, int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL);
+            void setup(int resetPin, int sdaPin, uint8_t oscillator_type);
 
             void setFrequency(uint16_t frequency);
             uint16_t getFrequency();
@@ -519,8 +519,6 @@ class SI470X {
             void setAgc(bool value);
 
             void setMono(bool value);
-            void setRdsMode(uint8_t rds_mode = 0);
-            void setRds(bool value);
 
             uint8_t getPartNumber();
             uint16_t getManufacturerId();
@@ -536,4 +534,10 @@ class SI470X {
             void setExtendedVolumeRange(bool value);
 
             void setFmDeemphasis(uint8_t de);
+
+            void setRdsMode(uint8_t rds_mode = 0);
+            void setRds(bool value);
+            bool getSdrStatus();
+            uint16_t getRdsGroupType();
+
 };

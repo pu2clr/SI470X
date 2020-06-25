@@ -196,13 +196,18 @@ void SI470X::powerDown()
  * @ingroup GA03
  * @brief Starts the device 
  * @details sets the reset pin, interrupt pins and oscillator type you are using in your project.
- * @param resetPin         // Arduino pin used to reset control.     
- * @param rdsInterruptPin  // optional. Sets the Arduino pin used to RDS function control.
+ * @details You have to inform at least two parameters: RESET pin and I2C SDA pin of your MCU
+ * @param resetPin         // Arduino pin used to reset control. 
+ * @param sdaPin           // I2C data bus pin (SDA).       
+ * @param rdsInterruptPin  // optional. Sets the Interrupt Arduino pin used to RDS function control.
  * @param seekInterruptPin // optional. Sets the Arduino pin used to Seek function control. 
- * @param oscillator_type  // optional. Sets the Oscillator type used (Default Crystal or Ref. Clock). 
+ * @param oscillator_type  // optional. Sets the Oscillator type used Crystal (default) or Ref. Clock. 
  */
-void SI470X::setup(int resetPin, int rdsInterruptPin, int seekInterruptPin, uint8_t oscillator_type)
+void SI470X::setup(int resetPin, int sdaPin,  int rdsInterruptPin, int seekInterruptPin, uint8_t oscillator_type)
 {
+    pinMode(sdaPin, OUTPUT);
+    digitalWrite(sdaPin, LOW);
+
     this->resetPin = resetPin;
     if (rdsInterruptPin >= 0)
         this->rdsInterruptPin = rdsInterruptPin;
@@ -225,9 +230,9 @@ void SI470X::setup(int resetPin, int rdsInterruptPin, int seekInterruptPin, uint
  * @param rdsInterruptPin  // optional. Sets the Arduino pin used to RDS function control.
  * @param seekInterruptPin // optional. Sets the Arduino pin used to Seek function control. 
  */
-void SI470X::setup(int resetPin, uint8_t oscillator_type)
+void SI470X::setup(int resetPin, int sdaPin, uint8_t oscillator_type)
 {
-    setup(resetPin, -1, -1, oscillator_type);
+    setup(resetPin, sdaPin, -1, -1, oscillator_type);
 }
 
 /**
@@ -460,30 +465,6 @@ void SI470X::setMono(bool value)
     setAllRegisters();
 }
 
-/**
- * @ingroup GA03
- * @brief Sets the RDS operation 
- * @details Enable or Disable the RDS
- * 
- * @param true = turns the RDS ON; false  = turns the RDS OFF
- */
-void SI470X::setRds(bool value)
-{
-    reg04->refined.RDS = value;
-    setAllRegisters();
-}
-
-/**
- * @ingroup GA03
- * @brief Sets the Rds Mode Standard or Verbose
- * 
- * @param rds_mode  0 = Standard (default); 1 = Verbose
- */
-void SI470X::setRdsMode(uint8_t rds_mode)
-{
-    reg02->refined.RDSM = rds_mode; // If true, it has not be disabled
-    setAllRegisters();
-}
 
 /**
  * @ingroup GA03
@@ -603,6 +584,7 @@ uint8_t SI470X::getChipVersion()
 }
 
 /**
+ * @ingroup GA03
  * @brief Sets De-emphasis.
  * @details 75 μs. Used in USA (default); 50 μs. Used in Europe, Australia, Japan.
  * 
@@ -611,4 +593,57 @@ uint8_t SI470X::getChipVersion()
 void SI470X::setFmDeemphasis(uint8_t de) {
     reg04->refined.DE = de;
     setAllRegisters();
+}
+
+/** 
+ * @defgroup GA04 RDS Functions
+ * @section GA04 RDS/RBDS
+ */
+
+/**
+ * @ingroup GA04
+ * @brief Sets the Rds Mode Standard or Verbose
+ * 
+ * @param rds_mode  0 = Standard (default); 1 = Verbose
+ */
+void SI470X::setRdsMode(uint8_t rds_mode)
+{
+    reg02->refined.RDSM = rds_mode; // If true, it has not be disabled
+    setAllRegisters();
+}
+
+/**
+ * @ingroup GA04
+ * @brief Sets the RDS operation 
+ * @details Enable or Disable the RDS
+ * 
+ * @param true = turns the RDS ON; false  = turns the RDS OFF
+ */
+void SI470X::setRds(bool value)
+{
+    reg04->refined.RDS = value;
+    setAllRegisters();
+}
+
+/**
+ * @brief Returns true if RDS Ready
+ * @details Read address 0Ah and check the bit RDSR.
+ * @details If in verbose mode, the BLERA bits indicate how many errors were corrected in block A. If BLERA indicates 6 or more errors, the data in RDSA should be discarded.
+ * @details When using the polling method, it is best not to poll continuously. The data will appear in intervals of ~88 ms and the RDSR indicator will be available for at least 40 ms, so a polling rate of 40 ms or less should be sufficient.
+ * @return true 
+ * @return false 
+ */
+bool SI470X::getSdrStatus() {
+    getStatus();
+    return reg0a->refined.RDSR;
+};
+
+uint16_t SI470X::getRdsGroupType()
+{
+    getAllRegisters();
+    // si470x_rds_blockb rdsb;
+    // rdsb.blockB = reg0d;
+    // return rdsb.refined.groupType;
+    // return ((uint16_t)reg0d >> 11);
+    return shadowRegisters[0x0D];
 }

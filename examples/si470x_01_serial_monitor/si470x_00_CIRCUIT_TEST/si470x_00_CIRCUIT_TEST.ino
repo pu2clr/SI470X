@@ -23,14 +23,6 @@ uint32_t fmFreq = 106500;
 
 void setup() {
 
-  pinMode(A4, OUTPUT);    
-  digitalWrite(A4, LOW);
-  pinMode(RESET_PIN,OUTPUT);
-  digitalWrite(RESET_PIN, LOW);
-  delay(10);
-  digitalWrite(RESET_PIN, HIGH);
-  
-
   Serial.begin(9600);
   while(!Serial);
 
@@ -44,7 +36,7 @@ void setup() {
     }
   } */
 
-  rx.setup(RESET_PIN);
+  rx.setup(RESET_PIN, A4);
 
   Serial.print("\nPN........................:");
   Serial.print(rx.getPartNumber(),HEX);
