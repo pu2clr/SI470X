@@ -610,4 +610,5 @@ uint8_t SI470X::getChipVersion()
  */
 void SI470X::setFmDeemphasis(uint8_t de) {
     reg04->refined.DE = de;
+    setAllRegisters();
 }
