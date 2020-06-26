@@ -13,5 +13,5 @@ Tge [si470x_02_TFT_display](https://github.com/pu2clr/SI470X/tree/master/example
 The schematic below shows the receiver example with TFT display, encoder and push buttons. 
 
 
-![schematic]()
+![schematic with TFT, push buttons and encoder](https://github.com/pu2clr/SI470X/blob/master/extras/images/basic_schematic_tft_encoder.png)
 
