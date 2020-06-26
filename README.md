@@ -84,7 +84,7 @@ This library uses the I²C communication protocol and implements most of the fun
 The SI4701/02/03 can be controlled by deal with register via I2C interface.  The tebla below was extracted from Silicon Labs; document Si4702/03-C19 - "BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS"; Rev 1.1; page 22. This table shows the set of register that you can used to controle the device.
 
 
-![SI4702/03 Register Summary](https://github.com/pu2clr/SI470X/blob/master/extras/images/SI470X_REGISTER_SUMMARY.png)
+![SI4702/03 Register Summary](extras/images/SI470X_REGISTER_SUMMARY.png)
 
 Source: Silicon Labs; document Si4702/03-C19 - "BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS"; Rev 1.1; Page 22.
 
@@ -97,7 +97,7 @@ __Except that you need something very specific, the PU2CLR SI470X Arduino Librar
 As previously reported, in general, the SI4703 device is already sold in kit or breakout board format. So, the circuit below can help you to connect the arduino to the shield. In this case, you will not need the crystal, pull up resistors, capacitors and audio jack output. Also, the labels will guide you.  The table bellow shows the connections. 
 
 
-![schematic with TFT, push buttons and encoder](https://github.com/pu2clr/SI470X/blob/master/extras/images/basic_circuit.png)
+![schematic with TFT, push buttons and encoder](extras/images/basic_circuit.png)
 
 
 
