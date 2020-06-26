@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['seek_187',['seek',['../group___g_a03.html#ga80abdafabf55be7717ebc19138431adb',1,'SI470X']]],
+  ['seek_187',['seek',['../group___g_a03.html#ga80abdafabf55be7717ebc19138431adb',1,'SI470X::seek(uint8_t seek_mode, uint8_t direction)'],['../group___g_a03.html#gac6f734547a631a917b459d007c733594',1,'SI470X::seek(uint8_t seek_mode, uint8_t direction, void(*showFunc)())']]],
   ['setagc_188',['setAgc',['../group___g_a03.html#ga1fd445c4c6935268ff0ce0c75c3c05d0',1,'SI470X']]],
   ['setallregisters_189',['setAllRegisters',['../group___g_a03.html#ga4370f98521b96480e9cebc4f90681e06',1,'SI470X']]],
   ['setband_190',['setBand',['../group___g_a03.html#ga01abda714595dca938b452d2a3f04678',1,'SI470X']]],

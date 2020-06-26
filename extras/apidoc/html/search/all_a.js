@@ -1,7 +1,7 @@
 var searchData=
 [
   ['si470x_20arduino_20library_20implementation_61',['SI470X Arduino Library implementation',['../index.html',1,'']]],
-  ['seek_62',['seek',['../group___g_a03.html#ga80abdafabf55be7717ebc19138431adb',1,'SI470X']]],
+  ['seek_62',['seek',['../group___g_a03.html#ga80abdafabf55be7717ebc19138431adb',1,'SI470X::seek(uint8_t seek_mode, uint8_t direction)'],['../group___g_a03.html#gac6f734547a631a917b459d007c733594',1,'SI470X::seek(uint8_t seek_mode, uint8_t direction, void(*showFunc)())']]],
   ['seek_5fdown_63',['SEEK_DOWN',['../_s_i470_x_8h.html#a73871eb4fd3cf8830e9e23b44c0d9e71',1,'SI470X.h']]],
   ['seek_5fstop_64',['SEEK_STOP',['../_s_i470_x_8h.html#ac7187a60e006a6d2f490001785f53a0f',1,'SI470X.h']]],
   ['seek_5fup_65',['SEEK_UP',['../_s_i470_x_8h.html#a6af70605e17fdcdeea166d59672d2a54',1,'SI470X.h']]],

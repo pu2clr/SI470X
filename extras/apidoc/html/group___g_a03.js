@@ -19,6 +19,7 @@ var group___g_a03 =
     [ "getRealChannel", "group___g_a03.html#ga6459a4e812ebfc92d6dca2b2f5b4f915", null ],
     [ "getRealFrequency", "group___g_a03.html#gae2df536f699b4406da46d739200dff7a", null ],
     [ "seek", "group___g_a03.html#ga80abdafabf55be7717ebc19138431adb", null ],
+    [ "seek", "group___g_a03.html#gac6f734547a631a917b459d007c733594", null ],
     [ "setSeekThreshold", "group___g_a03.html#gae35d6be72c9e7c6719f76c74f0b9e6e3", null ],
     [ "setBand", "group___g_a03.html#ga01abda714595dca938b452d2a3f04678", null ],
     [ "setSpace", "group___g_a03.html#ga6ee8140d156a52a34b66944b58fa9ac5", null ],

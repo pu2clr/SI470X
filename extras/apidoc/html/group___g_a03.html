@@ -150,6 +150,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga80abdafabf55be7717ebc19138431adb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga80abdafabf55be7717ebc19138431adb">SI470X::seek</a> (uint8_t seek_mode, uint8_t direction)</td></tr>
 <tr class="memdesc:ga80abdafabf55be7717ebc19138431adb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seek function.  <a href="group___g_a03.html#ga80abdafabf55be7717ebc19138431adb">More...</a><br /></td></tr>
 <tr class="separator:ga80abdafabf55be7717ebc19138431adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac6f734547a631a917b459d007c733594"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gac6f734547a631a917b459d007c733594">SI470X::seek</a> (uint8_t seek_mode, uint8_t direction, void(*showFunc)())</td></tr>
+<tr class="memdesc:gac6f734547a631a917b459d007c733594"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seek function.  <a href="group___g_a03.html#gac6f734547a631a917b459d007c733594">More...</a><br /></td></tr>
+<tr class="separator:gac6f734547a631a917b459d007c733594"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae35d6be72c9e7c6719f76c74f0b9e6e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gae35d6be72c9e7c6719f76c74f0b9e6e3">SI470X::setSeekThreshold</a> (uint8_t value)</td></tr>
 <tr class="memdesc:gae35d6be72c9e7c6719f76c74f0b9e6e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets RSSI Seek Threshold.  <a href="group___g_a03.html#gae35d6be72c9e7c6719f76c74f0b9e6e3">More...</a><br /></td></tr>
 <tr class="separator:gae35d6be72c9e7c6719f76c74f0b9e6e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -377,7 +380,7 @@ shadowRegisters; </dd></dl>
 <p>Gets the value of the 0x0A register. </p>
 <p>This function also updates the value of shadowRegisters[0]; </p><dl class="section return"><dt>Returns</dt><dd><a class="el" href="group___g_a01.html#unionsi470x__reg0a" title="Status RSSI.">si470x_reg0a</a> </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="group___g_a03.html#ga4f1e1aec94964d00fde66b2af31516ee">SI470X::getRssi()</a>, <a class="el" href="group___g_a01.html#ab528ba3c0916131fd630d538a24850a8">SI470X::getRdsReady()</a>, and <a class="el" href="group___g_a03.html#ga28d4ad88023cf90a92196bdc0d933a83">SI470X::isStereo()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="group___g_a01.html#a5774290edb31b7f131972420eed5037c">SI470X::getRdsReady()</a>, <a class="el" href="group___g_a03.html#ga4f1e1aec94964d00fde66b2af31516ee">SI470X::getRssi()</a>, and <a class="el" href="group___g_a03.html#ga28d4ad88023cf90a92196bdc0d933a83">SI470X::isStereo()</a>.</p>
 
 </div>
 </div>
@@ -769,7 +772,7 @@ shadowRegisters; </dd></dl>
 </div>
 </div>
 <a id="ga80abdafabf55be7717ebc19138431adb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga80abdafabf55be7717ebc19138431adb">&#9670;&nbsp;</a></span>seek()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ga80abdafabf55be7717ebc19138431adb">&#9670;&nbsp;</a></span>seek() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -795,6 +798,7 @@ shadowRegisters; </dd></dl>
 </div><div class="memdoc">
 
 <p>Seek function. </p>
+<p>Seeks a station up or down.</p>
 <p>Seek begins at the current channel, and goes in the direction specified with the SEEKUP bit. Seek operation stops when a channel is qualified as valid according to the seek parameters, the entire band has been searched (SKMODE = 0), or the upper or lower band limit has been reached (SKMODE = 1).</p>
 <p>The STC bit is set high when the seek operation completes and/or the SF/BL bit is set high if the seek operation was unable to find a channel qualified as valid according to the seek parameters. The STC and SF/BL bits must be set low by setting the SEEK bit low before the next seek or tune may begin.</p>
 <p>Seek performance for 50 kHz channel spacing varies according to RCLK tolerance. Silicon Laboratories recommends ±50 ppm RCLK crystal tolerance for 50 kHz seek performance.</p>
@@ -803,6 +807,75 @@ shadowRegisters; </dd></dl>
   <table class="params">
     <tr><td class="paramname">seek_mode</td><td>Seek Mode; 0 = Wrap at the upper or lower band limit and continue seeking (default); 1 = Stop seeking at the upper or lower band limit. </td></tr>
     <tr><td class="paramname">direction</td><td>Seek Direction; 0 = Seek down (default); 1 = Seek up. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">References <a class="el" href="group___g_a03.html#ga88702e9ed11d428d9f4c8d0c445fe6a9">SI470X::getAllRegisters()</a>, and <a class="el" href="group___g_a03.html#gac1adddefa79fcd3b1b1ed16df7870d85">SI470X::waitAndFinishTune()</a>.</p>
+
+</div>
+</div>
+<a id="gac6f734547a631a917b459d007c733594"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac6f734547a631a917b459d007c733594">&#9670;&nbsp;</a></span>seek() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SI470X::seek </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>seek_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>direction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*)()&#160;</td>
+          <td class="paramname"><em>showFunc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Seek function. </p>
+<p>Seeks a station up or down.</p>
+<p>Seek up or down a station and call a function defined by the user to show the frequency during the seek process.</p>
+<p>Seek begins at the current channel, and goes in the direction specified with the SEEKUP bit. Seek operation stops when a channel is qualified as valid according to the seek parameters, the entire band has been searched (SKMODE = 0), or the upper or lower band limit has been reached (SKMODE = 1).</p>
+<p>The STC bit is set high when the seek operation completes and/or the SF/BL bit is set high if the seek operation was unable to find a channel qualified as valid according to the seek parameters. The STC and SF/BL bits must be set low by setting the SEEK bit low before the next seek or tune may begin.</p>
+<p>Seek performance for 50 kHz channel spacing varies according to RCLK tolerance. Silicon Laboratories recommends ±50 ppm RCLK crystal tolerance for 50 kHz seek performance.</p>
+<p>A seek operation may be aborted by setting SEEK = 0.</p>
+<p>It is important to say you have to implement a show frequency function. This function have to get the frequency via getFrequency function. <br  />
+</p>
+<p>Example: </p><div class="fragment"><div class="line"><a class="code" href="group___g_a01.html#class_s_i470_x">SI470X</a> rx;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> showFrequency() {</div>
+<div class="line">   uint16_t freq = rx.<a class="code" href="group___g_a03.html#ga89180830a5e01de15ab22e0d8157c34a">getFrequency</a>();</div>
+<div class="line">   Serial.print(freq); </div>
+<div class="line">   Serial.println(<span class="stringliteral">&quot;MHz &quot;</span>);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> loop() {</div>
+<div class="line"> .</div>
+<div class="line"> .</div>
+<div class="line">     rx.<a class="code" href="group___g_a03.html#ga80abdafabf55be7717ebc19138431adb">seek</a>(<a class="code" href="_s_i470_x_8h.html#a6c553e7c46b1267b7d316770b4028662">SEEK_WRAP</a>, <a class="code" href="_s_i470_x_8h.html#a6af70605e17fdcdeea166d59672d2a54">SEEK_UP</a>, showFrequency); <span class="comment">// Seek Up</span></div>
+<div class="line"> .</div>
+<div class="line"> .</div>
+<div class="line">}</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seek_mode</td><td>Seek Mode; 0 = Wrap at the upper or lower band limit and continue seeking (default); 1 = Stop seeking at the upper or lower band limit. </td></tr>
+    <tr><td class="paramname">direction</td><td>Seek Direction; 0 = Seek down (default); 1 = Seek up. </td></tr>
+    <tr><td class="paramname">showFunc</td><td>function that you have to implement to show the frequency during the seeking process. Set NULL if you do not want to show the progress. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1381,6 +1454,11 @@ shadowRegisters; </dd></dl>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="a_s_i470_x_8h_html_a6af70605e17fdcdeea166d59672d2a54"><div class="ttname"><a href="_s_i470_x_8h.html#a6af70605e17fdcdeea166d59672d2a54">SEEK_UP</a></div><div class="ttdeci">#define SEEK_UP</div><div class="ttdoc">Seek Up Direction.</div><div class="ttdef"><b>Definition:</b> SI470X.h:27</div></div>
+<div class="ttc" id="agroup___g_a03_html_ga80abdafabf55be7717ebc19138431adb"><div class="ttname"><a href="group___g_a03.html#ga80abdafabf55be7717ebc19138431adb">SI470X::seek</a></div><div class="ttdeci">void seek(uint8_t seek_mode, uint8_t direction)</div><div class="ttdoc">Seek function.</div><div class="ttdef"><b>Definition:</b> SI470X.cpp:344</div></div>
+<div class="ttc" id="agroup___g_a01_html_class_s_i470_x"><div class="ttname"><a href="group___g_a01.html#class_s_i470_x">SI470X</a></div><div class="ttdoc">KT0915 Class.</div><div class="ttdef"><b>Definition:</b> SI470X.h:446</div></div>
+<div class="ttc" id="agroup___g_a03_html_ga89180830a5e01de15ab22e0d8157c34a"><div class="ttname"><a href="group___g_a03.html#ga89180830a5e01de15ab22e0d8157c34a">SI470X::getFrequency</a></div><div class="ttdeci">uint16_t getFrequency()</div><div class="ttdoc">Gets the current frequency.</div><div class="ttdef"><b>Definition:</b> SI470X.cpp:303</div></div>
+<div class="ttc" id="a_s_i470_x_8h_html_a6c553e7c46b1267b7d316770b4028662"><div class="ttname"><a href="_s_i470_x_8h.html#a6c553e7c46b1267b7d316770b4028662">SEEK_WRAP</a></div><div class="ttdeci">#define SEEK_WRAP</div><div class="ttdef"><b>Definition:</b> SI470X.h:28</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
