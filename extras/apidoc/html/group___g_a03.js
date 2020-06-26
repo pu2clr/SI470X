@@ -1,5 +1,7 @@
 var group___g_a03 =
 [
+    [ "getShadownRegister", "group___g_a03.html#ga8df17d9057d8bcdd01226a33e6a2d8f7", null ],
+    [ "setShadownRegister", "group___g_a03.html#ga4204d5798dac02868e43b7bae95b1615", null ],
     [ "getAllRegisters", "group___g_a03.html#ga88702e9ed11d428d9f4c8d0c445fe6a9", null ],
     [ "setAllRegisters", "group___g_a03.html#ga4370f98521b96480e9cebc4f90681e06", null ],
     [ "getStatus", "group___g_a03.html#ga8b7c324942f8caa5ca00470b4aed5b2a", null ],
@@ -7,10 +9,12 @@ var group___g_a03 =
     [ "reset", "group___g_a03.html#gaf11efb6ed0306cd67e8a7feab37519de", null ],
     [ "powerUp", "group___g_a03.html#ga3fabcb452602ea372d759fe3ba20bec8", null ],
     [ "powerDown", "group___g_a03.html#gabe3dc193ede8ee6ebf4bae3728046bb8", null ],
-    [ "setup", "group___g_a03.html#gacee94a3ad9f453741efe86af6ccd9b31", null ],
-    [ "setup", "group___g_a03.html#ga2376cbd67cc2a65a0f9608941f73419a", null ],
+    [ "setup", "group___g_a03.html#gaf7a55a90c3b808bc9cf7e254cc696d7d", null ],
+    [ "setup", "group___g_a03.html#ga7e2b9044c485cad0b7c2eed170ec9fe3", null ],
     [ "setChannel", "group___g_a03.html#gadf162646f957df7cf5c4b542b5b4b344", null ],
     [ "setFrequency", "group___g_a03.html#ga615b6785ddf6985a362ab0862f3e5513", null ],
+    [ "setFrequencyUp", "group___g_a03.html#ga7b9854e962def33ad453605f11feea7b", null ],
+    [ "setFrequencyDown", "group___g_a03.html#gaebdbd7aa402ebf50d25a6df42f38dc9a", null ],
     [ "getFrequency", "group___g_a03.html#ga89180830a5e01de15ab22e0d8157c34a", null ],
     [ "getRealChannel", "group___g_a03.html#ga6459a4e812ebfc92d6dca2b2f5b4f915", null ],
     [ "getRealFrequency", "group___g_a03.html#gae2df536f699b4406da46d739200dff7a", null ],
@@ -25,8 +29,7 @@ var group___g_a03 =
     [ "setAgc", "group___g_a03.html#ga1fd445c4c6935268ff0ce0c75c3c05d0", null ],
     [ "setMute", "group___g_a03.html#ga6c3cb96a721e4bb10a492d6fcad9df8a", null ],
     [ "setMono", "group___g_a03.html#ga15530e43b7ebcf5f31e8bd4cab3a37eb", null ],
-    [ "setRds", "group___g_a03.html#ga9eb63656b8486b8a5f6a29b7f3f16d36", null ],
-    [ "setRdsMode", "group___g_a03.html#gae03992e0bc0ea4bc10a06aea4321dbe6", null ],
+    [ "isStereo", "group___g_a03.html#ga28d4ad88023cf90a92196bdc0d933a83", null ],
     [ "setVolume", "group___g_a03.html#ga26ce2b1ed9f5f7ea870dbc7827ee0bda", null ],
     [ "getVolume", "group___g_a03.html#ga1d5ac34dcd1b22bb4c41c196f0775670", null ],
     [ "setVolumeUp", "group___g_a03.html#gabde2fdb0be5e3544648d265572a864b0", null ],
@@ -36,5 +39,6 @@ var group___g_a03 =
     [ "getManufacturerId", "group___g_a03.html#ga99a61da13a8ce2baec1bf99721410fcf", null ],
     [ "getFirmwareVersion", "group___g_a03.html#ga8cdfc81d9489e40a0f7de26e3f717fa1", null ],
     [ "getDeviceId", "group___g_a03.html#ga63c3e2fec424ed70ca0d4df87d1cae2d", null ],
-    [ "getChipVersion", "group___g_a03.html#gaa61e3a0dddf49f7a8037ebd030cee6b1", null ]
+    [ "getChipVersion", "group___g_a03.html#gaa61e3a0dddf49f7a8037ebd030cee6b1", null ],
+    [ "setFmDeemphasis", "group___g_a03.html#gab356fa1acab5405781cc8b77a7f8e37c", null ]
 ];

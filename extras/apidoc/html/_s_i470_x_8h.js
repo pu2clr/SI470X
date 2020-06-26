@@ -8,6 +8,8 @@ var _s_i470_x_8h =
     [ "RDS_VERBOSE", "_s_i470_x_8h.html#acdc3372b73fee284997dbef795123257", null ],
     [ "SEEK_DOWN", "_s_i470_x_8h.html#a73871eb4fd3cf8830e9e23b44c0d9e71", null ],
     [ "SEEK_UP", "_s_i470_x_8h.html#a6af70605e17fdcdeea166d59672d2a54", null ],
+    [ "SEEK_WRAP", "_s_i470_x_8h.html#a6c553e7c46b1267b7d316770b4028662", null ],
+    [ "SEEK_STOP", "_s_i470_x_8h.html#ac7187a60e006a6d2f490001785f53a0f", null ],
     [ "FM_BAND_USA_EU", "_s_i470_x_8h.html#a7417bf6a10c7dd58227fc91601825691", null ],
     [ "FM_BAND_JAPAN_WIDE", "_s_i470_x_8h.html#a52b160692c66b326ce004ef59a9c7384", null ],
     [ "FM_BAND_JAPAN", "_s_i470_x_8h.html#a3e920d475d85c9c6ccd907ba332f94fc", null ],
