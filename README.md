@@ -59,11 +59,39 @@ If you need something else, this library implemented two basic functions to deal
 
 
 
+## Schematic
+
+In general, the SI4703 device is already sold in kit or shield format. So, the circuit below can help you to connect the arduino to the shield. In this case, you will not need the crystal, pull up resistors, capacitors and audio jack output. Also, the labels will guide you.  The table bellow shows the connections. 
+
+
+![schematic with TFT, push buttons and encoder](https://github.com/pu2clr/SI470X/blob/master/extras/images/basic_circuit.png)
 
 
 
+### Wire up on Arduino UNO, Pro mini or other based on ATmega 328.
 
 
+| Device name               | Device Pin / Description  |  Arduino Pin  |
+| ----------------          | --------------------      | ------------  |
+| Display TFT               |                           |               |
+|                           | RST (RESET)               |      8        |
+|                           | RS  or DC                 |      9        |
+|                           | CS  or SS                 |     10        |
+|                           | SDI or SDA or DATA        |     11        |
+|                           | CLK                       |     13        |
+|     Si470X                |                           |               |
+|                           | RESET (pin 5)             |     12        |
+|                           | SDIO (pin  8)             |     A4        |
+|                           | SCLK (pin  7)             |     A5        |
+|     Buttons               |                           |               |
+|                           | Volume Up                 |      4        |
+|                           | Volume Down               |      5        |
+|                           | Stereo/Mono               |      6        |
+|                           | RDS ON/off                |      7        |
+|                           | SEEK (encoder button)     |     12        |   
+|    Encoder                |                           |               |
+|                           | A                         |       2       |
+|                           | B                         |       3       |
 
 
 

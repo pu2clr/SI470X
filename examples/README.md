@@ -16,7 +16,7 @@ The schematic below shows the receiver example with TFT display, encoder and pus
 ![schematic with TFT, push buttons and encoder](https://github.com/pu2clr/SI470X/blob/master/extras/images/basic_schematic_tft_encoder.png)
 
 
-In general, the SI4703 device is already sold in kit or shield format. So, the circuit above can help you to connect the arduino to the shield. In this case, you will not need the crystal, pull up resistors and audio jack output. Also, the labels will guide you.  The table bellow show the connections. 
+In general, the SI4703 device is already sold in kit or shield format. So, the circuit above can help you to connect the arduino to the shield. In this case, you will not need the crystal, pull up resistors and audio jack output. Also, the labels will guide you.  The table bellow shows the connections. 
 
 ### Wire up on Arduino UNO, Pro mini or other based on ATmega 328.
 
