@@ -13,7 +13,7 @@ Tge [si470x_02_TFT_display](https://github.com/pu2clr/SI470X/tree/master/example
 The schematic below shows the receiver example with TFT display, encoder and push buttons. 
 
 
-![schematic with TFT, push buttons and encoder](../extras/images/basic_schematic_tft_encoder.png)
+![schematic with TFT, push buttons and encoder](https://pu2clr.github.io/SI470X/extras/images/basic_schematic_tft_encoder.png)
 
 
 In general, the SI4703 device is already sold in kit or shield format. So, the circuit above can help you to connect the arduino to the shield. In this case, you will not need the crystal, pull up resistors and audio jack output. Also, the labels will guide you.  The table bellow shows the connections. 
