@@ -2923,7 +2923,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instances>
 <instance part="U1" gate="G$1" x="99.06" y="76.2" smashed="yes">
 <attribute name="NAME" x="83.82" y="89.154" size="1.778" layer="95"/>
-<attribute name="VALUE" x="93.98" y="73.406" size="1.778" layer="96" align="top-left"/>
+<attribute name="VALUE" x="83.82" y="60.706" size="1.778" layer="96" align="top-left"/>
 </instance>
 <instance part="RE1" gate="G$1" x="-10.16" y="88.9" smashed="yes">
 <attribute name="NAME" x="-7.62" y="78.74" size="1.27" layer="95"/>
