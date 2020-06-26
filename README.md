@@ -1,6 +1,12 @@
 # SI470X Arduino Library
 
-It is an Arduini Library for Si4702/03 FM tuner family. 
+It is an Arduino Library for Si4701/02/03 FM tuner family. 
+
+This library can be freely distributed using the MIT Free Software model. 
+
+[Copyright (c) 2019 Ricardo Lima Caratti](https://pu2clr.github.io/SI4735/#mit-license). 
+
+Contact: __pu2clr@gmail.com__.
 
 
 ## Contents
