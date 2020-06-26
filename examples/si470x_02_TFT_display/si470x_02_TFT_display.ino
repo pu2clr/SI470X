@@ -23,7 +23,7 @@
   |                           | Volume Down               |      5        |
   |                           | Stereo/Mono               |      6        |
   |                           | RDS ON/off                |      7        |
-  |                           | SEEK (encoder button)     |     12        |   
+  |                           | SEEK (encoder button)     |     12        |
   |    Encoder                |                           |               |
   |                           | A                         |       2       |
   |                           | B                         |       3       |
@@ -78,6 +78,8 @@
 char oldFreq[10];
 char oldStereo[10];
 char oldRssi[10];
+char oldRdsStatus[10];
+char oldRdsMsg[65];
 
 bool bSt = true;
 bool bRds = true;
@@ -212,7 +214,7 @@ void showFrequency()
 */
 void showStatus()
 {
-  oldFreq[0] = oldStereo[0] = 0;
+  oldFreq[0] = oldStereo[0] = oldRdsStatus[0] = oldRdsMsg[0] =  0;
 
   showFrequency();
   showStereoMono();
@@ -225,7 +227,7 @@ void showStatus()
 void showRSSI()
 {
   char rssi[10];
-  sprintf(rssi,"%i dBuV", rx.getRssi());
+  sprintf(rssi, "%i dBuV", rx.getRssi());
   tft.setFont(&FreeSans9pt7b);
   tft.setTextSize(1);
   printValue(5, 55, oldRssi, rssi, 11, COLOR_WHITE);
@@ -240,8 +242,17 @@ void showStereoMono() {
 }
 
 void showRds() {
-  
+  char rdsStatus[10];
+  char rdsMsg[64];
+
+  tft.setTextSize(1);
+  tft.setFont(&FreeSans9pt7b);
+  sprintf(rdsStatus, "RDS %s", (bRds) ? "ON" : "OFF");
+  printValue(5, 75, oldRdsStatus, rdsStatus, 14, COLOR_WHITE);
+  sprintf(rdsMsg, "%s", rx.getRdsReady() ? "RDS MSG" : "NO MSG");
+  printValue(5, 105, oldRdsMsg, rdsMsg, 14, COLOR_WHITE);
 }
+
 
 void showSplash()
 {
@@ -251,7 +262,7 @@ void showSplash()
   tft.setTextColor(COLOR_WHITE);
   tft.setCursor(45, 23);
   tft.print("SI470X");
-  tft.setCursor(10, 50);
+  tft.setCursor(15, 50);
   tft.print("Arduino Library");
   tft.setCursor(25, 80);
   tft.print("By PU2CLR");
@@ -298,23 +309,24 @@ void setup()
 
 
 void doStereo() {
-  rx.setMono((bSt = !bSt)); 
+  rx.setMono((bSt = !bSt));
   showStereoMono();
   delay(100);
 }
 
 void doRds() {
-    rx.setRds((bRds = !bRds));
+  rx.setRds((bRds = !bRds));
+  showRds();
 }
 
 /**
- * Process seek command. 
- * The seek direction is based on the last encoder direction rotation.
- */
+   Process seek command.
+   The seek direction is based on the last encoder direction rotation.
+*/
 void doSeek() {
-    rx.seek(SEEK_WRAP, seekDirection, showFrequency);  // showFrequency will be called by the seek function during the process. 
-    delay(200);
-    showFrequency();  
+  rx.seek(SEEK_WRAP, seekDirection, showFrequency);  // showFrequency will be called by the seek function during the process.
+  delay(200);
+  showFrequency();
 }
 
 void loop()
@@ -325,7 +337,7 @@ void loop()
   {
     if (encoderCount == 1) {
       rx.setFrequencyUp();
-      seekDirection = SEEK_UP;   
+      seekDirection = SEEK_UP;
     }
     else {
       rx.setFrequencyDown();
@@ -336,27 +348,26 @@ void loop()
   }
 
   if (digitalRead(VOLUME_UP) == LOW)
-      rx.setVolumeUp();
+    rx.setVolumeUp();
   else if (digitalRead(VOLUME_DOWN) == LOW)
     rx.setVolumeDown();
   else if (digitalRead(SWITCH_STEREO) == LOW)
     doStereo();
   else if (digitalRead(SWITCH_RDS) == LOW)
-    doRds();  
+    doRds();
   else if (digitalRead(SEEK_FUNCTION) == LOW)
     doSeek();
 
   if ( (millis() - pollin_elapsed) > POLLING_TIME ) {
     showRSSI();
     showStereoMono();
+    if ( bRds ) {
+      showRds();
+    }
+
     pollin_elapsed = millis();
   }
 
-  if ( bRds ) {
-      if (rx.getRdsReady() ) {
-        showRds();
-      }
-  }
 
   delay(100);
 }
