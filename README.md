@@ -18,11 +18,21 @@ It is an Arduini Library for Si4702/03 FM tuner family.
 ## Preface
 
 This project is about an Arduino library for the SI470X device. __The communication protocol used by this library is the I²C__. This library can be freely distributed using the MIT Free Software model. 
-The SI470X is a FM DSP receiver from Silicon Labs with RDS/RBDS support. This document is aimed at the Arduino developers, radio experimenters, hobbyists and anyone interested in building a receiver based on the Si470X and will show you Arduino source codes, schematics, examples and tips to help you to build a receiver based on Arduino board and the SI470X devices. I think the best way to start a project based on this device is to acquire a breakout board like the one shown in the following figure. 
+The SI470X is a FM DSP receiver from Silicon Labs with RDS/RBDS support. This document is aimed at the Arduino developers, radio experimenters, hobbyists and anyone interested in building a receiver based on the Si470X and will show you Arduino source codes, schematics, examples and tips to help you to build a receiver based on Arduino board and the SI470X devices. 
+
+
+{% include video01.html %}
+
+
+I think the best way to start a project based on this device is to acquire a breakout board like the one shown in the following figure. 
+
 
 ![SI4703 Shield](https://github.com/pu2clr/SI470X/blob/master/extras/images/si4703_module0.png)
 
 The board above or similar can be found on [Sparkfun](https://www.sparkfun.com/products/12938), [eBay](https://www.ebay.com/) and [Aliexpress](https://pt.aliexpress.com/af/SI4703.html?d=y&origin=n&SearchText=SI4703&catId=0&initiative_id=SB_20200626043355).  Also, there is the [Si4703 Evaluation Kit](https://www.silabs.com/products/development-tools/audio-and-radio/si4703-evaluation-kit) from Silicon Labs. 
+
+
+
 
 
 ### See also
@@ -100,9 +110,16 @@ As previously reported, in general, the SI4703 device is already sold in kit or 
 | SCLK (pin  7)             |     A5        |
 
 
+### Voltage operation
+
+* __The SI470X device is a 3.3V part. If you are not using a 3.3V version of Arduino, you have to use a kind of 5V to 3.3V bidirectional converter. It is important to say that just power the Si470X device with 3.3V from Arduino board is not enough. You have to be aware that the Arduino that operates with 5V, the digital pins and the I2C bus will send 5V signals to the Si470X device. That configuration can make the system unstable or damage the Si47XX device. If you are using a breakout board based on SI470X, check its operating voltage before connecting it to you 5V Arduino Board.__   
+
+
 
 # References
 
 * [AN230 - Si4700/01/02/03 PROGRAMMING GUIDE](https://www.silabs.com/documents/public/application-notes/AN230.pdf)
 * [Si4702/03-C19 - BROADCAST FM RADIO TUNERFOR PORTABLE APPLICATIONS](https://www.silabs.com/documents/public/data-sheets/Si4702-03-C19.pdf)
+
+
 
