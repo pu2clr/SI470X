@@ -20,7 +20,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'ms_value';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '493';
+      sec-mem-desc-line = '496';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Set the Delay After Crystal On (default 500ms)
 _EnD_oF_dEf_TeXt_;
@@ -38,7 +38,7 @@ void
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'getAllRegisters';
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '495';
+      sec-mem-desc-line = '498';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Gets all current register content of the device.
 _EnD_oF_dEf_TeXt_;
@@ -99,7 +99,7 @@ _EnD_oF_dEf_TeXt_;
 _EnD_oF_dEf_TeXt_;
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '496';
+      sec-mem-desc-line = '499';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Sets values to the device registers from 0x02 to 0x07.
 _EnD_oF_dEf_TeXt_;
@@ -129,7 +129,7 @@ void
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'getStatus';
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '497';
+      sec-mem-desc-line = '500';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Gets the value of the 0x0A register.
 _EnD_oF_dEf_TeXt_;
@@ -155,42 +155,6 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a03_1gac1adddefa79fcd3b1b1ed16df7870d85';
-      sec-mem-virt = normal;
-      sec-mem-prot = public;
-      sec-mem-type = <<_EnD_oF_dEf_TeXt_
-void
-_EnD_oF_dEf_TeXt_;
-      sec-mem-name = 'waitAndFinishTune';
-      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '498';
-      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
-Wait STC (Seek/Tune Complete) status becomes 0.
-_EnD_oF_dEf_TeXt_;
-      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
-Should be used before processing Tune or Seek.
-
-
-The STC bit being cleared indicates that the TUNE or SEEK bits may be set again to start another tune or seek operation. Do not set the TUNE or SEEK bits until the Si470x clears the STC bit. 
-_EnD_oF_dEf_TeXt_;
-      sec-mem-referenceto = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1ga88702e9ed11d428d9f4c8d0c445fe6a9';
-        sec-mem-ref-line = '27';
-        sec-mem-ref-name = 'getAllRegisters';
-    };
-      sec-mem-referencedby = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1ga80abdafabf55be7717ebc19138431adb';
-        sec-mem-ref-line = '341';
-        sec-mem-ref-name = 'seek';
-    };
-      sec-mem-referencedby = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1gadf162646f957df7cf5c4b542b5b4b344';
-        sec-mem-ref-line = '244';
-        sec-mem-ref-name = 'setChannel';
-    };
-    }; /* sec-member */
-    sec-member = {
-      sec-mem-kind = 'function';
       sec-mem-id   = 'group___g_a03_1ga8df17d9057d8bcdd01226a33e6a2d8f7';
       sec-mem-virt = normal;
       sec-mem-prot = public;
@@ -205,7 +169,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'register_number';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '509';
+      sec-mem-desc-line = '511';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Get the Shadown Register object.
 _EnD_oF_dEf_TeXt_;
@@ -241,7 +205,7 @@ _EnD_oF_dEf_TeXt_;
         sec-mem-param-declname = 'value';
       }; /*        sec-mem-param--param */
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '519';
+      sec-mem-desc-line = '521';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Sets a given value to the Shadown Register.
 _EnD_oF_dEf_TeXt_;
@@ -251,80 +215,6 @@ You have to call setAllRegisters() after setting the Shadow Registers to store t
 @param register_number  register index (from 0x00 to 0x0F)
 @param value            16 bits word with the content of the register 
 _EnD_oF_dEf_TeXt_;
-    }; /* sec-member */
-    sec-member = {
-      sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a03_1gaf11efb6ed0306cd67e8a7feab37519de';
-      sec-mem-virt = normal;
-      sec-mem-prot = public;
-      sec-mem-type = <<_EnD_oF_dEf_TeXt_
-void
-_EnD_oF_dEf_TeXt_;
-      sec-mem-name = 'reset';
-      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '524';
-      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
-Resets the device.
-_EnD_oF_dEf_TeXt_;
-      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
-
-_EnD_oF_dEf_TeXt_;
-      sec-mem-referencedby = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1gaf7a55a90c3b808bc9cf7e254cc696d7d';
-        sec-mem-ref-line = '207';
-        sec-mem-ref-name = 'setup';
-    };
-    }; /* sec-member */
-    sec-member = {
-      sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a03_1ga3fabcb452602ea372d759fe3ba20bec8';
-      sec-mem-virt = normal;
-      sec-mem-prot = public;
-      sec-mem-type = <<_EnD_oF_dEf_TeXt_
-void
-_EnD_oF_dEf_TeXt_;
-      sec-mem-name = 'powerUp';
-      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '526';
-      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
-Powers the receiver on.
-_EnD_oF_dEf_TeXt_;
-      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
-Starts the receiver with some default configurations 
-_EnD_oF_dEf_TeXt_;
-      sec-mem-referenceto = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1ga88702e9ed11d428d9f4c8d0c445fe6a9';
-        sec-mem-ref-line = '27';
-        sec-mem-ref-name = 'getAllRegisters';
-    };
-      sec-mem-referencedby = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1gaf7a55a90c3b808bc9cf7e254cc696d7d';
-        sec-mem-ref-line = '207';
-        sec-mem-ref-name = 'setup';
-    };
-    }; /* sec-member */
-    sec-member = {
-      sec-mem-kind = 'function';
-      sec-mem-id   = 'group___g_a03_1gabe3dc193ede8ee6ebf4bae3728046bb8';
-      sec-mem-virt = normal;
-      sec-mem-prot = public;
-      sec-mem-type = <<_EnD_oF_dEf_TeXt_
-void
-_EnD_oF_dEf_TeXt_;
-      sec-mem-name = 'powerDown';
-      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '527';
-      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
-Powers the receiver off.
-_EnD_oF_dEf_TeXt_;
-      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
-
-_EnD_oF_dEf_TeXt_;
-      sec-mem-referenceto = {
-        sec-mem-ref-id = '_s_i470_x_8cpp_1ga88702e9ed11d428d9f4c8d0c445fe6a9';
-        sec-mem-ref-line = '27';
-        sec-mem-ref-name = 'getAllRegisters';
-    };
     }; /* sec-member */
     sec-member = {
       sec-mem-kind = 'function';
@@ -398,7 +288,7 @@ _EnD_oF_dEf_TeXt_;
     };
       sec-mem-referenceto = {
         sec-mem-ref-id = '_s_i470_x_8h_1aa59c92a9c5e03282cb6373927bdd291d';
-        sec-mem-ref-line = '481';
+        sec-mem-ref-line = '480';
         sec-mem-ref-name = 'rdsInterruptPin';
     };
       sec-mem-referenceto = {
@@ -408,12 +298,12 @@ _EnD_oF_dEf_TeXt_;
     };
       sec-mem-referenceto = {
         sec-mem-ref-id = '_s_i470_x_8h_1a1eac2b850fae351182e53c85fa79923c';
-        sec-mem-ref-line = '476';
+        sec-mem-ref-line = '475';
         sec-mem-ref-name = 'resetPin';
     };
       sec-mem-referenceto = {
         sec-mem-ref-id = '_s_i470_x_8h_1a35dfecb716dde56692bebf1572d969b3';
-        sec-mem-ref-line = '482';
+        sec-mem-ref-line = '481';
         sec-mem-ref-name = 'seekInterruptPin';
     };
     }; /* sec-member */
@@ -1299,6 +1189,119 @@ _EnD_oF_dEf_TeXt_;
     }; /* sec-member */
   }; /* cp-section */
   cp-section = {
+    sec-kind = 'protected-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a03_1gaf11efb6ed0306cd67e8a7feab37519de';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'reset';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '485';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Resets the device.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referencedby = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1gaf7a55a90c3b808bc9cf7e254cc696d7d';
+        sec-mem-ref-line = '207';
+        sec-mem-ref-name = 'setup';
+    };
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a03_1ga3fabcb452602ea372d759fe3ba20bec8';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'powerUp';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '486';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Powers the receiver on.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+Starts the receiver with some default configurations 
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referenceto = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ga88702e9ed11d428d9f4c8d0c445fe6a9';
+        sec-mem-ref-line = '27';
+        sec-mem-ref-name = 'getAllRegisters';
+    };
+      sec-mem-referencedby = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1gaf7a55a90c3b808bc9cf7e254cc696d7d';
+        sec-mem-ref-line = '207';
+        sec-mem-ref-name = 'setup';
+    };
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a03_1gabe3dc193ede8ee6ebf4bae3728046bb8';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'powerDown';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '487';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Powers the receiver off.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referenceto = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ga88702e9ed11d428d9f4c8d0c445fe6a9';
+        sec-mem-ref-line = '27';
+        sec-mem-ref-name = 'getAllRegisters';
+    };
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'group___g_a03_1gac1adddefa79fcd3b1b1ed16df7870d85';
+      sec-mem-virt = normal;
+      sec-mem-prot = protected;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'waitAndFinishTune';
+      sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
+      sec-mem-desc-line = '488';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Wait STC (Seek/Tune Complete) status becomes 0.
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+Should be used before processing Tune or Seek.
+
+
+The STC bit being cleared indicates that the TUNE or SEEK bits may be set again to start another tune or seek operation. Do not set the TUNE or SEEK bits until the Si470x clears the STC bit. 
+_EnD_oF_dEf_TeXt_;
+      sec-mem-referenceto = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ga88702e9ed11d428d9f4c8d0c445fe6a9';
+        sec-mem-ref-line = '27';
+        sec-mem-ref-name = 'getAllRegisters';
+    };
+      sec-mem-referencedby = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1ga80abdafabf55be7717ebc19138431adb';
+        sec-mem-ref-line = '341';
+        sec-mem-ref-name = 'seek';
+    };
+      sec-mem-referencedby = {
+        sec-mem-ref-id = '_s_i470_x_8cpp_1gadf162646f957df7cf5c4b542b5b4b344';
+        sec-mem-ref-line = '244';
+        sec-mem-ref-name = 'setChannel';
+    };
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
     sec-kind = 'protected-attrib';
     sec-member = {
       sec-mem-kind = 'variable';
@@ -1313,7 +1316,7 @@ _EnD_oF_dEf_TeXt_;
 = I2C_DEVICE_ADDR
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '475';
+      sec-mem-desc-line = '474';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -1331,7 +1334,7 @@ int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'resetPin';
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '476';
+      sec-mem-desc-line = '475';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -1354,7 +1357,7 @@ uint16_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'currentFrequency';
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '477';
+      sec-mem-desc-line = '476';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -1375,7 +1378,7 @@ _EnD_oF_dEf_TeXt_;
 = 0
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '478';
+      sec-mem-desc-line = '477';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -1396,7 +1399,7 @@ _EnD_oF_dEf_TeXt_;
 = 0
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '479';
+      sec-mem-desc-line = '478';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -1417,7 +1420,7 @@ _EnD_oF_dEf_TeXt_;
 = 0
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '480';
+      sec-mem-desc-line = '479';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -1438,7 +1441,7 @@ _EnD_oF_dEf_TeXt_;
 = -1
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '481';
+      sec-mem-desc-line = '480';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -1464,7 +1467,7 @@ _EnD_oF_dEf_TeXt_;
 = -1
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '482';
+      sec-mem-desc-line = '481';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -1490,7 +1493,7 @@ _EnD_oF_dEf_TeXt_;
 = OSCILLATOR_TYPE_CRYSTAL
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '483';
+      sec-mem-desc-line = '482';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -1511,7 +1514,7 @@ _EnD_oF_dEf_TeXt_;
 = MAX_DELAY_AFTER_OSCILLATOR
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '484';
+      sec-mem-desc-line = '483';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
 _EnD_oF_dEf_TeXt_;
@@ -1891,7 +1894,7 @@ _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
       sec-mem-desc-line = '469';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
-
+Start FM band limit.
 _EnD_oF_dEf_TeXt_;
       sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
 
@@ -1912,7 +1915,7 @@ _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
       sec-mem-desc-line = '470';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
-
+End FM band limit.
 _EnD_oF_dEf_TeXt_;
       sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
 
@@ -1931,9 +1934,9 @@ _EnD_oF_dEf_TeXt_;
 = {20, 10, 5, 1}
 _EnD_oF_dEf_TeXt_;
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
-      sec-mem-desc-line = '472';
+      sec-mem-desc-line = '471';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
-
+FM channel space.
 _EnD_oF_dEf_TeXt_;
       sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
 

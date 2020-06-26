@@ -466,10 +466,9 @@ class SI470X {
         si470x_reg0e *reg0e = (si470x_reg0e *)&shadowRegisters[REG0E];
         si470x_reg0f *reg0f = (si470x_reg0f *)&shadowRegisters[REG0F];
 
-        uint16_t startBand[4] = {8750, 7600, 7600, 6400 };
-        uint16_t endBand[4] = {10800, 10800, 9000, 10800};
-
-        uint16_t fmSpace[4] = {20, 10, 5, 1};
+        uint16_t startBand[4] = {8750, 7600, 7600, 6400 }; //!< Start FM band limit
+        uint16_t endBand[4] = {10800, 10800, 9000, 10800}; //!< End FM band limit
+        uint16_t fmSpace[4] = {20, 10, 5, 1}; //!< FM channel space
 
     protected:
         int deviceAddress = I2C_DEVICE_ADDR;
@@ -483,21 +482,24 @@ class SI470X {
         int oscillatorType = OSCILLATOR_TYPE_CRYSTAL;
         uint16_t maxDelayAftarCrystalOn = MAX_DELAY_AFTER_OSCILLATOR;
 
-        public :
+        void reset();
+        void powerUp();
+        void powerDown();
+        void waitAndFinishTune();
 
-            /**
+    public:
+        /**
              * @brief Set the Delay After Crystal On (default 500ms)
              * 
              * @param ms_value  Value in milliseconds 
              */
-            inline void setDelayAfterCrystalOn(uint8_t ms_value) { maxDelayAftarCrystalOn = ms_value; };
+        inline void setDelayAfterCrystalOn(uint8_t ms_value) { maxDelayAftarCrystalOn = ms_value; };
 
-            void getAllRegisters();
-            void setAllRegisters(uint8_t limit = 0x07);
-            void getStatus();
-            void waitAndFinishTune();
+        void getAllRegisters();
+        void setAllRegisters(uint8_t limit = 0x07);
+        void getStatus();
 
-            /**
+        /**
              * @ingroup GA03
              * @brief Get the Shadown Register object
              * @details if you want to get the current value of the device register, call getAllRegisters() before calling this function. 
@@ -506,9 +508,9 @@ class SI470X {
              * @param register_number 
              * @return  16 bits word with the Shadown registert 
              */
-            inline uint16_t getShadownRegister(uint8_t register_number){return  shadowRegisters[register_number];};
+        inline uint16_t getShadownRegister(uint8_t register_number) { return shadowRegisters[register_number]; };
 
-            /**
+        /**
              * @ingroup GA03
              * @brief Sets a given value to the Shadown Register
              * @details You have to call setAllRegisters() after setting the Shadow Registers to store the value into the device.
@@ -516,15 +518,13 @@ class SI470X {
              * @param register_number  register index (from 0x00 to 0x0F)
              * @param value            16 bits word with the content of the register 
              */
-            void setShadownRegister(uint8_t register_number, uint16_t value) {
-                if (register_number > 0x0F ) return;
-                shadowRegisters[register_number] = value;
+        void setShadownRegister(uint8_t register_number, uint16_t value)
+        {
+            if (register_number > 0x0F)
+                return;
+            shadowRegisters[register_number] = value;
             };
 
-            void reset();
-
-            void powerUp();
-            void powerDown();
 
             void setup(int resetPin, int sdaPin, int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL);
             void setup(int resetPin, int sdaPin, uint8_t oscillator_type);
