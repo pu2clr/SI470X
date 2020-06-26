@@ -27,7 +27,7 @@ The SI470X is a FM DSP receiver from Silicon Labs with RDS/RBDS support. This do
 I think the best way to start a project based on this device is to acquire a breakout board like the one shown in the following figure. 
 
 
-![SI4703 Shield](https://github.com/pu2clr/SI470X/blob/master/extras/images/si4703_module0.png)
+![SI4703 Shield](./extras/images/si4703_module0.png)
 
 The board above or similar can be found on [Sparkfun](https://www.sparkfun.com/products/12938), [eBay](https://www.ebay.com/) and [Aliexpress](https://pt.aliexpress.com/af/SI4703.html?d=y&origin=n&SearchText=SI4703&catId=0&initiative_id=SB_20200626043355).  Also, there is the [Si4703 Evaluation Kit](https://www.silabs.com/products/development-tools/audio-and-radio/si4703-evaluation-kit) from Silicon Labs. 
 
@@ -84,7 +84,7 @@ This library uses the I²C communication protocol and implements most of the fun
 The SI4701/02/03 can be controlled by deal with register via I2C interface.  The tebla below was extracted from Silicon Labs; document Si4702/03-C19 - "BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS"; Rev 1.1; page 22. This table shows the set of register that you can used to controle the device.
 
 
-![SI4702/03 Register Summary](extras/images/SI470X_REGISTER_SUMMARY.png)
+![SI4702/03 Register Summary](./extras/images/SI470X_REGISTER_SUMMARY.png)
 
 Source: Silicon Labs; document Si4702/03-C19 - "BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS"; Rev 1.1; Page 22.
 
@@ -97,7 +97,7 @@ __Except that you need something very specific, the PU2CLR SI470X Arduino Librar
 As previously reported, in general, the SI4703 device is already sold in kit or breakout board format. So, the circuit below can help you to connect the arduino to the shield. In this case, you will not need the crystal, pull up resistors, capacitors and audio jack output. Also, the labels will guide you.  The table bellow shows the connections. 
 
 
-![schematic with TFT, push buttons and encoder](extras/images/basic_circuit.png)
+![schematic with TFT, push buttons and encoder](./extras/images/basic_circuit.png)
 
 
 
