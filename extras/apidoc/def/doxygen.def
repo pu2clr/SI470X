@@ -145,7 +145,7 @@ _EnD_oF_dEf_TeXt_;
       sec-mem-referencedby = {
         sec-mem-ref-id = '_s_i470_x_8cpp_1ab528ba3c0916131fd630d538a24850a8';
         sec-mem-ref-line = '678';
-        sec-mem-ref-name = 'getSdrStatus';
+        sec-mem-ref-name = 'getRdsReady';
     };
       sec-mem-referencedby = {
         sec-mem-ref-id = '_s_i470_x_8cpp_1ga28d4ad88023cf90a92196bdc0d933a83';
@@ -1141,7 +1141,7 @@ _EnD_oF_dEf_TeXt_;
       sec-mem-type = <<_EnD_oF_dEf_TeXt_
 bool
 _EnD_oF_dEf_TeXt_;
-      sec-mem-name = 'getSdrStatus';
+      sec-mem-name = 'getRdsReady';
       sec-mem-desc-file = '/Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/si470X/SI470X/SI470X.h';
       sec-mem-desc-line = '572';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_

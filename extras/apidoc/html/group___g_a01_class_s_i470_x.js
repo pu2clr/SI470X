@@ -44,7 +44,7 @@ var group___g_a01_class_s_i470_x =
     [ "setFmDeemphasis", "group___g_a03.html#gab356fa1acab5405781cc8b77a7f8e37c", null ],
     [ "setRdsMode", "group___g_a04.html#gae03992e0bc0ea4bc10a06aea4321dbe6", null ],
     [ "setRds", "group___g_a04.html#ga9eb63656b8486b8a5f6a29b7f3f16d36", null ],
-    [ "getSdrStatus", "group___g_a01.html#ab528ba3c0916131fd630d538a24850a8", null ],
+    [ "getRdsReady", "group___g_a01.html#ab528ba3c0916131fd630d538a24850a8", null ],
     [ "getRdsGroupType", "group___g_a01.html#a448d85a027e34e49892d2266c5a161af", null ],
     [ "deviceAddress", "group___g_a01.html#a74f4814275d0ccb39f8fb0bf19a18a84", null ],
     [ "resetPin", "group___g_a01.html#a1eac2b850fae351182e53c85fa79923c", null ],

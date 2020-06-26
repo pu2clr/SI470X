@@ -537,6 +537,7 @@ class SI470X {
             uint16_t getRealChannel();
             void setChannel(uint16_t channel);
             void seek(uint8_t seek_mode, uint8_t direction);
+            void seek(uint8_t seek_mode, uint8_t direction, void (*showFunc)());
             void setSeekThreshold(uint8_t value);
 
             void setBand(uint8_t band = 1);
@@ -569,7 +570,7 @@ class SI470X {
 
             void setRdsMode(uint8_t rds_mode = 0);
             void setRds(bool value);
-            bool getSdrStatus();
+            bool getRdsReady();
             uint16_t getRdsGroupType();
 
 };

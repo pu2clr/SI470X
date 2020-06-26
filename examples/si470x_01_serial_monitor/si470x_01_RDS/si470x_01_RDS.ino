@@ -45,7 +45,7 @@ char aux[100];
 void loop()
 {
     if ((millis() - rds_elapsed) > MAX_DELAY_RDS ) {
-        if (rx.getSdrStatus()) {
+        if (rx.getRdsReady()) {
             b.blockB = rx.getRdsGroupType();
             // Serial.print("\nYou have RDS");
             sprintf(aux,"\nVersion: %i; Group Type: %i", b.refined.versionCode,b.refined.groupType);

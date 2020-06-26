@@ -81,6 +81,7 @@ char oldRssi[10];
 
 bool bSt = true;
 bool bRds = true;
+uint8_t seekDirection = 1; // 0 = Down; 1 = Up. This value is set by the last encoder direction.
 
 long pollin_elapsed = millis();
 
@@ -238,6 +239,10 @@ void showStereoMono() {
   printValue(125, 55, oldStereo, stereo, 15, COLOR_WHITE);
 }
 
+void showRds() {
+  
+}
+
 void showSplash()
 {
   // Splash
@@ -252,8 +257,8 @@ void showSplash()
   tft.print("By PU2CLR");
   tft.setFont(&FreeSans9pt7b);
   tft.setTextSize(0);
-  tft.setCursor(0, 110);
-  tft.print("Ricardo Lima Caratti");
+  tft.setCursor(12, 110);
+  tft.print("Ricardo L. Caratti");
   delay(4000);
 }
 
@@ -287,7 +292,7 @@ void setup()
   rx.setMono(false); // Force stereo
   rx.setRds(true);
   rx.setFrequency(10650); // It is the frequency you want to select in MHz multiplied by 100.
-
+  rx.setSeekThreshold(50); // Sets RSSI Seek Threshold (0 to 127)
   showStatus();
 }
 
@@ -302,8 +307,13 @@ void doRds() {
     rx.setRds((bRds = !bRds));
 }
 
+/**
+ * Process seek command. 
+ * The seek direction is based on the last encoder direction rotation.
+ */
 void doSeek() {
-    rx.seek(SEEK_WRAP, SEEK_UP);
+    rx.seek(SEEK_WRAP, seekDirection, showFrequency);  // showFrequency will be called by the seek function during the process. 
+    delay(200);
     showFrequency();  
 }
 
@@ -313,10 +323,14 @@ void loop()
   // Check if the encoder has moved.
   if (encoderCount != 0)
   {
-    if (encoderCount == 1)
+    if (encoderCount == 1) {
       rx.setFrequencyUp();
-    else
+      seekDirection = SEEK_UP;   
+    }
+    else {
       rx.setFrequencyDown();
+      seekDirection = SEEK_DOWN;
+    }
     showFrequency();
     encoderCount = 0;
   }
@@ -336,6 +350,12 @@ void loop()
     showRSSI();
     showStereoMono();
     pollin_elapsed = millis();
+  }
+
+  if ( bRds ) {
+      if (rx.getRdsReady() ) {
+        showRds();
+      }
   }
 
   delay(100);

@@ -11,7 +11,7 @@ var searchData=
   ['getrealchannel_19',['getRealChannel',['../group___g_a03.html#ga6459a4e812ebfc92d6dca2b2f5b4f915',1,'SI470X']]],
   ['getrealfrequency_20',['getRealFrequency',['../group___g_a03.html#gae2df536f699b4406da46d739200dff7a',1,'SI470X']]],
   ['getrssi_21',['getRssi',['../group___g_a03.html#ga4f1e1aec94964d00fde66b2af31516ee',1,'SI470X']]],
-  ['getsdrstatus_22',['getSdrStatus',['../group___g_a01.html#ab528ba3c0916131fd630d538a24850a8',1,'SI470X']]],
+  ['getRdsReady_22',['getRdsReady',['../group___g_a01.html#ab528ba3c0916131fd630d538a24850a8',1,'SI470X']]],
   ['getshadownregister_23',['getShadownRegister',['../group___g_a03.html#ga8df17d9057d8bcdd01226a33e6a2d8f7',1,'SI470X']]],
   ['getstatus_24',['getStatus',['../group___g_a03.html#ga8b7c324942f8caa5ca00470b4aed5b2a',1,'SI470X']]],
   ['getvolume_25',['getVolume',['../group___g_a03.html#ga1d5ac34dcd1b22bb4c41c196f0775670',1,'SI470X']]],
