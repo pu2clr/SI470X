@@ -25,6 +25,8 @@
 #define RDS_VERBOSE   1   //!< RDS Mode.
 #define SEEK_DOWN 0       //!< Seek Down  Direction
 #define SEEK_UP 1         //!< Seek Up  Direction
+#define SEEK_WRAP 0       // 
+#define SEEK_STOP 1  
 
 #define FM_BAND_USA_EU       0 //!< 87.5–108 MHz (US / Europe, Default)
 #define FM_BAND_JAPAN_WIDE   1 //!< 76–108 MHz (Japan wide band)
@@ -523,6 +525,8 @@ class SI470X {
             void setAgc(bool value);
 
             void setMono(bool value);
+
+            bool isStereo(); 
 
             uint8_t getPartNumber();
             uint16_t getManufacturerId();

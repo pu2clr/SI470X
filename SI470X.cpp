@@ -497,6 +497,16 @@ void SI470X::setMono(bool value)
     setAllRegisters();
 }
 
+/**
+ * @ingroup GA03
+ * @brief Checks stereo / mono status
+ * 
+ * @param value TRUE if stereo
+ */
+bool SI470X::isStereo() {
+    getStatus();
+    return reg0a->refined.ST;
+}
 
 /**
  * @ingroup GA03

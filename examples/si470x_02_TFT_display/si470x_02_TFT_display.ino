@@ -23,6 +23,7 @@
   |                           | Volume Down               |      5        |
   |                           | Stereo/Mono               |      6        |
   |                           | RDS ON/off                |      7        |
+  |                           | SEEK (encoder button)     |     12        |   
   |    Encoder                |                           |               |
   |                           | A                         |       2       |
   |                           | B                         |       3       |
@@ -38,11 +39,10 @@
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_ST7735.h> // Hardware-specific library for ST7735
 #include <Fonts/FreeSerif9pt7b.h>
-#include <Fonts/Tiny3x3a2pt7b.h>
+#include <Fonts/FreeSans9pt7b.h>
 #include <SPI.h>
 
 #include "Rotary.h"
-
 
 // TFT MICROYUM or ILI9225 based device pin setup
 #define TFT_RST 8
@@ -53,13 +53,11 @@
 #define TFT_LED 0  // 0 if wired to +3.3V directly
 #define TFT_BRIGHTNESS 200
 
-
-#define COLOR_BLACK    0x0000
-#define COLOR_YELLOW   0xFFE0
-#define COLOR_WHITE    0xFFFF
-#define COLOR_RED      0xF800
-#define COLOR_BLUE     0x001F
-
+#define COLOR_BLACK 0x0000
+#define COLOR_YELLOW 0xFFE0
+#define COLOR_WHITE 0xFFFF
+#define COLOR_RED 0xF800
+#define COLOR_BLUE 0x001F
 
 #define RESET_PIN 14
 #define SDA_PIN A4 // SDA pin used by your Arduino Board
@@ -73,8 +71,18 @@
 #define VOLUME_DOWN 5   // Volume Down
 #define SWITCH_STEREO 6 // Select Mono or Stereo
 #define SWITCH_RDS 7    // SDR ON or OFF
+#define SEEK_FUNCTION 12
+
+#define POLLING_TIME  2000
 
 char oldFreq[10];
+char oldStereo[10];
+char oldRssi[10];
+
+bool bSt = true;
+bool bRds = true;
+
+long pollin_elapsed = millis();
 
 
 // Encoder control variables
@@ -90,7 +98,6 @@ Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
 
 SI470X rx;
 
-
 /*
     Reads encoder via interrupt
     Use Rotary.h and  Rotary.cpp implementation to process encoder via interrupt
@@ -102,22 +109,20 @@ void rotaryEncoder()
     encoderCount = (encoderStatus == DIR_CW) ? 1 : -1;
 }
 
-
 /*
    Shows the static content on  display
 */
 void showTemplate()
 {
 
-    int maxX1 = tft.width() - 2;
-    int maxY1 = tft.height() - 5;
+  int maxX1 = tft.width() - 2;
+  int maxY1 = tft.height() - 5;
 
-    tft.fillScreen(COLOR_BLACK);        
+  tft.fillScreen(COLOR_BLACK);
 
-    tft.drawRect(2,  2, maxX1, maxY1, COLOR_YELLOW);
-    tft.drawLine(2, 40, maxX1,40, COLOR_YELLOW);
-    tft.drawLine(2, 60, maxX1,60, COLOR_YELLOW);
-
+  tft.drawRect(2, 2, maxX1, maxY1, COLOR_YELLOW);
+  tft.drawLine(2, 40, maxX1, 40, COLOR_YELLOW);
+  tft.drawLine(2, 60, maxX1, 60, COLOR_YELLOW);
 }
 
 /*
@@ -187,7 +192,7 @@ void showFrequency()
   currentFrequency = rx.getFrequency();
   sprintf(tmp, "%5.5u", currentFrequency);
 
-  freq[0] = (tmp[0] == '0')? ' ': tmp[0];
+  freq[0] = (tmp[0] == '0') ? ' ' : tmp[0];
   freq[1] = tmp[1];
   freq[2] = tmp[2];
   freq[3] = '.';
@@ -197,7 +202,7 @@ void showFrequency()
 
   tft.setFont(&FreeSerif9pt7b);
   tft.setTextSize(2);
-  printValue(15,33, oldFreq, freq,22, COLOR_YELLOW);
+  printValue(15, 33, oldFreq, freq, 22, COLOR_YELLOW);
 
 }
 
@@ -206,10 +211,11 @@ void showFrequency()
 */
 void showStatus()
 {
-  oldFreq[0] = 0;
+  oldFreq[0] = oldStereo[0] = 0;
 
   showFrequency();
-
+  showStereoMono();
+  showRSSI();
 }
 
 /* *******************************
@@ -217,11 +223,25 @@ void showStatus()
 */
 void showRSSI()
 {
+  char rssi[10];
+  sprintf(rssi,"%i dBuV", rx.getRssi());
+  tft.setFont(&FreeSans9pt7b);
+  tft.setTextSize(1);
+  printValue(5, 55, oldRssi, rssi, 11, COLOR_WHITE);
 }
 
+void showStereoMono() {
+  char stereo[10];
+  sprintf(stereo, "%s", (rx.isStereo()) ? "St" : "Mo");
+  tft.setFont(&FreeSans9pt7b);
+  tft.setTextSize(1);
+  printValue(125, 55, oldStereo, stereo, 15, COLOR_WHITE);
+}
 
-void showSplash() {
+void showSplash()
+{
   // Splash
+  tft.setFont(&FreeSerif9pt7b);
   tft.setTextSize(1);
   tft.setTextColor(COLOR_WHITE);
   tft.setCursor(45, 23);
@@ -230,12 +250,11 @@ void showSplash() {
   tft.print("Arduino Library");
   tft.setCursor(25, 80);
   tft.print("By PU2CLR");
-  tft.setFont(&Tiny3x3a2pt7b);
-  tft.setTextSize(2);
-  tft.setCursor(20, 110);
+  tft.setFont(&FreeSans9pt7b);
+  tft.setTextSize(0);
+  tft.setCursor(0, 110);
   tft.print("Ricardo Lima Caratti");
   delay(4000);
-  
 }
 
 void setup()
@@ -249,9 +268,9 @@ void setup()
   pinMode(VOLUME_DOWN, INPUT_PULLUP);
   pinMode(SWITCH_STEREO, INPUT_PULLUP);
   pinMode(SWITCH_RDS, INPUT_PULLUP);
+  pinMode(SEEK_FUNCTION, INPUT_PULLUP);
 
   tft.initR(INITR_BLACKTAB);
-  tft.setFont(&FreeSerif9pt7b);
   tft.fillScreen(COLOR_BLACK);
   tft.setTextColor(COLOR_BLUE);
   tft.setRotation(1);
@@ -265,25 +284,57 @@ void setup()
 
   rx.setup(RESET_PIN, A4 /* SDA pin  for Arduino ATmega328 */);
   rx.setVolume(6);
+  rx.setMono(false); // Force stereo
+  rx.setRds(true);
   rx.setFrequency(10650); // It is the frequency you want to select in MHz multiplied by 100.
 
   showStatus();
 }
 
 
+void doStereo() {
+  rx.setMono((bSt = !bSt)); 
+}
+
+void doRds() {
+    rx.setRds((bRds = !bRds));
+}
+
+void doSeek() {
+    rx.seek(SEEK_WRAP, SEEK_UP);
+    showFrequency();  
+}
 
 void loop()
 {
 
-    // Check if the encoder has moved.
-    if (encoderCount != 0)
-    {
-      if (encoderCount == 1)
-          rx.setFrequencyUp();
-      else
-         rx.setFrequencyDown();
-      showFrequency();
-      encoderCount = 0;
-    }
-   delay(100); 
+  // Check if the encoder has moved.
+  if (encoderCount != 0)
+  {
+    if (encoderCount == 1)
+      rx.setFrequencyUp();
+    else
+      rx.setFrequencyDown();
+    showFrequency();
+    encoderCount = 0;
+  }
+
+  if (digitalRead(VOLUME_UP) == LOW)
+      rx.setVolumeUp();
+  else if (digitalRead(VOLUME_DOWN) == LOW)
+    rx.setVolumeDown();
+  else if (digitalRead(SWITCH_STEREO) == LOW)
+    doStereo();
+  else if (digitalRead(SWITCH_RDS) == LOW)
+    doRds();  
+  else if (digitalRead(SEEK_FUNCTION) == LOW)
+    doSeek();
+
+  if ( (millis() - pollin_elapsed) > POLLING_TIME ) {
+    showRSSI();
+    showStereoMono();
+    pollin_elapsed = millis();
+  }
+
+  delay(100);
 }
