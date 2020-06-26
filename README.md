@@ -1,6 +1,6 @@
 # SI470X Arduino Library
 
-It is an Arduino Library for Si4701/02/03 FM tuner family. 
+It is an Arduino Library for Si4701/02/03 FM tuner family. You can compile and run this library on most of board available on Arduino IDE (Examples: ATtiny85, boards based on ATmega328 and ATmega-32u4, ATmega2560, ARM Cortex, STM32, Arduino DUE, ESP32 and more).
 
 This library can be freely distributed using the MIT Free Software model. 
 
