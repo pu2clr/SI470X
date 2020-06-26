@@ -72,7 +72,7 @@ In general, the SI4703 device is already sold in kit or shield format. So, the c
 
 | SI4703 / Description      |  Arduino Pin  |
 | --------------------      | ------------  |
-| RESET (pin 5)             |     12        |
+| RESET (pin 5)             |     14 / A0   |
 | SDIO (pin  8)             |     A4        |
 | SCLK (pin  7)             |     A5        |
 
