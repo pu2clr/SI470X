@@ -497,6 +497,30 @@ class SI470X {
             void getStatus();
             void waitAndFinishTune();
 
+            /**
+             * @ingroup GA03
+             * @brief Get the Shadown Register object
+             * @details if you want to get the current value of the device register, call getAllRegisters() before calling this function. 
+             * @details if you are dealing with the status register (0x0A), you can call getStatus() instead getAllRegisters(). 
+             * @see setAllRegisters, getAllRegisters, getShadownRegister, getStatus
+             * @param register_number 
+             * @return  16 bits word with the Shadown registert 
+             */
+            inline uint16_t getShadownRegister(uint8_t register_number){return  shadowRegisters[register_number];};
+
+            /**
+             * @ingroup GA03
+             * @brief Sets a given value to the Shadown Register
+             * @details You have to call setAllRegisters() after setting the Shadow Registers to store the value into the device.
+             * @see setAllRegisters, getAllRegisters, getShadownRegister, getStatus
+             * @param register_number  register index (from 0x00 to 0x0F)
+             * @param value            16 bits word with the content of the register 
+             */
+            void setShadownRegister(uint8_t register_number, uint16_t value) {
+                if (register_number > 0x0F ) return;
+                shadowRegisters[register_number] = value;
+            };
+
             void reset();
 
             void powerUp();

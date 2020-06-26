@@ -7,6 +7,12 @@ It is an Arduini Library for Si4702/03 FM tuner family.
 
 1. [Preface](https://pu2clr.github.io/SI470X#preface)
 2. [API Documentation](https://pu2clr.github.io/SI470X/extras/apidoc/html)
+3. [MIT License](https://pu2clr.github.io/SI470X#mit-License)
+4. [Si470X Library features](https://pu2clr.github.io/SI470X#si4703-library-features)
+5. [SI470X and Registers](https://pu2clr.github.io/SI470X#si470x-and-registers)
+6. [Basic Schematic](https://pu2clr.github.io/SI470X#schematic)
+7. [Examples](https://github.com/pu2clr/SI470X/tree/master/examples)
+8. [References](https://github.com/pu2clr/SI470X#references)
 
 
 ## Preface
@@ -40,7 +46,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 <BR>
 
-## Si4703 Library features
+## Si470X Library features
 
 This library uses the I²C communication protocol and implements most of the functions offered by Si470X (SI4701/02/03) IC family from Silicon Labs. This library also has primitive functions that make it easier for you to implement commands that may not have been implemented yet. See [setAllRegisters, getAllRegisters, getStatus](https://pu2clr.github.io/SI470X/extras/apidoc/html/) functions. It is worth noting, however, that this library is constantly improving. Check the API documentation before implementing a new function. It is likely that your demand is already implemented. __The main features of this library are listed below__.
 
@@ -62,9 +68,6 @@ This library uses the I²C communication protocol and implements most of the fun
 15. [Well-documented API](https://pu2clr.github.io/SI470X/extras/apidoc/html/).
 
 
-## About the Si4703
-
-
 
 ## SI470X and Registers
 
@@ -75,7 +78,8 @@ The SI4701/02/03 can be controlled by deal with register via I2C interface.  The
 
 Source: Silicon Labs; document Si4702/03-C19 - "BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS"; Rev 1.1; Page 22.
 
-__Except that you need something very specific, the PU2CLR SI470X Arduino Library offers all the functions necessary for you to build your own FM receiver using an Arduino Board__.  If you need something else, this library implemented some basic functions to deal direct with the device registers shown above. See __setAllRegister, getAllRegister__ and __getStatus__ functions on [https://pu2clr.github.io/SI470X/extras/apidoc/html/](https://pu2clr.github.io/SI470X/extras/apidoc/html/).
+__Except that you need something very specific, the PU2CLR SI470X Arduino Library offers all the functions necessary for you to build your own FM receiver using an Arduino Board__.  If you need something else, this library implemented some basic functions to deal direct with the device registers shown above. See __getShadownRegister__, __setShadownRegister__, __setAllRegisters, getAllRegisters__ and __getStatus__ functions on [https://pu2clr.github.io/SI470X/extras/apidoc/html/](https://pu2clr.github.io/SI470X/extras/apidoc/html/).
+
 
 
 ## Schematic
@@ -97,7 +101,7 @@ As previously reported, in general, the SI4703 device is already sold in kit or 
 
 
 
-# References 
+# References
 
 * [AN230 - Si4700/01/02/03 PROGRAMMING GUIDE](https://www.silabs.com/documents/public/application-notes/AN230.pdf)
 * [Si4702/03-C19 - BROADCAST FM RADIO TUNERFOR PORTABLE APPLICATIONS](https://www.silabs.com/documents/public/data-sheets/Si4702-03-C19.pdf)
