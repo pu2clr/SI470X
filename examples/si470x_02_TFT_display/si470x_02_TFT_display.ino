@@ -294,6 +294,8 @@ void setup()
 
 void doStereo() {
   rx.setMono((bSt = !bSt)); 
+  showStereoMono();
+  delay(100);
 }
 
 void doRds() {
