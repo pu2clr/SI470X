@@ -10,7 +10,7 @@ It is an Arduini Library for Si4702/03 FM tuner family.
 3. [MIT License](https://pu2clr.github.io/SI470X#mit-License)
 4. [Si470X Library features](https://pu2clr.github.io/SI470X#si4703-library-features)
 5. [SI470X and Registers](https://pu2clr.github.io/SI470X#si470x-and-registers)
-6. [Basic Schematic](https://pu2clr.github.io/SI470X#schematic)
+6. [SCHEMATIC](https://pu2clr.github.io/SI470X#schematic)
 7. [Examples](https://github.com/pu2clr/SI470X/tree/master/examples)
 8. [References](https://github.com/pu2clr/SI470X#references)
 
@@ -108,6 +108,9 @@ As previously reported, in general, the SI4703 device is already sold in kit or 
 | RESET (pin 5)             |     14 / A0   |
 | SDIO (pin  8)             |     A4        |
 | SCLK (pin  7)             |     A5        |
+
+
+See the schematic with __TFT display, Encoder and push buttons__ [here](./examples)
 
 
 ### Voltage operation
