@@ -9,14 +9,16 @@ __This project is about a library to control the SI4701/02/03 devices and the fo
 The examples stored in this folder are made to assist you to build your own sketch. Therefore, it is important to say that there was no care with the layout. This part of the project stays with you.
 
 
-The [si470x_01_serial_monitor](https://github.com/pu2clr/SI470X/tree/master/examples/si470x_01_serial_monitor) folder shows how you can check your circuit by using just the Arduino IDE Serial Monitor to control the receiver. Check the examples with Atmega328 and ESP32.
-
-The [si470x_02_TFT_display](https://github.com/pu2clr/SI470X/tree/master/examples/si470x_02_TFT_display) folder has an example with the traditional Display TFT based on ST7735. 
+The [si470x_01_serial_monitor](https://github.com/pu2clr/SI470X/tree/master/examples/si470x_01_serial_monitor) folder shows how you can check your circuit by using just the Arduino IDE Serial Monitor to control the receiver. Check the examples with Atmega328 and ESP32. __In the sketch you will find the wireup with Atmega328 or ESP32 and si470x device__.  
 
 
-The [si470x_03_STM32_OLED](https://github.com/pu2clr/SI470X/tree/master/examples/si470x_03_STM32_OLED) folder has an example with the traditional OLED I2C display and the breakout board SI3703.
- 
+The [si470x_02_TFT_display](https://github.com/pu2clr/SI470X/tree/master/examples/si470x_02_TFT_display) folder has an example with the traditional Display TFT based on ST7735. __In the sketch you will find the wireup with display and si470x device__.  
 
+
+The [si470x_03_STM32_OLED](https://github.com/pu2clr/SI470X/tree/master/examples/si470x_03_STM32_OLED) folder has an example with the traditional OLED I2C display and the breakout board SI3703. __In the sketch you will find the wireup with display and si470x device__.  
+
+
+# TFT SCHEMATIC 
 
 The schematic below shows the receiver example with TFT display, encoder and push buttons. 
 
