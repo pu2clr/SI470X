@@ -209,8 +209,6 @@ void showFrequency()
   printValue(80, 35, &oldFreq[4], &freq[4], 23, COLOR_YELLOW);
   tft.setCursor(78, 35);
   tft.print('.');
-  
-
 }
 
 /*
@@ -328,7 +326,7 @@ void doRds() {
    The seek direction is based on the last encoder direction rotation.
 */
 void doSeek() {
-  rx.seek(SEEK_WRAP, seekDirection, showFrequency);  // showFrequency will be called by the seek function during the process.
+  rx.seek(SI470X_SEEK_WRAP, seekDirection, showFrequency);  // showFrequency will be called by the seek function during the process.
   delay(200);
   showFrequency();
 }
@@ -341,11 +339,11 @@ void loop()
   {
     if (encoderCount == 1) {
       rx.setFrequencyUp();
-      seekDirection = SEEK_UP;
+      seekDirection = SI470X_SEEK_UP;
     }
     else {
       rx.setFrequencyDown();
-      seekDirection = SEEK_DOWN;
+      seekDirection = SI470X_SEEK_DOWN;
     }
     showFrequency();
     encoderCount = 0;

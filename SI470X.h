@@ -23,10 +23,10 @@
 
 #define RDS_STANDARD  0   //!< RDS Mode.
 #define RDS_VERBOSE   1   //!< RDS Mode.
-#define SEEK_DOWN 0       //!< Seek Down  Direction
-#define SEEK_UP 1         //!< Seek Up  Direction
-#define SEEK_WRAP 0       // 
-#define SEEK_STOP 1  
+#define SI470X_SEEK_DOWN 0       //!< Seek Down  Direction
+#define SI470X_SEEK_UP 1         //!< Seek Up  Direction
+#define SI470X_SEEK_WRAP 0       // 
+#define SI470X_SEEK_STOP 1  
 
 #define FM_BAND_USA_EU       0 //!< 87.5–108 MHz (US / Europe, Default)
 #define FM_BAND_JAPAN_WIDE   1 //!< 76–108 MHz (Japan wide band)

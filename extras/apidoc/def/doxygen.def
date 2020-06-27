@@ -623,7 +623,7 @@ void showFrequency() {
 void loop() {
  .
  .
-     rx.seek(SEEK_WRAP, SEEK_UP, showFrequency); // Seek Up
+     rx.seek(SI470X_SEEK_WRAP, SI470X_SEEK_UP, showFrequency); // Seek Up
  .
  .
 }
@@ -4937,7 +4937,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-id   = '_s_i470_x_8h_1a73871eb4fd3cf8830e9e23b44c0d9e71';
       define-mem-virt = normal;
       define-mem-prot = public;
-      define-mem-name = 'SEEK_DOWN';
+      define-mem-name = 'SI470X_SEEK_DOWN';
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 0
 _EnD_oF_dEf_TeXt_;
@@ -4955,7 +4955,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-id   = '_s_i470_x_8h_1a6af70605e17fdcdeea166d59672d2a54';
       define-mem-virt = normal;
       define-mem-prot = public;
-      define-mem-name = 'SEEK_UP';
+      define-mem-name = 'SI470X_SEEK_UP';
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 1
 _EnD_oF_dEf_TeXt_;
@@ -4973,7 +4973,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-id   = '_s_i470_x_8h_1a6c553e7c46b1267b7d316770b4028662';
       define-mem-virt = normal;
       define-mem-prot = public;
-      define-mem-name = 'SEEK_WRAP';
+      define-mem-name = 'SI470X_SEEK_WRAP';
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 0
 _EnD_oF_dEf_TeXt_;
@@ -4991,7 +4991,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-id   = '_s_i470_x_8h_1ac7187a60e006a6d2f490001785f53a0f';
       define-mem-virt = normal;
       define-mem-prot = public;
-      define-mem-name = 'SEEK_STOP';
+      define-mem-name = 'SI470X_SEEK_STOP';
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 1
 _EnD_oF_dEf_TeXt_;

@@ -377,7 +377,7 @@ void SI470X::seek(uint8_t seek_mode, uint8_t direction)
  * void loop() {
  *  .
  *  .
- *      rx.seek(SEEK_WRAP, SEEK_UP, showFrequency); // Seek Up
+ *      rx.seek(SI470X_SEEK_WRAP, SI470X_SEEK_UP, showFrequency); // Seek Up
  *  .
  *  .
  * }
