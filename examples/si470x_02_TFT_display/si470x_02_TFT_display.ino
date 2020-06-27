@@ -38,8 +38,8 @@
 
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_ST7735.h> // Hardware-specific library for ST7735
-#include <Fonts/FreeSerif9pt7b.h>
-#include <Fonts/FreeSans9pt7b.h>
+#include "Serif_plain_14.h" 
+#include "DSEG7_Classic_Mini_Regular_30.h"
 #include <SPI.h>
 
 #include "Rotary.h"
@@ -198,14 +198,18 @@ void showFrequency()
   freq[0] = (tmp[0] == '0') ? ' ' : tmp[0];
   freq[1] = tmp[1];
   freq[2] = tmp[2];
-  freq[3] = '.';
+  freq[3] = '\0';
   freq[4] = tmp[3];
   freq[5] = tmp[4];
   freq[6] = '\0';
 
-  tft.setFont(&FreeSerif9pt7b);
-  tft.setTextSize(2);
-  printValue(15, 33, oldFreq, freq, 22, COLOR_YELLOW);
+  tft.setFont(&DSEG7_Classic_Mini_Regular_30);
+  tft.setTextSize(1);
+  printValue(0, 35, &oldFreq[0], &freq[0], 23, COLOR_YELLOW);
+  printValue(80, 35, &oldFreq[4], &freq[4], 23, COLOR_YELLOW);
+  tft.setCursor(78, 35);
+  tft.print('.');
+  
 
 }
 
@@ -228,7 +232,7 @@ void showRSSI()
 {
   char rssi[10];
   sprintf(rssi, "%i dBuV", rx.getRssi());
-  tft.setFont(&FreeSans9pt7b);
+  tft.setFont(&Serif_plain_14);
   tft.setTextSize(1);
   printValue(5, 55, oldRssi, rssi, 11, COLOR_WHITE);
 }
@@ -236,7 +240,7 @@ void showRSSI()
 void showStereoMono() {
   char stereo[10];
   sprintf(stereo, "%s", (rx.isStereo()) ? "St" : "Mo");
-  tft.setFont(&FreeSans9pt7b);
+  tft.setFont(&Serif_plain_14);
   tft.setTextSize(1);
   printValue(125, 55, oldStereo, stereo, 15, COLOR_WHITE);
 }
@@ -246,7 +250,7 @@ void showRds() {
   char rdsMsg[64];
 
   tft.setTextSize(1);
-  tft.setFont(&FreeSans9pt7b);
+  tft.setFont(&Serif_plain_14);
   sprintf(rdsStatus, "RDS %s", (bRds) ? "ON" : "OFF");
   printValue(5, 75, oldRdsStatus, rdsStatus, 14, COLOR_WHITE);
   sprintf(rdsMsg, "%s", rx.getRdsReady() ? "RDS MSG" : "NO MSG");
@@ -257,7 +261,7 @@ void showRds() {
 void showSplash()
 {
   // Splash
-  tft.setFont(&FreeSerif9pt7b);
+  tft.setFont(&Serif_plain_14);
   tft.setTextSize(1);
   tft.setTextColor(COLOR_WHITE);
   tft.setCursor(45, 23);
@@ -266,7 +270,7 @@ void showSplash()
   tft.print("Arduino Library");
   tft.setCursor(25, 80);
   tft.print("By PU2CLR");
-  tft.setFont(&FreeSans9pt7b);
+  tft.setFont(&Serif_plain_14);
   tft.setTextSize(0);
   tft.setCursor(12, 110);
   tft.print("Ricardo L. Caratti");

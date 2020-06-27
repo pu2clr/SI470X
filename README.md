@@ -129,6 +129,9 @@ See the schematic with __TFT display, Encoder and push buttons__ [here](./exampl
 
 * [AN230 - Si4700/01/02/03 PROGRAMMING GUIDE](https://www.silabs.com/documents/public/application-notes/AN230.pdf)
 * [Si4702/03-C19 - BROADCAST FM RADIO TUNERFOR PORTABLE APPLICATIONS](https://www.silabs.com/documents/public/data-sheets/Si4702-03-C19.pdf)
+* [Create and use custom fonts for Adafruit_GFX libraries](https://www.youtube.com/watch?v=L8MmTISmwZ8)
+* [Font Creator Now Creates Adafruit GFX Fonts](https://blog.squix.org/2016/10/font-creator-now-creates-adafruit-gfx-fonts.html)
+  
 
 
 
