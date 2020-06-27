@@ -253,7 +253,7 @@ void setup()
   oled.display();
   delay(500);
   oled.setCursor(30, 35);
-  oled.print("SMT32 - OLED");
+  oled.print("STM32 - OLED");
   oled.setCursor(40, 50);
   oled.print("By PU2CLR");
 
