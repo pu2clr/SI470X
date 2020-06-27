@@ -45,18 +45,22 @@
 // Buttons controllers
 #define VOL_UP PA4           // Volume Up
 #define VOL_DOWN PA5         // Volume Down
-#define SI470X_SEEK_UP  PA6         // Seek Up
-#define SI470X_SEEK_DOWN PA7        // Seek Down
+#define SEEK_UP  PA6         // Seek Up
+#define SEEK_DOWN PA7        // Seek Down
 
 #define MIN_ELAPSED_TIME 100
-#define MIN_ELAPSED_RSSI_TIME 150
+#define MIN_ELAPSED_RSSI_TIME 200
 
-char oldFreq[10];
-char oldRssi[10];
-char oldVolume[10];
+char oldFreq[15];
+char oldRssi[15];
+char oldVolume[15];
 
 // Encoder control variables
 volatile int encoderCount = 0;
+
+
+long elapsedButton =  millis();
+long elapsedRssi   =  millis();
 
 // Some variables to check the SI4735 status
 uint16_t currentFrequency;
@@ -153,8 +157,8 @@ void showVolume()
 
 void showFrequency()
 {
-  char freq[10];
-  char tmp[10];
+  char freq[15];
+  char tmp[15];
 
   currentFrequency = rx.getFrequency();
   sprintf(tmp, "%5.5u", currentFrequency);
@@ -162,17 +166,13 @@ void showFrequency()
   freq[0] = (tmp[0] == '0') ? ' ' : tmp[0];
   freq[1] = tmp[1];
   freq[2] = tmp[2];
-  freq[3] = '\0';
+  freq[3] = '.';
   freq[4] = tmp[3];
   freq[5] = tmp[4];
   freq[6] = '\0';
 
-  oled.setFont(&DSEG7_Classic_Mini_Regular_30);
-  oled.setTextSize(1);
-  printValue(0, 35, &oldFreq[0], &freq[0], 23, COLOR_YELLOW);
-  printValue(80, 35, &oldFreq[4], &freq[4], 23, COLOR_YELLOW);
-  tft.setCursor(78, 35);
-  tft.print('.');
+  printValue(23, 0, oldFreq, freq, 12, 2);
+  oled.display();
 }
 
 /* *******************************
@@ -182,9 +182,9 @@ void showRSSI()
 {
   char rssi[10];
   sprintf(rssi, "%i dBuV", rx.getRssi());
-  oled.setFont(&Serif_plain_14);
+  // oled.setFont(&Serif_plain_14);
   oled.setTextSize(1);
-  printValue(5, 55, oldRssi, rssi, 11, COLOR_WHITE);
+  printValue(5, 55, oldRssi, rssi, 11, SSD1306_WHITE);
 
   oled.display();
 }
@@ -198,11 +198,10 @@ void showStatus()
   oldFreq[0] = oldRssi[0] = oldVolume[0] = 0;
 
   oled.clearDisplay();
-  resetBuffer();
 
-  oled.drawLine(0,17,130,17, SSD1306_WHITE ); 
-  oled.drawLine(0,52,130,52, SSD1306_WHITE );
-  
+  oled.drawLine(0, 17, 130, 17, SSD1306_WHITE );
+  oled.drawLine(0, 52, 130, 52, SSD1306_WHITE );
+
   showFrequency();
 
   showVolume();
@@ -213,14 +212,14 @@ void showStatus()
 
 
 /*
- * Button - Volume control
- */
+   Button - Volume control
+*/
 void volumeButton ( byte d) {
 
-  if ( d == 1 )  
-    rx.volumeUp();
+  if ( d == 1 )
+    rx.setVolumeUp();
   else
-    rx.volumeDown();
+    rx.setVolumeDown();
   showVolume();
   delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
 }
@@ -234,8 +233,8 @@ void setup()
 
   pinMode(VOL_UP, INPUT_PULLUP);
   pinMode(VOL_DOWN, INPUT_PULLUP);
-  pinMode(SI470X_SEEK_UP, INPUT_PULLUP);
-  pinMode(SI470X_SEEK_DOWN, INPUT_PULLUP);
+  pinMode(SEEK_UP, INPUT_PULLUP);
+  pinMode(SEEK_DOWN, INPUT_PULLUP);
 
   oled.begin(SSD1306_SWITCHCAPVCC, 0x3C);
   oled.clearDisplay();
@@ -255,7 +254,7 @@ void setup()
   delay(500);
   oled.setCursor(30, 35);
   oled.print("SMT32 - OLED");
-  oled.setCursor(10, 50);
+  oled.setCursor(40, 50);
   oled.print("By PU2CLR");
 
   oled.display();
@@ -274,10 +273,8 @@ void setup()
   rx.setSeekThreshold(30); // Sets RSSI Seek Threshold (0 to 127)
 
   delay(300);
-  
-  currentFrequency = rx.getFrequency();
 
-  rx.setVolume(volume);
+  currentFrequency = rx.getFrequency();
 
   showStatus();
 }
@@ -288,22 +285,11 @@ void loop()
   // Check if the encoder has moved.
   if (encoderCount != 0)
   {
-    if (bfoOn)
-    {
-      currentBFO = (encoderCount == 1) ? (currentBFO + currentBFOStep) : (currentBFO - currentBFOStep);
-      rx.setSSBBfo(currentBFO);
-      showBFO();
-    }
+    if (encoderCount == 1)
+      rx.setFrequencyUp();
     else
-    {
-      if (encoderCount == 1)
-        rx.frequencyUp();
-      else
-        rx.frequencyDown();
-      // Show the current frequency only if it has changed
-      currentFrequency = rx.getFrequency();
-      showFrequency();
-    }
+      rx.setFrequencyDown();
+    showFrequency();
     encoderCount = 0;
   }
 
@@ -315,17 +301,17 @@ void loop()
       volumeButton(1);
     else if (digitalRead(VOL_DOWN) == LOW)
       volumeButton(-1);
-    else if (digitalRead(SI470X_SEEK_UP) == LOW) 
+    else if (digitalRead(SEEK_UP) == LOW)
       rx.seek(SI470X_SEEK_WRAP, SI470X_SEEK_UP, showFrequency);
     else if (digitalRead(SI470X_SEEK_DOWN) == LOW)
-      rx.seek(SI470X_SEEK_WRAP, SI470X_SEEK_DOWN, showFrequency);
+      rx.seek(SI470X_SEEK_WRAP, SEEK_DOWN, showFrequency);
   }
 
   // Show RSSI status only if this condition has changed
-  if ((millis() - elapsedRSSI) > MIN_ELAPSED_RSSI_TIME * 10)
+  if ((millis() - elapsedRssi) > MIN_ELAPSED_RSSI_TIME * 40)
   {
     showRSSI();
-    elapsedRSSI = millis();
+    elapsedRssi = millis();
   }
 
   delay(10);
