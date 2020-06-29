@@ -1,16 +1,17 @@
 /*
    Test and validation of SI4703 on ATtiny85 device.
+   It is a FM receiver with mini OLED and and two push buttons  
+   
+   ATiny85 and Si470X wireup  
 
-   ATTENTION:
-   Please, avoid using the computer connected to the mains during testing. Used just the battery of your computer.
-   This sketch was tested on ATmega328 based board. If you are not using a ATmega328, please check the pins of your board.
-
-    | Si470x pin      |     STM32                   |
-    | ----------------| --------------------------- |
-    | RESET /RST      |     PB3 / physical pin 2    |
-    | SEEK_UP         |     PB1 / physical pin 6    |
-    | SDIO / SDA      |     SDA / physical pin 5    |
-    | SCLK / CLK      |     SCL / physical pin 7    |
+    | Si470x pin      | Attiny85 REF pin | Physical pin  | 
+    | ----------------| -----------------| ------------- | 
+    | RESET /RST      |     PB3          |     2         |
+    | SEEK_UP         |     PB1          |     6         | 
+    | SEEK_DOWN       |     PB4          |     3         |
+    | SDIO / SDA      |     SDA          |     5         |
+    | SCLK / CLK      |     SCL          |     7         |
+   
 
    By Ricardo Lima Caratti, 2020.
 */
@@ -26,16 +27,7 @@
 #define SEEK_UP   PB1     
 #define SEEK_DOWN PB4    
 
-
-#define MAX_DELAY_RDS 40   // 40ms - polling method
-
-
-uint16_t currentFrequency;
-
-long rds_elapsed = millis();
-
 SI470X rx;
-
 
 void setup()
 {

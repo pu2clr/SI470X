@@ -1,17 +1,18 @@
 /*
    Test and validation of SI4703 on ATtiny84 device.
+   It is FM receiver with  
+  
+   ATiny84 and Si470X wireup  
 
-   ATTENTION:
-   Please, avoid using the computer connected to the mains during testing. Used just the battery of your computer.
-   This sketch was tested on ATmega328 based board. If you are not using a ATmega328, please check the pins of your board.
-
-    | Si470x pin      |     STM32                   |
-    | ----------------| --------------------------- |
-    | RESET /RST      |     7 /  physical pin 6     |
-    | SEEK_UP         |     3  / physical pin 10    |
-    | SEEK_DOWN       |     5  / physical pin  8
-    | SDIO / SDA      |     SDA / physical pin 7    |
-    | SCLK / CLK      |     SCL / physical pin 9    |
+    | Si470x pin      | Attiny84 REF pin | Physical pin  | 
+    | ----------------| -----------------| ------------- | 
+    | RESET /RST      |     7            |     6         |
+    | SEEK_UP         |     3            |    10         | 
+    | SEEK_DOWN       |     5            |     8         |
+    | ENCODER_PIN_A   |     0            |    13         |
+    | ENCODER_PIN_B   |     1            |    12         |  
+    | SDIO / SDA      |     SDA          |     7         |
+    | SCLK / CLK      |     SCL          |     9         |
 
    By Ricardo Lima Caratti, 2020.
 */
@@ -20,38 +21,25 @@
 #include <Tiny4kOLED.h>
 
 
-
-#define RESET_PIN       7       // On Arduino Atmega328 based board, this pin is labeled as A0 (14 means digital pin instead analog)
-#define SDA_PIN         SDA       //  
-
-#define SEEK_UP         3       
-#define SEEK_DOWN       5
-
+// Please, check the ATtiny84 physical pins 
+#define RESET_PIN           7    // On Arduino Atmega328 based board, this pin is labeled as A0 (14 means digital pin instead analog)
+#define SDA_PIN             SDA  //  
+#define SEEK_UP             3       
+#define SEEK_DOWN           5
 #define ENCODER_PIN_A       0
 #define ENCODER_PIN_B       1  
   
-
-
-#define MAX_DELAY_RDS 40   // 40ms - polling method
-
 unsigned char encoder_pin_a;
 unsigned char encoder_prev = 0;
 unsigned char encoder_pin_b;
-
 long elapsedTimeEncoder = millis();
 
-uint16_t currentFrequency;
-
-long rds_elapsed = millis();
-
 SI470X rx;
-
 
 void setup()
 {
   pinMode(SEEK_UP, INPUT_PULLUP);
   pinMode(SEEK_DOWN, INPUT_PULLUP);
-
   pinMode(ENCODER_PIN_A, INPUT_PULLUP);
   pinMode(ENCODER_PIN_B, INPUT_PULLUP);
 
@@ -70,8 +58,6 @@ void setup()
   rx.setVolume(6);
   rx.setFrequency(10650); // It is the frequency you want to select in MHz multiplied by 100.
   showStatus();
-
- 
 }
 
 void showStatus() {
@@ -87,7 +73,6 @@ void showStatus() {
 
 void loop()
 {
-
   if ((millis() - elapsedTimeEncoder) > 5)
   {
     encoder_pin_a = digitalRead(ENCODER_PIN_A);
@@ -103,7 +88,7 @@ void loop()
     encoder_prev = encoder_pin_a;
     elapsedTimeEncoder = millis(); // keep elapsedTimeEncoder updated
   }
-  
+ 
   if (digitalRead(SEEK_UP) == LOW ) {
     rx.seek(SI470X_SEEK_WRAP,SI470X_SEEK_UP);
     showStatus();
@@ -112,4 +97,5 @@ void loop()
     rx.seek(SI470X_SEEK_WRAP,SI470X_SEEK_DOWN);
     showStatus();
   }
+  
  }
