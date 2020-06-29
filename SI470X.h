@@ -528,7 +528,7 @@ class SI470X {
 
             void setup(int resetPin, int sdaPin, int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL);
             void setup(int resetPin, int sdaPin, uint8_t oscillator_type);
-
+            // void setupDebug(int resetPin, int sdaPin, int rdsInterruptPin, int seekInterruptPin, uint8_t oscillator_type, void (*showFunc)(byte v));
             void setFrequency(uint16_t frequency);
             void setFrequencyUp();
             void setFrequencyDown();

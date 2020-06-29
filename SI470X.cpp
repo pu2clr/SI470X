@@ -29,8 +29,8 @@ void SI470X::getAllRegisters()
     int i;
 
     Wire.requestFrom(this->deviceAddress, 32);
-    while (Wire.available() < 32)
-        ;
+    delayMicroseconds(300);
+    // while (Wire.available() < 32); // It did not work on Attiny Core
 
     // The registers from 0x0A to 0x0F come first
     for (i = 0x0A; i <= 0x0F; i++)
@@ -82,8 +82,9 @@ void SI470X::getStatus()
 {
     word16_to_bytes aux;
     Wire.requestFrom(this->deviceAddress, 2);
-    while (Wire.available() < 2)
-        ;
+    delayMicroseconds(300);
+    // while (Wire.available() < 2) ; // It did not work on Attiny Core
+
     aux.refined.highByte = Wire.read();
     aux.refined.lowByte = Wire.read();
     shadowRegisters[0x0A] = aux.raw;
@@ -207,8 +208,11 @@ void SI470X::powerDown()
  */
 void SI470X::setup(int resetPin, int sdaPin, int rdsInterruptPin, int seekInterruptPin, uint8_t oscillator_type)
 {
-    pinMode(sdaPin, OUTPUT);
-    digitalWrite(sdaPin, LOW);
+
+    if (sdaPin >= 0 ) {
+        pinMode(sdaPin, OUTPUT);
+        digitalWrite(sdaPin, LOW);
+    }
 
     this->resetPin = resetPin;
     if (rdsInterruptPin >= 0)
@@ -224,6 +228,7 @@ void SI470X::setup(int resetPin, int sdaPin, int rdsInterruptPin, int seekInterr
     powerUp();
 }
 
+
 /**
  * @ingroup GA03
  * @brief Starts the device 
@@ -236,6 +241,7 @@ void SI470X::setup(int resetPin, int sdaPin, uint8_t oscillator_type)
 {
     setup(resetPin, sdaPin, -1, -1, oscillator_type);
 }
+
 
 /**
  * @ingroup GA03
