@@ -1,5 +1,7 @@
 var group___g_a03 =
 [
+    [ "setI2CAddress", "group___g_a03.html#ga7b31c48ccd189eccc597c0262f151afc", null ],
+    [ "setDelayAfterCrystalOn", "group___g_a03.html#gafcecfb8b743da7df2ca993d733487d3f", null ],
     [ "getShadownRegister", "group___g_a03.html#ga8df17d9057d8bcdd01226a33e6a2d8f7", null ],
     [ "setShadownRegister", "group___g_a03.html#ga4204d5798dac02868e43b7bae95b1615", null ],
     [ "getAllRegisters", "group___g_a03.html#ga88702e9ed11d428d9f4c8d0c445fe6a9", null ],

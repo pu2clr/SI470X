@@ -1588,9 +1588,12 @@ highByte</td>
 <dl class="section author"><dt>Author</dt><dd>PU2CLR - Ricardo Lima Caratti </dd></dl>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h3>Public Member Functions</h3></td></tr>
-<tr class="memitem:afcecfb8b743da7df2ca993d733487d3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#afcecfb8b743da7df2ca993d733487d3f">setDelayAfterCrystalOn</a> (uint8_t ms_value)</td></tr>
-<tr class="memdesc:afcecfb8b743da7df2ca993d733487d3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Delay After Crystal On (default 500ms)  <a href="group___g_a01.html#afcecfb8b743da7df2ca993d733487d3f">More...</a><br /></td></tr>
-<tr class="separator:afcecfb8b743da7df2ca993d733487d3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7b31c48ccd189eccc597c0262f151afc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga7b31c48ccd189eccc597c0262f151afc">setI2CAddress</a> (int bus_addr)</td></tr>
+<tr class="memdesc:ga7b31c48ccd189eccc597c0262f151afc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the I2C bus address.  <a href="group___g_a03.html#ga7b31c48ccd189eccc597c0262f151afc">More...</a><br /></td></tr>
+<tr class="separator:ga7b31c48ccd189eccc597c0262f151afc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafcecfb8b743da7df2ca993d733487d3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gafcecfb8b743da7df2ca993d733487d3f">setDelayAfterCrystalOn</a> (uint8_t ms_value)</td></tr>
+<tr class="memdesc:gafcecfb8b743da7df2ca993d733487d3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Delay After Crystal On (default 500ms)  <a href="group___g_a03.html#gafcecfb8b743da7df2ca993d733487d3f">More...</a><br /></td></tr>
+<tr class="separator:gafcecfb8b743da7df2ca993d733487d3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga88702e9ed11d428d9f4c8d0c445fe6a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga88702e9ed11d428d9f4c8d0c445fe6a9">getAllRegisters</a> ()</td></tr>
 <tr class="memdesc:ga88702e9ed11d428d9f4c8d0c445fe6a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets all current register content of the device.  <a href="group___g_a03.html#ga88702e9ed11d428d9f4c8d0c445fe6a9">More...</a><br /></td></tr>
 <tr class="separator:ga88702e9ed11d428d9f4c8d0c445fe6a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1803,41 +1806,6 @@ highByte</td>
 <tr class="memitem:a7e14d52c55c03bff9031382c6b1a0e0f"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#a7e14d52c55c03bff9031382c6b1a0e0f">maxDelayAftarCrystalOn</a> = <a class="el" href="_s_i470_x_8h.html#afb81dd661d531fa5c5422549fab7588f">MAX_DELAY_AFTER_OSCILLATOR</a></td></tr>
 <tr class="separator:a7e14d52c55c03bff9031382c6b1a0e0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h4 class="groupheader">Member Function Documentation</h4>
-<a id="afcecfb8b743da7df2ca993d733487d3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afcecfb8b743da7df2ca993d733487d3f">&#9670;&nbsp;</a></span>setDelayAfterCrystalOn()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SI470X::setDelayAfterCrystalOn </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ms_value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Set the Delay After Crystal On (default 500ms) </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ms_value</td><td>Value in milliseconds </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <h4 class="groupheader">Field Documentation</h4>
 <a id="a93ac1de76dbcaedc1173c557df394d13"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a93ac1de76dbcaedc1173c557df394d13">&#9670;&nbsp;</a></span>rds_buffer2A</h2>
@@ -1962,6 +1930,8 @@ highByte</td>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="group___g_a03.html#ga7b31c48ccd189eccc597c0262f151afc">setI2CAddress()</a>.</p>
 
 </div>
 </div>

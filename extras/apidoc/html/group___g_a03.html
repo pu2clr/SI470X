@@ -93,6 +93,12 @@ $(document).ready(function(){initNavTree('group___g_a03.html',''); initResizable
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ga7b31c48ccd189eccc597c0262f151afc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga7b31c48ccd189eccc597c0262f151afc">SI470X::setI2CAddress</a> (int bus_addr)</td></tr>
+<tr class="memdesc:ga7b31c48ccd189eccc597c0262f151afc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the I2C bus address.  <a href="group___g_a03.html#ga7b31c48ccd189eccc597c0262f151afc">More...</a><br /></td></tr>
+<tr class="separator:ga7b31c48ccd189eccc597c0262f151afc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafcecfb8b743da7df2ca993d733487d3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gafcecfb8b743da7df2ca993d733487d3f">SI470X::setDelayAfterCrystalOn</a> (uint8_t ms_value)</td></tr>
+<tr class="memdesc:gafcecfb8b743da7df2ca993d733487d3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Delay After Crystal On (default 500ms)  <a href="group___g_a03.html#gafcecfb8b743da7df2ca993d733487d3f">More...</a><br /></td></tr>
+<tr class="separator:gafcecfb8b743da7df2ca993d733487d3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8df17d9057d8bcdd01226a33e6a2d8f7"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga8df17d9057d8bcdd01226a33e6a2d8f7">SI470X::getShadownRegister</a> (uint8_t register_number)</td></tr>
 <tr class="memdesc:ga8df17d9057d8bcdd01226a33e6a2d8f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Shadown Register object.  <a href="group___g_a03.html#ga8df17d9057d8bcdd01226a33e6a2d8f7">More...</a><br /></td></tr>
 <tr class="separator:ga8df17d9057d8bcdd01226a33e6a2d8f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -226,6 +232,76 @@ Functions</h2></td></tr>
 <h1><a class="anchor" id="GA03"></a>
 Basic</h1>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ga7b31c48ccd189eccc597c0262f151afc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7b31c48ccd189eccc597c0262f151afc">&#9670;&nbsp;</a></span>setI2CAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SI470X::setI2CAddress </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bus_addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the I2C bus address. </p>
+<p>This function must to be called before setup function if your device are not using 0x10 (default) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bus_addr</td><td>I2C buss address </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">References <a class="el" href="group___g_a01.html#a74f4814275d0ccb39f8fb0bf19a18a84">SI470X::deviceAddress</a>.</p>
+
+</div>
+</div>
+<a id="gafcecfb8b743da7df2ca993d733487d3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafcecfb8b743da7df2ca993d733487d3f">&#9670;&nbsp;</a></span>setDelayAfterCrystalOn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SI470X::setDelayAfterCrystalOn </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ms_value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the Delay After Crystal On (default 500ms) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ms_value</td><td>Value in milliseconds </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ga8df17d9057d8bcdd01226a33e6a2d8f7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga8df17d9057d8bcdd01226a33e6a2d8f7">&#9670;&nbsp;</a></span>getShadownRegister()</h2>
 
