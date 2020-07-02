@@ -971,7 +971,7 @@ char *SI470X::getRdsText2A(void)
 
     getRdsStatus();
 
-    if (getRdsGroupType() == 2)
+    if (blkb.group2.groupType == 2)
     {
         // Process group 2A
         // Decode B block information
@@ -999,7 +999,7 @@ char *SI470X::getRdsText2B(void)
 
     getRdsStatus();
     blkb.blockB = shadowRegisters[0x0D];
-    if (getRdsGroupType() == 2 /* && getRdsVersionCode() == 1 */)
+    if (blkb.group2.groupType == 2)
     {
         // Process group 2B
         rdsTextAdress2B = blkb.group2.address;

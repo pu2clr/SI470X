@@ -280,13 +280,13 @@ void showRDSTime()
 {
   if (strcmp(bufferRdsTime, rdsTime) == 0)
     return;
-  printValue(100, 110, bufferRdsTime, rdsTime, 7, COLOR_RED);
+  printValue(90, 110, bufferRdsTime, rdsTime, 6, COLOR_RED);
   delay(100);
 }
 
 
 void clearRds() {
-  tft.fillRect(4, 79, 145, 40, COLOR_BLACK);
+  tft.fillRect(4, 79, 150, 40, COLOR_BLACK);
   bShow = false;
 }
 
@@ -400,6 +400,7 @@ void doRds() {
 void doSeek() {
   rx.seek(SI470X_SEEK_WRAP, seekDirection, showFrequency);  // showFrequency will be called by the seek function during the process.
   delay(200);
+  bShow =  true;
   showFrequency();
 }
 
