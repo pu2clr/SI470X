@@ -331,7 +331,7 @@ Basic</h1>
 shadowRegisters; <br  />
  </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="group___g_a01.html#a448d85a027e34e49892d2266c5a161af">SI470X::getRdsGroupType()</a>, <a class="el" href="group___g_a03.html#ga6459a4e812ebfc92d6dca2b2f5b4f915">SI470X::getRealChannel()</a>, <a class="el" href="group___g_a03.html#gabe3dc193ede8ee6ebf4bae3728046bb8">SI470X::powerDown()</a>, <a class="el" href="group___g_a03.html#ga3fabcb452602ea372d759fe3ba20bec8">SI470X::powerUp()</a>, <a class="el" href="group___g_a03.html#ga80abdafabf55be7717ebc19138431adb">SI470X::seek()</a>, and <a class="el" href="group___g_a03.html#gac1adddefa79fcd3b1b1ed16df7870d85">SI470X::waitAndFinishTune()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="group___g_a03.html#ga6459a4e812ebfc92d6dca2b2f5b4f915">SI470X::getRealChannel()</a>, <a class="el" href="group___g_a03.html#gabe3dc193ede8ee6ebf4bae3728046bb8">SI470X::powerDown()</a>, <a class="el" href="group___g_a03.html#ga3fabcb452602ea372d759fe3ba20bec8">SI470X::powerUp()</a>, <a class="el" href="group___g_a03.html#ga80abdafabf55be7717ebc19138431adb">SI470X::seek()</a>, and <a class="el" href="group___g_a03.html#gac1adddefa79fcd3b1b1ed16df7870d85">SI470X::waitAndFinishTune()</a>.</p>
 
 </div>
 </div>
@@ -380,7 +380,7 @@ shadowRegisters; </dd></dl>
 <p>Gets the value of the 0x0A register. </p>
 <p>This function also updates the value of shadowRegisters[0]; </p><dl class="section return"><dt>Returns</dt><dd><a class="el" href="group___g_a01.html#unionsi470x__reg0a" title="Status RSSI.">si470x_reg0a</a> </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="group___g_a01.html#a5774290edb31b7f131972420eed5037c">SI470X::getRdsReady()</a>, <a class="el" href="group___g_a03.html#ga4f1e1aec94964d00fde66b2af31516ee">SI470X::getRssi()</a>, and <a class="el" href="group___g_a03.html#ga28d4ad88023cf90a92196bdc0d933a83">SI470X::isStereo()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="group___g_a04.html#ga5774290edb31b7f131972420eed5037c">SI470X::getRdsReady()</a>, <a class="el" href="group___g_a04.html#ga05478b5469d0f6e8d639079fe9d0d55c">SI470X::getRdsSync()</a>, <a class="el" href="group___g_a03.html#ga4f1e1aec94964d00fde66b2af31516ee">SI470X::getRssi()</a>, and <a class="el" href="group___g_a03.html#ga28d4ad88023cf90a92196bdc0d933a83">SI470X::isStereo()</a>.</p>
 
 </div>
 </div>
@@ -867,7 +867,7 @@ shadowRegisters; </dd></dl>
 <div class="line"><span class="keywordtype">void</span> loop() {</div>
 <div class="line"> .</div>
 <div class="line"> .</div>
-<div class="line">     rx.<a class="code" href="group___g_a03.html#ga80abdafabf55be7717ebc19138431adb">seek</a>(<a class="code" href="_s_i470_x_8h.html#a6c553e7c46b1267b7d316770b4028662">SI470X_SEEK_WRAP</a>, <a class="code" href="_s_i470_x_8h.html#a6af70605e17fdcdeea166d59672d2a54">SI470X_SEEK_UP</a>, showFrequency); <span class="comment">// Seek Up</span></div>
+<div class="line">     rx.<a class="code" href="group___g_a03.html#ga80abdafabf55be7717ebc19138431adb">seek</a>(<a class="code" href="_s_i470_x_8h.html#ad7a34eb47dda6f939553ded4e2b0d5c8">SI470X_SEEK_WRAP</a>, <a class="code" href="_s_i470_x_8h.html#af713b905174853f3a070bd87ae855822">SI470X_SEEK_UP</a>, showFrequency); <span class="comment">// Seek Up</span></div>
 <div class="line"> .</div>
 <div class="line"> .</div>
 <div class="line">}</div>
@@ -1454,11 +1454,11 @@ shadowRegisters; </dd></dl>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="a_s_i470_x_8h_html_a6af70605e17fdcdeea166d59672d2a54"><div class="ttname"><a href="_s_i470_x_8h.html#a6af70605e17fdcdeea166d59672d2a54">SI470X_SEEK_UP</a></div><div class="ttdeci">#define SI470X_SEEK_UP</div><div class="ttdoc">Seek Up Direction.</div><div class="ttdef"><b>Definition:</b> SI470X.h:27</div></div>
-<div class="ttc" id="agroup___g_a03_html_ga80abdafabf55be7717ebc19138431adb"><div class="ttname"><a href="group___g_a03.html#ga80abdafabf55be7717ebc19138431adb">SI470X::seek</a></div><div class="ttdeci">void seek(uint8_t seek_mode, uint8_t direction)</div><div class="ttdoc">Seek function.</div><div class="ttdef"><b>Definition:</b> SI470X.cpp:344</div></div>
+<div class="ttc" id="a_s_i470_x_8h_html_ad7a34eb47dda6f939553ded4e2b0d5c8"><div class="ttname"><a href="_s_i470_x_8h.html#ad7a34eb47dda6f939553ded4e2b0d5c8">SI470X_SEEK_WRAP</a></div><div class="ttdeci">#define SI470X_SEEK_WRAP</div><div class="ttdef"><b>Definition:</b> SI470X.h:28</div></div>
+<div class="ttc" id="agroup___g_a03_html_ga80abdafabf55be7717ebc19138431adb"><div class="ttname"><a href="group___g_a03.html#ga80abdafabf55be7717ebc19138431adb">SI470X::seek</a></div><div class="ttdeci">void seek(uint8_t seek_mode, uint8_t direction)</div><div class="ttdoc">Seek function.</div><div class="ttdef"><b>Definition:</b> SI470X.cpp:349</div></div>
 <div class="ttc" id="agroup___g_a01_html_class_s_i470_x"><div class="ttname"><a href="group___g_a01.html#class_s_i470_x">SI470X</a></div><div class="ttdoc">KT0915 Class.</div><div class="ttdef"><b>Definition:</b> SI470X.h:446</div></div>
-<div class="ttc" id="agroup___g_a03_html_ga89180830a5e01de15ab22e0d8157c34a"><div class="ttname"><a href="group___g_a03.html#ga89180830a5e01de15ab22e0d8157c34a">SI470X::getFrequency</a></div><div class="ttdeci">uint16_t getFrequency()</div><div class="ttdoc">Gets the current frequency.</div><div class="ttdef"><b>Definition:</b> SI470X.cpp:303</div></div>
-<div class="ttc" id="a_s_i470_x_8h_html_a6c553e7c46b1267b7d316770b4028662"><div class="ttname"><a href="_s_i470_x_8h.html#a6c553e7c46b1267b7d316770b4028662">SI470X_SEEK_WRAP</a></div><div class="ttdeci">#define SI470X_SEEK_WRAP</div><div class="ttdef"><b>Definition:</b> SI470X.h:28</div></div>
+<div class="ttc" id="agroup___g_a03_html_ga89180830a5e01de15ab22e0d8157c34a"><div class="ttname"><a href="group___g_a03.html#ga89180830a5e01de15ab22e0d8157c34a">SI470X::getFrequency</a></div><div class="ttdeci">uint16_t getFrequency()</div><div class="ttdoc">Gets the current frequency.</div><div class="ttdef"><b>Definition:</b> SI470X.cpp:308</div></div>
+<div class="ttc" id="a_s_i470_x_8h_html_af713b905174853f3a070bd87ae855822"><div class="ttname"><a href="_s_i470_x_8h.html#af713b905174853f3a070bd87ae855822">SI470X_SEEK_UP</a></div><div class="ttdeci">#define SI470X_SEEK_UP</div><div class="ttdoc">Seek Up Direction.</div><div class="ttdef"><b>Definition:</b> SI470X.h:27</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

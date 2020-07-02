@@ -24,6 +24,7 @@ var NAVTREE =
 [
   [ "PU2CLR SI470X Arduino Library", "index.html", [
     [ "SI470X Arduino Library implementation", "index.html", null ],
+    [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
@@ -48,7 +49,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_s_i470_x_8cpp.html",
-"group___g_a03.html#ga6c3cb96a721e4bb10a492d6fcad9df8a"
+"group___g_a03.html#ga6459a4e812ebfc92d6dca2b2f5b4f915"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

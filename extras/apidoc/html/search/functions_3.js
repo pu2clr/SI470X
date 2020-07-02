@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['reset_186',['reset',['../group___g_a03.html#gaf11efb6ed0306cd67e8a7feab37519de',1,'SI470X']]]
+  ['reset_215',['reset',['../group___g_a03.html#gaf11efb6ed0306cd67e8a7feab37519de',1,'SI470X']]]
 ];
