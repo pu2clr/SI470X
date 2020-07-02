@@ -38,6 +38,7 @@
 
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_ST7735.h> // Hardware-specific library for ST7735
+#include "Serif_plain_7.h"
 #include "Serif_plain_8.h"
 #include "Serif_plain_14.h"
 #include "DSEG7_Classic_Mini_Regular_30.h"
@@ -259,10 +260,11 @@ long stationNameElapsed = millis();
 
 void showRDSMsg()
 {
+  tft.setFont(&Serif_plain_7);
   rdsMsg[35] = bufferRdsMsg[35] = '\0';
   if (strcmp(bufferRdsMsg, rdsMsg) == 0)
     return;
-  printValue(5, 90, bufferRdsMsg, rdsMsg, 7, COLOR_BLUE);
+  printValue(5, 90, bufferRdsMsg, rdsMsg, 7, COLOR_YELLOW);
   delay(250);
 }
 
@@ -271,6 +273,7 @@ void showRDSMsg()
 */
 void showRDSStation()
 {
+    tft.setFont(&Serif_plain_8);
   if (strncmp(bufferStatioName, stationName, 3) == 0)
     return;
   printValue(5, 110, bufferStatioName, stationName, 7, COLOR_YELLOW);
@@ -278,6 +281,7 @@ void showRDSStation()
 
 void showRDSTime()
 {
+  tft.setFont(&Serif_plain_8);
   if (strcmp(bufferRdsTime, rdsTime) == 0)
     return;
   printValue(90, 110, bufferRdsTime, rdsTime, 6, COLOR_RED);
@@ -292,7 +296,7 @@ void clearRds() {
 
 void checkRDS()
 {
-  if (/* rx.getRdsSync() && */ rx.getRdsReady() )
+  if (rx.getRdsReady() )
   {
     rdsMsg = rx.getRdsText2A();
     stationName = rx.getRdsText0A();
@@ -300,7 +304,7 @@ void checkRDS()
     if (rdsMsg != NULL)
       showRDSMsg();
 
-    if ((millis() - stationNameElapsed) > 2000)
+    if ((millis() - stationNameElapsed) > 1000)
     {
       if (stationName != NULL)
         showRDSStation();
@@ -347,7 +351,6 @@ void showSplash()
 
 void setup()
 {
-
   pinMode(ENCODER_PIN_A, INPUT_PULLUP);
   pinMode(ENCODER_PIN_B, INPUT_PULLUP);
 

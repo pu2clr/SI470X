@@ -929,7 +929,7 @@ char *SI470X::getRdsText(void)
 
 /**
  * @ingroup GA04
- * @todo RDS Dynamic PS or Scrolling PS 
+ * @todo RDS Dynamic PS or Scrolling PS support
  * @brief Gets the station name and other messages. 
  * 
  * @return char* should return a string with the station name. 
@@ -971,12 +971,12 @@ char *SI470X::getRdsText2A(void)
 
     getRdsStatus();
 
+    blkb.blockB = shadowRegisters[0x0D];
+    rdsTextAdress2A = blkb.group2.address;
     if (blkb.group2.groupType == 2)
     {
         // Process group 2A
         // Decode B block information
-        blkb.blockB = shadowRegisters[0x0D];
-        rdsTextAdress2A = blkb.group2.address;
         if (rdsTextAdress2A >= 0 && rdsTextAdress2A < 16)
         {
             getNext4Block(&rds_buffer2A[rdsTextAdress2A * 4]);
