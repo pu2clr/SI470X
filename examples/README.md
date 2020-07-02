@@ -17,6 +17,7 @@ The [si470x_02_TFT_display](https://github.com/pu2clr/SI470X/tree/master/example
 
 The [si470x_03_STM32_OLED](https://github.com/pu2clr/SI470X/tree/master/examples/si470x_03_STM32_OLED) folder has an example with the traditional OLED I2C display and the breakout board SI3703. __In the sketch you will find the wireup with display and si470x device__.  
 
+<BR>
 
 # TFT SCHEMATIC 
 
@@ -54,6 +55,8 @@ In general, the SI4703 device is already sold in kit or shield format. So, the c
 |                           | B                         |       3       |
 
 
+<BR>
+
 
 ## ATtiny84 Schematic
 
@@ -74,6 +77,7 @@ In general, the SI4703 device is already sold in kit or shield format. So, the c
 | SCLK / CLK      |     SCL          |     9         |
 
 
+<BR>
 
 ## Attiny85 Schematic
 
