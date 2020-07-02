@@ -55,9 +55,7 @@ In general, the SI4703 device is already sold in kit or shield format. So, the c
 
 
 
-
-
-## Attiny84 Schematic
+## ATtiny84 Schematic
 
 
 ![schematic Attiny84, buttons and encoder](https://pu2clr.github.io/SI470X/extras/images/circuit_attiny84.png)
