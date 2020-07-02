@@ -494,8 +494,8 @@ class SI470X {
         void waitAndFinishTune();
 
     public:
-    
         /**
+         * @ingroup GA03
          * @brief Sets the I2C bus address 
          * @details This function must to be called before setup function if your device are not using 0x10 (default)
          * @param bus_addr I2C buss address
