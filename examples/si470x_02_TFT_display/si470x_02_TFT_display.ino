@@ -284,7 +284,7 @@ void showRDSTime()
   tft.setFont(&Serif_plain_8);
   if (strcmp(bufferRdsTime, rdsTime) == 0)
     return;
-  printValue(90, 110, bufferRdsTime, rdsTime, 6, COLOR_RED);
+  printValue(80, 110, bufferRdsTime, rdsTime, 6, COLOR_RED);
   delay(100);
 }
 
