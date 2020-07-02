@@ -261,7 +261,7 @@ long stationNameElapsed = millis();
 void showRDSMsg()
 {
   tft.setFont(&Serif_plain_7);
-  rdsMsg[24] = bufferRdsMsg[24] = '\0';   // Truncate the message to fit on display.  You can try scrolling 
+  rdsMsg[19] = bufferRdsMsg[19] = '\0';   // Truncate the message to fit on display.  You can try scrolling 
   if (strcmp(bufferRdsMsg, rdsMsg) == 0)
     return;
   printValue(5, 90, bufferRdsMsg, rdsMsg, 7, COLOR_YELLOW);
