@@ -1023,17 +1023,18 @@ char *SI470X::getRdsTime()
     // Need to check the Group Type before.
     si470x_rds_date_time dt;
     word16_to_bytes blk_b, blk_c, blk_d;
+    si470x_rds_blockb blkb;
 
     getRdsStatus();
 
-    blk_b.raw = shadowRegisters[REG0D];
+    blk_b.raw = blkb.blockB = shadowRegisters[REG0D];
     blk_c.raw = shadowRegisters[REG0E];
     blk_d.raw = shadowRegisters[REG0F];
 
     uint16_t minute;
     uint16_t hour;
 
-    if (getRdsGroupType() == 4)
+    if ( blkb.group0.groupType  == 4)
     {
         char offset_sign;
         int offset_h;

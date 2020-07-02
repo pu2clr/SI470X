@@ -374,7 +374,7 @@ void setup()
   rx.setVolume(6);
   rx.setMono(false); // Force stereo
   rx.setRds(true);
-  rx.setRdsMode(1);
+  // rx.setRdsMode(1);
   rx.setFrequency(10650); // It is the frequency you want to select in MHz multiplied by 100.
   rx.setSeekThreshold(50); // Sets RSSI Seek Threshold (0 to 127)
   showStatus();
