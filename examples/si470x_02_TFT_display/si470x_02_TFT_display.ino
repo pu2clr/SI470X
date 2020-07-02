@@ -38,7 +38,8 @@
 
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_ST7735.h> // Hardware-specific library for ST7735
-#include "Serif_plain_14.h" 
+#include "Serif_plain_8.h"
+#include "Serif_plain_14.h"
 #include "DSEG7_Classic_Mini_Regular_30.h"
 #include <SPI.h>
 
@@ -83,6 +84,7 @@ char oldRdsMsg[65];
 
 bool bSt = true;
 bool bRds = true;
+bool bShow = false;
 uint8_t seekDirection = 1; // 0 = Down; 1 = Up. This value is set by the last encoder direction.
 
 long pollin_elapsed = millis();
@@ -243,20 +245,86 @@ void showStereoMono() {
   printValue(125, 55, oldStereo, stereo, 15, COLOR_WHITE);
 }
 
-void showRds() {
-  char rdsStatus[10];
-  char rdsMsg[64];
+/*********************************************************
+   RDS
+ *********************************************************/
+char *rdsMsg;
+char *stationName;
+char *rdsTime;
+char bufferStatioName[40];
+char bufferRdsMsg[40];
+char bufferRdsTime[32];
 
-  tft.setTextSize(1);
-  tft.setFont(&Serif_plain_14);
-  sprintf(rdsStatus, "RDS %s", (bRds) ? "ON" : "OFF");
-  printValue(5, 75, oldRdsStatus, rdsStatus, 14, COLOR_WHITE);
-  sprintf(rdsMsg, "%s", rx.getRdsReady() ? "RDS MSG" : "NO MSG");
-  printValue(5, 105, oldRdsMsg, rdsMsg, 14, COLOR_WHITE);
+long stationNameElapsed = millis();
 
-  
+void showRDSMsg()
+{
+  rdsMsg[35] = bufferRdsMsg[35] = '\0';
+  if (strcmp(bufferRdsMsg, rdsMsg) == 0)
+    return;
+  printValue(5, 90, bufferRdsMsg, rdsMsg, 7, COLOR_BLUE);
+  delay(250);
 }
 
+/**
+   TODO: process RDS Dynamic PS or Scrolling PS
+*/
+void showRDSStation()
+{
+  if (strncmp(bufferStatioName, stationName, 3) == 0)
+    return;
+  printValue(5, 110, bufferStatioName, stationName, 7, COLOR_YELLOW);
+}
+
+void showRDSTime()
+{
+  if (strcmp(bufferRdsTime, rdsTime) == 0)
+    return;
+  printValue(100, 110, bufferRdsTime, rdsTime, 7, COLOR_RED);
+  delay(100);
+}
+
+
+void clearRds() {
+  tft.fillRect(4, 79, 145, 40, COLOR_BLACK);
+  bShow = false;
+}
+
+void checkRDS()
+{
+  if (/* rx.getRdsSync() && */ rx.getRdsReady() )
+  {
+    rdsMsg = rx.getRdsText2A();
+    stationName = rx.getRdsText0A();
+    rdsTime = rx.getRdsTime();
+    if (rdsMsg != NULL)
+      showRDSMsg();
+
+    if ((millis() - stationNameElapsed) > 2000)
+    {
+      if (stationName != NULL)
+        showRDSStation();
+      stationNameElapsed = millis();
+    }
+
+    if (rdsTime != NULL)
+      showRDSTime();
+  }
+}
+
+void showRds() {
+  char rdsStatus[10];
+
+  tft.setTextSize(1);
+  tft.setFont(&Serif_plain_8);
+  sprintf(rdsStatus, "RDS %s", (bRds) ? "ON" : "OFF");
+  printValue(5, 75, oldRdsStatus, rdsStatus, 9, COLOR_WHITE);
+  checkRDS();
+}
+
+/*********************************************************
+
+ *********************************************************/
 
 void showSplash()
 {
@@ -306,6 +374,7 @@ void setup()
   rx.setVolume(6);
   rx.setMono(false); // Force stereo
   rx.setRds(true);
+  rx.setRdsMode(1);
   rx.setFrequency(10650); // It is the frequency you want to select in MHz multiplied by 100.
   rx.setSeekThreshold(50); // Sets RSSI Seek Threshold (0 to 127)
   showStatus();
@@ -314,6 +383,7 @@ void setup()
 
 void doStereo() {
   rx.setMono((bSt = !bSt));
+  bShow =  true;
   showStereoMono();
   delay(100);
 }
@@ -348,6 +418,7 @@ void loop()
       seekDirection = SI470X_SEEK_DOWN;
     }
     showFrequency();
+    bShow = true;
     encoderCount = 0;
   }
 
@@ -368,7 +439,7 @@ void loop()
     if ( bRds ) {
       showRds();
     }
-
+    if ( bShow ) clearRds();
     pollin_elapsed = millis();
   }
 

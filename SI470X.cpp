@@ -795,12 +795,10 @@ uint8_t SI470X::getRdsFlagAB(void)
  */
 uint16_t SI470X::getRdsGroupType()
 {
-    getRdsReady();
-    // si470x_rds_blockb rdsb;
-    // rdsb.blockB = reg0d;
-    // return rdsb.refined.groupType;
-    // return ((uint16_t)reg0d >> 11);
-    return shadowRegisters[0x0D];
+    si470x_rds_blockb blkb;
+    getRdsStatus();
+    blkb.blockB = shadowRegisters[0x0D];
+    return blkb.group0.groupType;
 }
 
 /**
@@ -944,15 +942,47 @@ char *SI470X::getRdsText0A(void)
 
     getRdsStatus();
     blkb.blockB = shadowRegisters[0x0D];
-    if (getRdsGroupType() == 0)
+
+    if (blkb.group0.groupType == 0)
     {
         // Process group type 0
         rdsTextAdress0A = blkb.group0.address;
+        // Serial.println(rdsTextAdress0A);
         if (rdsTextAdress0A >= 0 && rdsTextAdress0A < 4)
         {
             getNext2Block(&rds_buffer0A[rdsTextAdress0A * 2]);
             rds_buffer0A[8] = '\0';
             return rds_buffer0A;
+        }
+    }
+    return NULL;
+}
+
+/**
+ * @ingroup @ingroup GA04
+ * 
+ * @brief Gets the Text processed for the 2A group
+ * 
+ * @return char* string with the Text of the group A2  
+ */
+char *SI470X::getRdsText2A(void)
+{
+    static int rdsTextAdress2A;
+    si470x_rds_blockb blkb;
+
+    getRdsStatus();
+
+    if (getRdsGroupType() == 2)
+    {
+        // Process group 2A
+        // Decode B block information
+        blkb.blockB = shadowRegisters[0x0D];
+        rdsTextAdress2A = blkb.group2.address;
+        if (rdsTextAdress2A >= 0 && rdsTextAdress2A < 16)
+        {
+            getNext4Block(&rds_buffer2A[rdsTextAdress2A * 4]);
+            rds_buffer2A[63] = '\0';
+            return rds_buffer2A;
         }
     }
     return NULL;
@@ -1013,11 +1043,11 @@ char *SI470X::getRdsTime()
         // uint16_t y, m, d;
 
         dt.raw[4] = blk_b.refined.lowByte;
-        dt.raw[5] = blk_b.refined.highByte; 
+        dt.raw[5] = blk_b.refined.highByte;
 
         dt.raw[2] = blk_c.refined.lowByte;
         dt.raw[3] = blk_c.refined.highByte;
-        
+
         dt.raw[0] = blk_d.refined.lowByte;
         dt.raw[1] = blk_d.refined.highByte;
 
@@ -1037,4 +1067,16 @@ char *SI470X::getRdsTime()
     }
 
     return NULL;
+}
+
+/**
+ * @ingroup GA04 
+ * @brief Get the Rds Sync 
+ * @details Returns true if RDS currently synchronized.
+ * @return true or false
+ */
+bool SI470X::getRdsSync()
+{
+    getStatus();
+    return reg0a->refined.RDSS;
 }

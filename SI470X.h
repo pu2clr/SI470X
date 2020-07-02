@@ -587,6 +587,9 @@ class SI470X {
             void getNext4Block(char *c);
             char *getRdsText(void);
             char *getRdsText0A(void);
+            char *getRdsText2A(void);
             char *getRdsText2B(void);
             char *getRdsTime();
+            bool  getRdsSync();
+
 };
