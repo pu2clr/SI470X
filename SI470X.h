@@ -494,13 +494,21 @@ class SI470X {
         void waitAndFinishTune();
 
     public:
+    
         /**
-             * @brief Set the Delay After Crystal On (default 500ms)
-             * 
-             * @param ms_value  Value in milliseconds 
-             */
-        inline void setDelayAfterCrystalOn(uint8_t ms_value) { maxDelayAftarCrystalOn = ms_value; };
+         * @brief Sets the I2C bus address 
+         * @details This function must to be called before setup function if your device are not using 0x10 (default)
+         * @param bus_addr I2C buss address
+         */
+        inline void setI2CAddress(int bus_addr) { this->deviceAddress = bus_addr; };
 
+        /**
+         * @ingroup GA03
+         * @brief Set the Delay After Crystal On (default 500ms)
+         * 
+         * @param ms_value  Value in milliseconds 
+         */
+        inline void setDelayAfterCrystalOn(uint8_t ms_value) { maxDelayAftarCrystalOn = ms_value; };
         void getAllRegisters();
         void setAllRegisters(uint8_t limit = 0x07);
         void getStatus();
