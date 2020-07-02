@@ -23,7 +23,7 @@ The [si470x_03_STM32_OLED](https://github.com/pu2clr/SI470X/tree/master/examples
 The schematic below shows the receiver example with TFT display, encoder and push buttons. 
 
 
-![schematic with TFT, push buttons and encoder](https://pu2clr.github.io/SI470X/extras/images/basic_schematic_tft_encoder.png)
+![schematic with TFT, push buttons and encoder](https://pu2clr.github.io/SI470X/extras/images/circuit_tft_encoder.png)
 
 
 In general, the SI4703 device is already sold in kit or shield format. So, the circuit above can help you to connect the arduino to the shield. In this case, you will not need the crystal, pull up resistors and audio jack output. Also, the labels will guide you.  The table bellow shows the connections. 
@@ -52,3 +52,31 @@ In general, the SI4703 device is already sold in kit or shield format. So, the c
 |    Encoder                |                           |               |
 |                           | A                         |       2       |
 |                           | B                         |       3       |
+
+
+
+
+
+## Attiny84 Schematic
+
+
+![schematic Attiny84, buttons and encoder](https://pu2clr.github.io/SI470X/extras/images/circuit_attiny84.png)
+
+
+
+## Attiny85 Schematic
+
+
+![schematic Attiny85 and buttons ](https://pu2clr.github.io/SI470X/extras/images/circuit_attiny85.png)
+
+
+
+
+
+
+
+
+
+
+
+
