@@ -253,6 +253,8 @@ void showRds() {
   printValue(5, 75, oldRdsStatus, rdsStatus, 14, COLOR_WHITE);
   sprintf(rdsMsg, "%s", rx.getRdsReady() ? "RDS MSG" : "NO MSG");
   printValue(5, 105, oldRdsMsg, rdsMsg, 14, COLOR_WHITE);
+
+  
 }
 
 

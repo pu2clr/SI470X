@@ -471,6 +471,12 @@ class SI470X {
         uint16_t fmSpace[4] = {20, 10, 5, 1}; //!< FM channel space
 
     protected:
+
+        char rds_buffer2A[65]; //!<  RDS Radio Text buffer - Program Information
+        char rds_buffer2B[33]; //!<  RDS Radio Text buffer - Station Informaation
+        char rds_buffer0A[9];  //!<  RDS Basic tuning and switching information (Type 0 groups)
+        char rds_time[20];     //!<  RDS date time received information
+
         int deviceAddress = I2C_DEVICE_ADDR;
         int resetPin;
         uint16_t currentFrequency;
@@ -568,9 +574,19 @@ class SI470X {
 
             void setFmDeemphasis(uint8_t de);
 
+            void getRdsStatus();
             void setRdsMode(uint8_t rds_mode = 0);
             void setRds(bool value);
             bool getRdsReady();
-            uint16_t getRdsGroupType();
 
+            uint8_t getRdsFlagAB(void);
+            uint8_t getRdsVersionCode(void);
+            uint16_t getRdsGroupType();
+            uint8_t getRdsProgramType(void);
+            void getNext2Block(char *c);
+            void getNext4Block(char *c);
+            char *getRdsText(void);
+            char *getRdsText0A(void);
+            char *getRdsText2B(void);
+            char *getRdsTime();
 };
