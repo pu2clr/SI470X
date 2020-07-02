@@ -106,7 +106,6 @@ As previously reported, in general, the SI4703 device is already sold in kit or 
 ![schematic with TFT, push buttons and encoder](./extras/images/circuit_basic.png)
 
 
-
 ### Wire up on Arduino UNO, Pro mini or other based on ATmega 328.
 
 | SI4703 / Description      |  Arduino Pin  |
@@ -116,7 +115,30 @@ As previously reported, in general, the SI4703 device is already sold in kit or 
 | SCLK (pin  7)             |     A5        |
 
 
-See the schematic with __TFT display, Encoder and push buttons__ [here](./examples)
+
+### Other schematics 
+
+#### Arduino Pro Mini and TFT 1.8 ST7735 SCHEMATIC 
+
+![schematic with TFT, push buttons and encoder](https://pu2clr.github.io/SI470X/extras/images/circuit_tft_encoder.png)
+
+
+#### Attiny84, Encoder and Push Buttons Schematic
+
+
+![schematic Attiny84, buttons and encoder](https://pu2clr.github.io/SI470X/extras/images/circuit_attiny84.png)
+
+
+
+#### Attiny85 and Push Buttons Schematic
+
+
+![schematic Attiny85 and buttons ](https://pu2clr.github.io/SI470X/extras/images/circuit_attiny85.png)
+
+
+
+
+#### [See examples here](./examples)
 
 
 ### Voltage operation
