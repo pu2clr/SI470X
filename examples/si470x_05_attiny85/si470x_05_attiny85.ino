@@ -2,7 +2,7 @@
    Test and validation of SI4703 on ATtiny85 device.
    It is a FM receiver with mini OLED and and two push buttons  
    
-   ATiny85 and Si470X wireup  
+   ATtiny85 and Si470X wireup  
 
     | Si470x pin      | Attiny85 REF pin | Physical pin  | 
     | ----------------| -----------------| ------------- | 

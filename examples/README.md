@@ -63,12 +63,37 @@ In general, the SI4703 device is already sold in kit or shield format. So, the c
 ![schematic Attiny84, buttons and encoder](https://pu2clr.github.io/SI470X/extras/images/circuit_attiny84.png)
 
 
+### ATtiny84 and Si470X wireup  
+
+| Si470x pin      | Attiny84 REF pin | Physical pin  | 
+| ----------------| -----------------| ------------- | 
+| RESET /RST      |     7            |     6         |
+| SEEK_UP         |     3            |    10         | 
+| SEEK_DOWN       |     5            |     8         |
+| ENCODER_PIN_A   |     0            |    13         |
+| ENCODER_PIN_B   |     1            |    12         |  
+| SDIO / SDA      |     SDA          |     7         |
+| SCLK / CLK      |     SCL          |     9         |
+
+
 
 ## Attiny85 Schematic
 
 
+
 ![schematic Attiny85 and buttons ](https://pu2clr.github.io/SI470X/extras/images/circuit_attiny85.png)
 
+
+
+### ATtiny85 and Si470X wireup  
+
+| Si470x pin  | Attiny85 REF pin | Physical pin | 
+| ------------| -----------------| -------------| 
+| RESET /RST  |     PB3          |     2        |
+| SEEK_UP     |     PB1          |     6        | 
+| SEEK_DOWN   |     PB4          |     3        |
+| SDIO / SDA  |     SDA          |     5        |
+| SCLK / CLK  |     SCL          |     7        |
 
 
 

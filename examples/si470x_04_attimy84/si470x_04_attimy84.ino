@@ -2,7 +2,7 @@
    Test and validation of SI4703 on ATtiny84 device.
    It is FM receiver with  
   
-   ATiny84 and Si470X wireup  
+   ATtiny84 and Si470X wireup  
 
     | Si470x pin      | Attiny84 REF pin | Physical pin  | 
     | ----------------| -----------------| ------------- | 
