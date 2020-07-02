@@ -947,7 +947,6 @@ char *SI470X::getRdsText0A(void)
     {
         // Process group type 0
         rdsTextAdress0A = blkb.group0.address;
-        // Serial.println(rdsTextAdress0A);
         if (rdsTextAdress0A >= 0 && rdsTextAdress0A < 4)
         {
             getNext2Block(&rds_buffer0A[rdsTextAdress0A * 2]);
