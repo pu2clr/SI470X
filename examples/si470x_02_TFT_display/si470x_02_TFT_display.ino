@@ -2,7 +2,7 @@
   This sketch uses an Arduino Pro Mini, 3.3V (8MZ) with a SPI TFT from MICROYUM (2" - 176 x 220).
   It is also a FM receiver capable to tune your local FM stations.
 
-  Read more about SSB patch documentation on https://pu2clr.github.io/SI470X/
+  Read more on https://pu2clr.github.io/SI470X/
 
   Wire up on Arduino UNO, Pro mini
 
