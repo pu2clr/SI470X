@@ -1,5 +1,5 @@
 /*
-   Test and validation of SI4703 on ESP32 board.
+   Test and validation of SI4703 on STM32 board.
     
    ATTENTION:  
    Please, avoid using the computer connected to the mains during testing. Used just the battery of your computer. 

@@ -1,6 +1,4 @@
 /*
-  SI4735 all in one with SSB Support
-
   This sketch has been successfully tested on STM32F103 Bluepill
 
   The table below shows the Si4735 and STM32F103C8 pin connections
