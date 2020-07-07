@@ -1,5 +1,5 @@
 /*
-  This sketch uses an Arduino Pro Mini, 3.3V (8MZ) with a SPI TFT from MICROYUM (2" - 176 x 220).
+  This sketch uses an Arduino Pro Mini, 3.3V (8MZ) with a SPI TFT ST7735 1.8".
   It is also a FM receiver capable to tune your local FM stations.
 
   Read more on https://pu2clr.github.io/SI470X/
@@ -376,7 +376,7 @@ void setup()
   rx.setup(RESET_PIN, A4 /* SDA pin  for Arduino ATmega328 */);
   rx.setVolume(6);
   rx.setMono(false); // Force stereo
-  rx.setRds(true);
+  rx.setRDS(true);
   // rx.setRdsMode(1);
   rx.setFrequency(10650); // It is the frequency you want to select in MHz multiplied by 100.
   rx.setSeekThreshold(50); // Sets RSSI Seek Threshold (0 to 127)
