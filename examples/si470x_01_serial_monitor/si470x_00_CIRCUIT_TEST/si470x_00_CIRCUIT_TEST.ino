@@ -58,7 +58,6 @@ void setup() {
   Serial.print(rx.getFirmwareVersion(),BIN);
 
   rx.setVolume(6);  
-
   
   delay(500);
   //****
