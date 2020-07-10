@@ -15,7 +15,7 @@
   |                           | SDI                       |     11        |
   |                           | CLK                       |     13        |
   |     Si470X                |                           |               |
-  |                           | RESET (pin 5)             |     12        |
+  |                           | RESET (pin 5)             |     14/A0     |
   |                           | SDIO (pin 8)              |     A4        |
   |                           | SCLK (pin 7)              |     A5        |
   |     Buttons               |                           |               |

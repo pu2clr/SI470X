@@ -2,6 +2,15 @@
    Test and validation of the circuit.
    This sketch will check the I2C communication bus and try to tune the receiver on a given frequency.
  
+    Arduino Pro Mini and SI4703 wire up
+
+    | Device  Si470X |  Arduino Pin  |
+    | ---------------| ------------  |
+    | RESET          |     14/A0     |
+    | SDIO           |     A4        |
+    | SCLK           |     A5        |
+
+
    ATTENTION:  
    Please, avoid using the computer connected to the mains during testing. Used just the battery of your computer. 
    This sketch was tested on ATmega328 based board. If you are not using a ATmega328, please check the pins of your board.
