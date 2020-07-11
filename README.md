@@ -15,10 +15,11 @@ Contact: __pu2clr@gmail.com__.
 2. [API Documentation](https://pu2clr.github.io/SI470X/extras/apidoc/html)
 3. [MIT License](https://pu2clr.github.io/SI470X#mit-License)
 4. [Si470X Library features](https://pu2clr.github.io/SI470X#si4703-library-features)
-5. [SI470X and Registers](https://pu2clr.github.io/SI470X#si470x-and-registers)
-6. [SCHEMATIC](https://pu2clr.github.io/SI470X#schematic)
-7. [Examples](https://github.com/pu2clr/SI470X/tree/master/examples)
-8. [References](https://github.com/pu2clr/SI470X#references)
+5. [Installation](https://pu2clr.github.io/SI470X#library-installation)
+6. [SI470X and Registers](https://pu2clr.github.io/SI470X#si470x-and-registers)
+7. [SCHEMATIC](https://pu2clr.github.io/SI470X#schematic)
+8. [Examples](https://github.com/pu2clr/SI470X/tree/master/examples)
+9. [References](https://github.com/pu2clr/SI470X#references)
 
 
 ## Preface
@@ -47,7 +48,7 @@ The board above or similar can be found on [Sparkfun](https://www.sparkfun.com/p
 2. [PU2CLR SI4844 Arduino Library](https://github.com/pu2clr/SI4844). This is an Arduino library for the SI4844, BROADCAST ANALOG TUNING DIGITAL DISPLAY AM/FM/SW RADIO RECEIVER,  IC from Silicon Labs.  It is available on Arduino IDE. This library is intended to provide an easier interface for controlling the SI4844.
 3. [PU2CLR AKC695X Arduino Library](https://pu2clr.github.io/AKC695X/). The AKC695X is a family of IC DSP receiver from AKC technology. The AKC6955 and AKC6959sx support AM and FM modes. On AM mode the AKC6955 and AKC6959sx work on LW, MW and SW. On FM mode they work from 64MHz to 222MHz.
 4. [PU2CLR KT0915 Arduino Library](https://pu2clr.github.io/KT0915/).
-5. [PU2CLR RDA5807 Arduino Library](https://pu2clr.github.io/RDA5807/).
+5. [PU2CLR SI470X Arduino Library](https://pu2clr.github.io/SI470X/).
 
 
 
@@ -83,6 +84,39 @@ This library uses the I²C communication protocol and implements most of the fun
 13. Volume control (including mute audio);
 14. RDS/RBDS Processor;
 15. [Well-documented API](https://pu2clr.github.io/SI470X/extras/apidoc/html/).
+
+
+## Library Installation
+
+
+ The easiest method to install this library is via your Arduino IDE. All you have to do is:
+ 
+ 1. Select Tools menu;
+ 2. Select Manage Libraries option;
+ 3. In the text box (top windows), type PU2CLR or SI470X;
+ 4. Select the PU2CLR SI470X. 
+
+
+The video below shows how you can install this library via your Arduino IDE from Manage Libraries tool.
+
+{% include libinstalling.html %}
+
+[Watch the video](https://youtu.be/fXcrtmWNcRU)
+
+
+### Installing via the repository 
+
+With this approach, you will have the __most current version__ of the library. However, __it may not be the most stable version__. This is because the current version is always in development. [Prefer releases](https://github.com/pu2clr/SI470X/releases). Do you need some old version (release) of this library?  If yes, [check here](https://github.com/pu2clr/SI470X/releases).
+
+
+First, you have to [download](https://github.com/pu2clr/SI470X/archive/master.zip) this library in zip format.  
+After, unzip the SI4735-master.zip file in your Arduino Library folder. 
+
+* On __Windows__: "My Documents\Arduino\libraries"
+* On __MAC OS__: ˜/Documents/Arduino/libraries
+* On __Linux__: ˜/Documents/Arduino/libraries
+
+<BR>
 
 
 
