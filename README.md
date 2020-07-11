@@ -110,7 +110,7 @@ With this approach, you will have the __most current version__ of the library. H
 
 
 First, you have to [download](https://github.com/pu2clr/SI470X/archive/master.zip) this library in zip format.  
-After, unzip the SI4735-master.zip file in your Arduino Library folder. 
+After, unzip the SI470X-master.zip file in your Arduino Library folder. 
 
 * On __Windows__: "My Documents\Arduino\libraries"
 * On __MAC OS__: ˜/Documents/Arduino/libraries
