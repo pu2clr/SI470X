@@ -64,7 +64,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Thanks
 
-I would like to thank Mr. Libor Tomsik for correction on RDS issues. 
+I would like to thank __Mr. Libor Tomsik__ for correction on RDS issues. 
 
 
 ## Si470X Library features
