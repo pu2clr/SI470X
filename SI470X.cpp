@@ -811,7 +811,7 @@ uint8_t SI470X::getRdsVersionCode(void)
 {
     si470x_rds_blockb blkb;
     blkb.blockB = shadowRegisters[0x0D];
-    return blkb.refined.programType;
+    return blkb.refined.versionCode;
 }
 
 /**  
