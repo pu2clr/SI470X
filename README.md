@@ -14,12 +14,13 @@ Contact: __pu2clr@gmail.com__.
 1. [Preface](https://pu2clr.github.io/SI470X#preface)
 2. [API Documentation](https://pu2clr.github.io/SI470X/extras/apidoc/html)
 3. [MIT License](https://pu2clr.github.io/SI470X#mit-License)
-4. [Si470X Library features](https://pu2clr.github.io/SI470X#si4703-library-features)
-5. [Installation](https://pu2clr.github.io/SI470X#library-installation)
-6. [SI470X and Registers](https://pu2clr.github.io/SI470X#si470x-and-registers)
-7. [SCHEMATIC](https://pu2clr.github.io/SI470X#schematic)
-8. [Examples](https://github.com/pu2clr/SI470X/tree/master/examples)
-9. [References](https://github.com/pu2clr/SI470X#references)
+4. [Thanks](https://pu2clr.github.io/SI470X#thanks)
+5. [Si470X Library features](https://pu2clr.github.io/SI470X#si4703-library-features)
+6. [Installation](https://pu2clr.github.io/SI470X#library-installation)
+7. [SI470X and Registers](https://pu2clr.github.io/SI470X#si470x-and-registers)
+8. [SCHEMATIC](https://pu2clr.github.io/SI470X#schematic)
+9. [Examples](https://github.com/pu2clr/SI470X/tree/master/examples)
+10. [References](https://github.com/pu2clr/SI470X#references)
 
 
 ## Preface
@@ -37,9 +38,6 @@ I think the best way to start a project based on this device is to acquire a bre
 ![SI4703 Shield](./extras/images/si4703_module0.png)
 
 The board above or similar can be found on [Sparkfun](https://www.sparkfun.com/products/12938), [eBay](https://www.ebay.com/) and [Aliexpress](https://pt.aliexpress.com/af/SI4703.html?d=y&origin=n&SearchText=SI4703&catId=0&initiative_id=SB_20200626043355).  Also, there is the [Si4703 Evaluation Kit](https://www.silabs.com/products/development-tools/audio-and-radio/si4703-evaluation-kit) from Silicon Labs. 
-
-
-
 
 
 ### See also
@@ -63,6 +61,11 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE ARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 <BR>
+
+## Thanks
+
+I would like to thank Mr. Libor Tomsik for correction on RDS issues. 
+
 
 ## Si470X Library features
 
