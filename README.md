@@ -19,7 +19,7 @@ Contact: __pu2clr@gmail.com__.
 6. [Installation](https://pu2clr.github.io/SI470X#library-installation)
 7. [SI470X and Registers](https://pu2clr.github.io/SI470X#si470x-and-registers)
 8. [SCHEMATIC](https://pu2clr.github.io/SI470X#schematic)
-9. [Examples](https://github.com/pu2clr/SI470X/tree/master/examples)
+9. [Source code - Arduino examples](https://github.com/pu2clr/SI470X/tree/master/examples)
 10. [References](https://github.com/pu2clr/SI470X#references)
 
 
