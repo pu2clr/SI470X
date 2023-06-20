@@ -242,6 +242,8 @@ void SI470X::setup(int resetPin, int sdaPin, uint8_t oscillator_type)
     setup(resetPin, sdaPin, -1, -1, oscillator_type);
 }
 
+
+
 /**
  * @ingroup GA03
  * @brief Sets the channel 

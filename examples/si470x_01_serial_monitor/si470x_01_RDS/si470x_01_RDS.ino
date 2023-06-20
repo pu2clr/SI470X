@@ -21,10 +21,10 @@
 
 #include <SI470X.h>
 
-#define RESET_PIN 14 // On Arduino Atmega328 based board, this pin is labeled as A0 (14 means digital pin instead analog)
+#define RESET_PIN 14  // On Arduino Atmega328 based board, this pin is labeled as A0 (14 means digital pin instead analog)
 
-#define MAX_DELAY_RDS 40   // 40ms - polling method
-#define MAX_DELAY_STATUS   2000 
+#define MAX_DELAY_RDS 40  // 40ms - polling method
+#define MAX_DELAY_STATUS 2000
 
 long rds_elapsed = millis();
 long status_elapsed = millis();
@@ -32,25 +32,25 @@ long status_elapsed = millis();
 
 SI470X rx;
 
-void setup()
-{
+void setup() {
 
   Serial.begin(9600);
-  while (!Serial) ;
+  while (!Serial)
+    ;
   Serial.println("\nPU2CLR SI470X Arduino Library.");
 
 
   rx.setup(RESET_PIN, A4 /* SDA pin  for Arduino ATmega328 */);
 
-  rx.setRDS(true); // Turns RDS on
+  rx.setRDS(true);  // Turns RDS on
 
   rx.setVolume(6);
 
   delay(500);
 
   // Select a station with RDS service in your place
-  Serial.print("\nTuning 106.5MHz");
-  rx.setFrequency(10650); // It is the frequency you want to select in MHz multiplied by 100.
+  Serial.print("\nTuning 9470 MHz");
+  rx.setFrequency(9470);  // It is the frequency you want to select in MHz multiplied by 100.
 
   // Enables SDR
   rx.setRds(true);
@@ -58,11 +58,9 @@ void setup()
   rx.setMono(false);
 
   showHelp();
-
 }
 
-void showHelp()
-{
+void showHelp() {
   Serial.println("Type U to increase and D to decrease the frequency");
   Serial.println("Type S or s to seek station Up or Down");
   Serial.println("Type + or - to volume Up or Down");
@@ -73,10 +71,9 @@ void showHelp()
 }
 
 // Show current frequency
-void showStatus()
-{
+void showStatus() {
   char aux[80];
-  sprintf(aux, "\nYou are tuned on %u MHz | RSSI: %3.3u dbUv | Vol: %2.2u | Stereo: %s\n", rx.getFrequency(), rx.getRssi(), rx.getVolume(), (rx.isStereo()) ? "Yes" : "No" );
+  sprintf(aux, "\nYou are tuned on %u MHz | RSSI: %3.3u dbUv | Vol: %2.2u | Stereo: %s\n", rx.getFrequency(), rx.getRssi(), rx.getVolume(), (rx.isStereo()) ? "Yes" : "No");
   Serial.print(aux);
   status_elapsed = millis();
 }
@@ -90,47 +87,50 @@ char *programInfo;
 char *stationName;
 char *rdsTime;
 
-void checkRDS()
-{
-  if (rx.getRdsReady())
-  {
-     programInfo = rx.getRdsProgramInformation(();
-     stationName = rx.getRdsStationName();
-     rdsTime = rx.getRdsTime();
-     showRdsData();
-}
-
 
 void showRdsData() {
-  if ( programInfo ) {
-
+  if (programInfo) {
+    Serial.print("\nProgram Info...: ");
+    Serial.println(programInfo);
   }
 
-  if ( stationName ) {
-
+  if (stationName) {
+    Serial.print("\nStation Name...: ");
+    Serial.println(stationName);
   }
 
-  if (rdsTime)
+  if (rdsTime) {
+    Serial.print("\nUTC / Time....: ");
+    Serial.println(rdsTime);
+  }
+}
+
+void checkRDS() {
+  if (rx.getRdsReady()) {
+    programInfo = rx.getRdsProgramInformation();
+    stationName = rx.getRdsStationName();
+    rdsTime = rx.getRdsTime();
+    showRdsData();
+  }
 }
 
 
-void loop()
-{
-  if ((millis() - rds_elapsed) > MAX_DELAY_RDS ) {
-     checkRDS()
+
+void loop() {
+
+  if ((millis() - rds_elapsed) > MAX_DELAY_RDS) {
+    checkRDS();
     rds_elapsed = millis();
   }
 
-  if ((millis() - status_elapsed) > MAX_DELAY_STATUS ) {
+  if ((millis() - status_elapsed) > MAX_DELAY_STATUS) {
     showStatus();
     status_elapsed = millis();
   }
 
-  if (Serial.available() > 0)
-  {
+  if (Serial.available() > 0) {
     char key = Serial.read();
-    switch (key)
-    {
+    switch (key) {
       case '+':
         rx.setVolumeUp();
         break;

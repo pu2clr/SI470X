@@ -500,6 +500,8 @@ protected:
     int oscillatorType = OSCILLATOR_TYPE_CRYSTAL;
     uint16_t maxDelayAftarCrystalOn = MAX_DELAY_AFTER_OSCILLATOR;
 
+    char strFrequency[8]; // Used to store formated frequency
+    
     void reset();
     void powerUp();
     void powerDown();
@@ -647,4 +649,18 @@ public:
     // Tools / Helper functions
     int checkI2C(uint8_t *addressArray);
     void convertToChar(uint16_t value, char *strValue, uint8_t len, uint8_t dot, uint8_t separator, bool remove_leading_zeros = true);
+
+    /**
+     * @ingroup G05 Format the Frequency
+     * @brief Convert the current frequency to a formated string (char *) frequency
+     * @details The current frequency is the latest setted frequency by setFrequency, seek, setFrequencyUp and setFrequencyDown.
+     * @param char decimalSeparator - the symbol that separates the decimal part (Exe: . or ,)
+     * @return point char string strFrequency (member variable)
+     * @see setFrequency, seek, setFrequencyUp and setFrequencyDown
+     */
+    inline char *formatCurrentFrequency(char decimalSeparator = ',')
+    {
+        this->convertToChar(this->currentFrequency, this->strFrequency, 5, 3, decimalSeparator, true);
+        return this->strFrequency;
+    };
 };
