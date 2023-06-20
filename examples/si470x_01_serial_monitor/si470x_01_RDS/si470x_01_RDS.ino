@@ -23,7 +23,7 @@
 
 #define RESET_PIN 14 // On Arduino Atmega328 based board, this pin is labeled as A0 (14 means digital pin instead analog)
 
-#define MAX_DELAY_RDS 80   // 40ms - polling method
+#define MAX_DELAY_RDS 40   // 40ms - polling method
 #define MAX_DELAY_STATUS   2000 
 
 long rds_elapsed = millis();
@@ -86,7 +86,7 @@ void showStatus()
 /*********************************************************
    RDS
  *********************************************************/
-char *rdsMsg;
+char *programInfo;
 char *stationName;
 char *rdsTime;
 
@@ -94,26 +94,30 @@ void checkRDS()
 {
   if (rx.getRdsReady())
   {
-     if ( (rdsMsg = rx.getRdsText2A()) != NULL) 
-        Serial.println(rdsMsg);
-     else if ( (stationName = rx.getRdsText0A()) != NULL)
-        Serial.println(stationName);
-     else if ( (rdsTime = rx.getRdsTime()) != NULL )
-        Serial.println(rdsTime);
-  }
+     programInfo = rx.getRdsProgramInformation(();
+     stationName = rx.getRdsStationName();
+     rdsTime = rx.getRdsTime();
+     showRdsData();
 }
 
-void showRds()
-{
-  if ( rx.getRdsReady() )
-    checkRDS();
+
+void showRdsData() {
+  if ( programInfo ) {
+
+  }
+
+  if ( stationName ) {
+
+  }
+
+  if (rdsTime)
 }
 
 
 void loop()
 {
   if ((millis() - rds_elapsed) > MAX_DELAY_RDS ) {
-    if ( rx.getRdsReady() )  checkRDS();
+     checkRDS()
     rds_elapsed = millis();
   }
 
@@ -155,4 +159,5 @@ void loop()
     }
     showStatus();
   }
+  delay(5);
 }

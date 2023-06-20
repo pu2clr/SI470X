@@ -36,15 +36,16 @@ void setup() {
   while(!Serial);
 
   delay(500);
-  
+
 
   rx.setup(RESET_PIN, A4);
 
-  if (!checkI2C())
+ if (!checkI2C())
   {
       Serial.println("\nCheck your circuit!");
       while(1);
   }
+
 
   Serial.print("\nPN........................:");
   Serial.print(rx.getPartNumber(),HEX);
