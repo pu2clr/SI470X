@@ -1,4 +1,30 @@
 var searchData=
 [
-  ['waitandfinishtune_243',['waitAndFinishTune',['../group___g_a03.html#gac1adddefa79fcd3b1b1ed16df7870d85',1,'SI470X']]]
+  ['seek_0',['seek',['../group___g_a03.html#ga80abdafabf55be7717ebc19138431adb',1,'SI470X::seek(uint8_t seek_mode, uint8_t direction)'],['../group___g_a03.html#gac6f734547a631a917b459d007c733594',1,'SI470X::seek(uint8_t seek_mode, uint8_t direction, void(*showFunc)())']]],
+  ['setagc_1',['setAgc',['../group___g_a03.html#ga1fd445c4c6935268ff0ce0c75c3c05d0',1,'SI470X']]],
+  ['setallregisters_2',['setAllRegisters',['../group___g_a03.html#ga4370f98521b96480e9cebc4f90681e06',1,'SI470X']]],
+  ['setband_3',['setBand',['../group___g_a03.html#ga01abda714595dca938b452d2a3f04678',1,'SI470X']]],
+  ['setchannel_4',['setChannel',['../group___g_a03.html#gadf162646f957df7cf5c4b542b5b4b344',1,'SI470X']]],
+  ['setdelayaftercrystalon_5',['setDelayAfterCrystalOn',['../group___g_a03.html#gafcecfb8b743da7df2ca993d733487d3f',1,'SI470X']]],
+  ['setextendedvolumerange_6',['setExtendedVolumeRange',['../group___g_a03.html#gac7c9c854ca6f0f9fa13550071b604330',1,'SI470X']]],
+  ['setfmdeemphasis_7',['setFmDeemphasis',['../group___g_a03.html#gab356fa1acab5405781cc8b77a7f8e37c',1,'SI470X']]],
+  ['setfrequency_8',['setFrequency',['../group___g_a03.html#ga615b6785ddf6985a362ab0862f3e5513',1,'SI470X']]],
+  ['setfrequencydown_9',['setFrequencyDown',['../group___g_a03.html#gaebdbd7aa402ebf50d25a6df42f38dc9a',1,'SI470X']]],
+  ['setfrequencyup_10',['setFrequencyUp',['../group___g_a03.html#ga7b9854e962def33ad453605f11feea7b',1,'SI470X']]],
+  ['seti2caddress_11',['setI2CAddress',['../group___g_a03.html#ga7b31c48ccd189eccc597c0262f151afc',1,'SI470X']]],
+  ['setmono_12',['setMono',['../group___g_a03.html#ga15530e43b7ebcf5f31e8bd4cab3a37eb',1,'SI470X']]],
+  ['setmute_13',['setMute',['../group___g_a03.html#ga6c3cb96a721e4bb10a492d6fcad9df8a',1,'SI470X']]],
+  ['setrds_14',['setRDS',['../group___g_a01.html#ad5438ea7bcdcf15e51b63735e3255048',1,'SI470X']]],
+  ['setrds_15',['setRds',['../group___g_a04.html#ga9eb63656b8486b8a5f6a29b7f3f16d36',1,'SI470X']]],
+  ['setrdsmode_16',['setRdsMode',['../group___g_a04.html#gae03992e0bc0ea4bc10a06aea4321dbe6',1,'SI470X']]],
+  ['setseekthreshold_17',['setSeekThreshold',['../group___g_a03.html#gae35d6be72c9e7c6719f76c74f0b9e6e3',1,'SI470X']]],
+  ['setshadownregister_18',['setShadownRegister',['../group___g_a03.html#ga4204d5798dac02868e43b7bae95b1615',1,'SI470X']]],
+  ['setsoftmute_19',['setSoftmute',['../group___g_a03.html#ga346802c295b6b1e0a186763627d04afa',1,'SI470X']]],
+  ['setsoftmuteattack_20',['setSoftmuteAttack',['../group___g_a03.html#ga7a65ce210ab7e4b5e1a9f846ac40a07c',1,'SI470X']]],
+  ['setsoftmuteattenuation_21',['setSoftmuteAttenuation',['../group___g_a03.html#ga7d9ee0c755b654a4061efd169febd5c1',1,'SI470X']]],
+  ['setspace_22',['setSpace',['../group___g_a03.html#ga6ee8140d156a52a34b66944b58fa9ac5',1,'SI470X']]],
+  ['setup_23',['setup',['../group___g_a03.html#gaf7a55a90c3b808bc9cf7e254cc696d7d',1,'SI470X::setup(int resetPin, int sdaPin, int rdsInterruptPin=-1, int seekInterruptPin=-1, uint8_t oscillator_type=OSCILLATOR_TYPE_CRYSTAL)'],['../group___g_a03.html#ga7e2b9044c485cad0b7c2eed170ec9fe3',1,'SI470X::setup(int resetPin, int sdaPin, uint8_t oscillator_type)']]],
+  ['setvolume_24',['setVolume',['../group___g_a03.html#ga26ce2b1ed9f5f7ea870dbc7827ee0bda',1,'SI470X']]],
+  ['setvolumedown_25',['setVolumeDown',['../group___g_a03.html#gaef326f8dda60206fe260b11b801c3765',1,'SI470X']]],
+  ['setvolumeup_26',['setVolumeUp',['../group___g_a03.html#gabde2fdb0be5e3544648d265572a864b0',1,'SI470X']]]
 ];
