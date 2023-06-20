@@ -1071,8 +1071,6 @@ char *SI470X::getRdsLocalTime()
         int offset_h;
         int offset_m;
 
-        // uint16_t y, m, d;
-
         dt.raw[4] = blk_b.refined.lowByte;
         dt.raw[5] = blk_b.refined.highByte;
 
