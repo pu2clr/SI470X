@@ -23,7 +23,7 @@ echo "********************"
 echo "Arduino LGT8FX based board"
 echo "********************"
 
-arduino-cli compile -b lgt8fx:avr:328 ./sisisi470x_01_serial_monitor470x_01_serial_monitor/si470x_00_CIRCUIT_TEST --output-dir ~/Downloads/hex/atmega/si470x_00_CIRCUIT_TEST  --warnings all
+arduino-cli compile -b lgt8fx:avr:328 ./si470x_01_serial_monitor/si470x_00_CIRCUIT_TEST --output-dir ~/Downloads/hex/atmega/si470x_00_CIRCUIT_TEST  --warnings all
 arduino-cli compile -b lgt8fx:avr:328 ./si470x_01_serial_monitor/si470x_01_RDS --output-dir ~/Downloads/hex/atmega/si470x_01_RDS  --warnings all
 arduino-cli compile -b lgt8fx:avr:328 ./si470x_02_TFT_display --output-dir ~/Downloads/hex/atmega/si470x_02_TFT_display  --warnings all
 
