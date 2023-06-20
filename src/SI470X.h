@@ -585,7 +585,7 @@ class SI470X {
             void setRds(bool value);
             inline void setRDS(bool value) {setRds(value); };
             bool getRdsReady();
-
+            bool getRdsAllData(char **stationName, char **stationInformation, char **programInformation, char **utcTime);
             uint8_t getRdsFlagAB(void);
             uint8_t getRdsVersionCode(void);
             uint16_t getRdsGroupType();
@@ -597,6 +597,7 @@ class SI470X {
             char *getRdsText2A(void);
             char *getRdsText2B(void);
             char *getRdsTime();
+            char *getRdsLocalTime();
             bool  getRdsSync();
             void clearRdsBuffer();
 

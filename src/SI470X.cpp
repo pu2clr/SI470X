@@ -1018,7 +1018,7 @@ char *SI470X::getRdsTime()
         offset_sign = (dt.refined.offset_sense == 1) ? '+' : '-';
         offset_h = (dt.refined.offset * 30) / 60;
         offset_m = (dt.refined.offset * 30) - (offset_h * 60);
-        
+
         // If wrong time, return NULL
         if (offset_h > 12 || offset_m > 60 || hour > 24 || minute > 60)
             return NULL;
@@ -1037,6 +1037,117 @@ char *SI470X::getRdsTime()
     }
 
     return NULL;
+}
+
+
+/**
+ * @ingroup GA04
+ * @brief Gets the RDS time converted to local time.
+ * @details ATTENTION: You must call getRdsReady before calling this function.
+ * @details ATTENTION: Some stations broadcast wrong time.
+ * @return char* a string with hh:mm
+ * @see getRdsReady
+ */
+char *SI470X::getRdsLocalTime()
+{
+    // Under Test and construction
+    // Need to check the Group Type before.
+    si470x_rds_date_time dt;
+    word16_to_bytes blk_b, blk_c, blk_d;
+    si470x_rds_blockb blkb;
+
+    getRdsStatus();
+
+    blk_b.raw = blkb.blockB = shadowRegisters[REG0D];
+    blk_c.raw = shadowRegisters[REG0E];
+    blk_d.raw = shadowRegisters[REG0F];
+
+    uint16_t minute;
+    uint16_t hour;
+    uint16_t localTime;
+
+    if ( blkb.group0.groupType  == 4)
+    {
+        int offset_h;
+        int offset_m;
+
+        // uint16_t y, m, d;
+
+        dt.raw[4] = blk_b.refined.lowByte;
+        dt.raw[5] = blk_b.refined.highByte;
+
+        dt.raw[2] = blk_c.refined.lowByte;
+        dt.raw[3] = blk_c.refined.highByte;
+
+        dt.raw[0] = blk_d.refined.lowByte;
+        dt.raw[1] = blk_d.refined.highByte;
+
+        minute =  dt.refined.minute;
+        hour = dt.refined.hour;
+
+        offset_h = (dt.refined.offset * 30) / 60;
+        offset_m = (dt.refined.offset * 30) - (offset_h * 60);
+
+        localTime = (hour * 60 + minute);
+        if (dt.refined.offset_sense == 1)
+            localTime -= (offset_h * 60 + offset_m);
+        else
+            localTime += (offset_h * 60 + offset_m);
+
+        hour = localTime / 60;
+        minute = localTime - (hour * 60);
+
+        if (hour > 24 || minute > 60)
+            return NULL;
+
+        this->convertToChar(hour, rds_time, 2, 0, ' ', false);
+        rds_time[2] = ':';
+        this->convertToChar(minute, &rds_time[3], 2, 0, ' ', false);
+        rds_time[5] = '\0';
+
+        return rds_time;
+    }
+
+    return NULL;
+}
+
+
+/**
+ * @ingroup GA04
+ * @brief Gets Station Name, Station Information, Program Information and utcTime
+ * @details This function populates four char pointer variable parameters with Station Name, Station Information, Programa Information and UTC time.
+ * @details You must call  setRDS(true), setRdsFifo(true) before calling getRdsAllData(...)
+ * @details ATTENTION: the parameters below are point to point to array of char.
+ * @details the right way to call this function is shown below.
+ * @code {.cpp}
+ *
+ * char *stationName, *stationInfo, *programInfo, *rdsTime;
+ * // The char pointers above will be populate by the call below. So, the char pointers need to be passed by reference (pointer to pointer).
+ * if (rx.getRdsAllData(&stationName, &stationInfo , &programInfo, &rdsTime) ) {
+ *     showProgramaInfo(programInfo);
+ *     showStationName(stationName);
+ *     showStationInfo(stationInfo);
+ *     showUtcTime(rdsTime);
+ * }
+ * @endcode
+ * @param stationName (reference)  - if NOT NULL,  point to Name of the Station (char array -  9 bytes)
+ * @param stationInformation (reference)  - if NOT NULL, point to Station information (char array - 33 bytes)
+ * @param programInformation (reference)  - if NOT NULL, point to program information (char array - 65 nytes)
+ * @param utcTime  (reference)  - if NOT NULL, point to char array containing the current UTC time (format HH:MM:SS +HH:MM)
+ * @return True if found at least one valid data
+ * @see setRDS, setRdsFifo, getRdsAllData
+ */
+bool SI470X::getRdsAllData(char **stationName, char **stationInformation, char **programInformation, char **utcTime)
+{
+
+    if (!this->getRdsReady())
+        return false;
+    *stationName = this->getRdsText0A();        // returns NULL if no information
+    *stationInformation = this->getRdsText2B(); // returns NULL if no information
+    *programInformation = this->getRdsText2A(); // returns NULL if no information
+    *utcTime = this->getRdsTime();              // returns NULL if no information
+
+    return (bool)stationName | (bool)stationInformation | (bool)programInformation | (bool)utcTime;
 }
 
 
