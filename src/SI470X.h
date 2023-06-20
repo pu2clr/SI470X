@@ -407,18 +407,16 @@ typedef union {
  * 
  * ATTENTION: 
  * To make it compatible with 8, 16 and 32 bits platforms and avoid Crosses boundary, it was necessary to
- * split minute and hour representation. 
+ * use uint32_t data type. 
  */
 typedef union {
     struct
     {
-        uint8_t offset : 5;       // Local Time Offset
-        uint8_t offset_sense : 1; // Local Offset Sign ( 0 = + , 1 = - )
-        uint8_t minute1 : 2;      // UTC Minutes - 2 bits less significant (void “Crosses boundary”).
-        uint8_t minute2 : 4;      // UTC Minutes - 4 bits  more significant  (void “Crosses boundary”)
-        uint8_t hour1 : 4;        // UTC Hours - 4 bits less significant (void “Crosses boundary”)
-        uint8_t hour2 : 1;        // UTC Hours - 4 bits more significant (void “Crosses boundary”)
-        uint32_t mjd : 17;        // Modified Julian Day Code
+        uint32_t offset : 5;       // Local Time Offset
+        uint32_t offset_sense : 1; // Local Offset Sign ( 0 = + , 1 = - )
+        uint32_t minute : 6;       // UTC Minutes - 2 bits less significant (void “Crosses boundary”).
+        uint32_t hour : 5;         // UTC Hours - 4 bits less significant (void “Crosses boundary”)
+        uint32_t mjd : 17;         // Modified Julian Day Code
     } refined;
     uint8_t raw[6];
 } si470x_rds_date_time;
@@ -600,5 +598,10 @@ class SI470X {
             char *getRdsText2B(void);
             char *getRdsTime();
             bool  getRdsSync();
+            void clearRdsBuffer();
+
+            // Tools / Helper functions
+            int checkI2C(uint8_t *addressArray);
+            void convertToChar(uint16_t value, char *strValue, uint8_t len, uint8_t dot, uint8_t separator, bool remove_leading_zeros = true);
 
 };

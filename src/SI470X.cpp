@@ -763,8 +763,8 @@ void SI470X::setRds(bool value)
  * @details Read address 0Ah and check the bit RDSR.
  * @details If in verbose mode, the BLERA bits indicate how many errors were corrected in block A. If BLERA indicates 6 or more errors, the data in RDSA should be discarded.
  * @details When using the polling method, it is best not to poll continuously. The data will appear in intervals of ~88 ms and the RDSR indicator will be available for at least 40 ms, so a polling rate of 40 ms or less should be sufficient.
- * @return true 
- * @return false 
+ * @details ATTENTION:  You most call this function before quering other RDS functions. Call it before calling a set of RDS functions. 
+ * @return true or false
  */
 bool SI470X::getRdsReady()
 {
@@ -776,35 +776,34 @@ bool SI470X::getRdsReady()
  * @ingroup GA04
  * 
  * @brief Returns the current Text Flag A/B  
- * 
+ * @details It is useful to check the flag A/B switching.  
  * @return uint8_t current Text Flag A/B  
  */
 uint8_t SI470X::getRdsFlagAB(void)
 {
     si470x_rds_blockb blkb;
     blkb.blockB = shadowRegisters[0x0D];
-
     return blkb.refined.textABFlag;
 }
 
 /**
  * @ingroup GA04
  * @brief Return the group type 
- * 
+ * @details Please, check if getRdsReady was called before.
+ * @see getRdsReady
  * @return uint16_t 
  */
 uint16_t SI470X::getRdsGroupType()
 {
     si470x_rds_blockb blkb;
-    getRdsStatus();
     blkb.blockB = shadowRegisters[0x0D];
     return blkb.group0.groupType;
 }
 
 /**
  * @ingroup GA04
- * 
  * @brief Gets the version code (extracted from the Block B)
+ * @details Please, check if getRdsReady was called before.
  * @returns  0=A or 1=B
  */
 uint8_t SI470X::getRdsVersionCode(void)
@@ -817,6 +816,7 @@ uint8_t SI470X::getRdsVersionCode(void)
 /**  
  * @ingroup GA04  
  * @brief Returns the Program Type (extracted from the Block B)
+ * @details Please, check if getRdsReady was called before.
  * @see https://en.wikipedia.org/wiki/Radio_Data_System
  * @return program type (an integer betwenn 0 and 31)
  */
@@ -831,82 +831,42 @@ uint8_t SI470X::getRdsProgramType(void)
  * @ingroup GA04
  * 
  * @brief Process data received from group 2B
+ * @details Please, check if getRdsReady was called before.
  * @param c  char array reference to the "group 2B" text 
  */
 void SI470X::getNext2Block(char *c)
 {
-    char raw[2];
-    int i, j;
     word16_to_bytes blk;
-
     blk.raw = shadowRegisters[REG0F];
 
-    raw[1] = blk.refined.lowByte;
-    raw[0] = blk.refined.highByte;
-
-    for (i = j = 0; i < 2; i++)
-    {
-        if (raw[i] == 0xD || raw[i] == 0xA)
-        {
-            c[j] = '\0';
-            return;
-        }
-        if (raw[i] >= 32)
-        {
-            c[j] = raw[i];
-            j++;
-        }
-        else
-        {
-            c[i] = ' ';
-        }
-    }
+    c[1] = blk.refined.lowByte;
+    c[0] = blk.refined.highByte;
 }
 
 /**
  * @ingroup GA04
  * 
  * @brief Process data received from group 2A
- * 
+ * @details Please, check if getRdsReady was called before.
  * @param c  char array reference to the "group  2A" text 
  */
 void SI470X::getNext4Block(char *c)
 {
-    char raw[4];
-    int i, j;
     word16_to_bytes blk_c, blk_d;
 
     blk_c.raw = shadowRegisters[REG0E];
     blk_d.raw = shadowRegisters[REG0F];
 
-    raw[0] = blk_c.refined.highByte;
-    raw[1] = blk_c.refined.lowByte;
-    raw[2] = blk_d.refined.highByte;
-    raw[3] = blk_d.refined.lowByte;
-
-    for (i = j = 0; i < 4; i++)
-    {
-        if (raw[i] == 0xD || raw[i] == 0xA)
-        {
-            c[j] = '\0';
-            return;
-        }
-        if (raw[i] >= 32)
-        {
-            c[j] = raw[i];
-            j++;
-        }
-        else
-        {
-            c[i] = ' ';
-        }
-    }
+    c[0] = blk_c.refined.highByte;
+    c[1] = blk_c.refined.lowByte;
+    c[2] = blk_d.refined.highByte;
+    c[3] = blk_d.refined.lowByte;
 }
 
 /**
  * @ingroup GA04
- * 
  * @brief Gets the RDS Text when the message is of the Group Type 2 version A
+ * @details Please, check if getRdsReady was called before.
  * @return char*  The string (char array) with the content (Text) received from group 2A 
  */
 char *SI470X::getRdsText(void)
@@ -930,6 +890,7 @@ char *SI470X::getRdsText(void)
 /**
  * @ingroup GA04
  * @todo RDS Dynamic PS or Scrolling PS support
+ * @details Please, check if getRdsReady was called before.
  * @brief Gets the station name and other messages. 
  * 
  * @return char* should return a string with the station name. 
@@ -1051,23 +1012,47 @@ char *SI470X::getRdsTime()
         dt.raw[0] = blk_d.refined.lowByte;
         dt.raw[1] = blk_d.refined.highByte;
 
-        // Unfortunately it was necessary to wotk well on the GCC compiler on 32-bit
-        // platforms. See si47x_rds_date_time (typedef union) and CGG “Crosses boundary” issue/features.
-        // Now it is working on Atmega328, STM32, Arduino DUE, ESP32 and more.
-        minute = (dt.refined.minute2 << 2) | dt.refined.minute1;
-        hour = (dt.refined.hour2 << 4) | dt.refined.hour1;
+        minute =  dt.refined.minute;
+        hour = dt.refined.hour;
 
         offset_sign = (dt.refined.offset_sense == 1) ? '+' : '-';
         offset_h = (dt.refined.offset * 30) / 60;
         offset_m = (dt.refined.offset * 30) - (offset_h * 60);
-        // sprintf(rds_time, "%02u:%02u %c%02u:%02u", dt.refined.hour, dt.refined.minute, offset_sign, offset_h, offset_m);
-        sprintf(rds_time, "%02u:%02u %c%02u:%02u", hour, minute, offset_sign, offset_h, offset_m);
+        
+        // If wrong time, return NULL
+        if (offset_h > 12 || offset_m > 60 || hour > 24 || minute > 60)
+            return NULL;
+
+        this->convertToChar(hour, rds_time, 2, 0, ' ', false);
+        rds_time[2] = ':';
+        this->convertToChar(minute, &rds_time[3], 2, 0, ' ', false);
+        rds_time[5] = ' ';
+        rds_time[6] = offset_sign;
+        this->convertToChar(offset_h, &rds_time[7], 2, 0, ' ', false);
+        rds_time[9] = ':';
+        this->convertToChar(offset_m, &rds_time[10], 2, 0, ' ', false);
+        rds_time[12] = '\0';
 
         return rds_time;
     }
 
     return NULL;
 }
+
+
+/**
+ * @ingroup GA04
+ * @brief Clear RDS Information (Station Name, Station Information, Program Information and Time)
+ * @details Clear the buffer with latest RDS information
+ */
+void SI470X::clearRdsBuffer()
+{
+    memset(rds_buffer0A, 0, sizeof(rds_buffer0A));
+    memset(rds_buffer2A, 0, sizeof(rds_buffer2A));
+    memset(rds_buffer2B, 0, sizeof(rds_buffer2B));
+    memset(rds_time, 0, sizeof(rds_time));
+}
+
 
 /**
  * @ingroup GA04 
@@ -1079,4 +1064,86 @@ bool SI470X::getRdsSync()
 {
     getStatus();
     return reg0a->refined.RDSS;
+}
+
+
+
+
+/**
+ * @defgroup GA05 Tools
+ * @section GA05 Tools / Helper
+ */
+
+/**
+ * @ingroup GA05 Check the I2C buss address
+ * @brief Check the I2C bus address
+ * @details For some reason, the BK1088 device does not work with the standard Wire.h library of Arduino. 
+ * @details The checkI2C function is only used to test the circuit. 
+ * @details In practice, no function from the Wire.h library is utilized in a real application with the BK1088 in this project. 
+ * @param uint8_t address Array - this array will be populated with the I2C bus addresses found (minimum three elements)
+ * @return 0 if no i2c device is found; -1 if error is found or n > 0, where n is the number of I2C bus address found
+ */
+int SI470X::checkI2C(uint8_t *addressArray)
+{
+    Wire.begin();
+    int error, address;
+    int idx = 0;
+    for (address = 1; address < 127; address++)
+    {
+        Wire.beginTransmission(address);
+        error = Wire.endTransmission();
+        if (error == 0)
+        {
+            addressArray[idx] = address;
+            idx++;
+        }
+        else if (error == 4)
+            return -1;
+    }
+    Wire.end();
+    delay(200);
+    return idx;
+}
+
+/**
+ * @ingroup GA05 Covert numbers to char array
+ * @brief Converts a number to a char array
+ * @details It is useful to mitigate memory space used by functions like sprintf or othetr generic similar functions
+ * @details You can use it to format frequency using decimal or tousand separator and also to convert smalm numbers.
+ *
+ * @param value  value to be converted
+ * @param strValue char array that will be receive the converted value
+ * @param len final string size (in bytes)
+ * @param dot the decimal or tousand separator position
+ * @param separator symbol "." or ","
+ * @param remove_leading_zeros if true removes up to two leading zeros (default is true)
+ */
+void SI470X::convertToChar(uint16_t value, char *strValue, uint8_t len, uint8_t dot, uint8_t separator, bool remove_leading_zeros)
+{
+    char d;
+    for (int i = (len - 1); i >= 0; i--)
+    {
+        d = value % 10;
+        value = value / 10;
+        strValue[i] = d + 48;
+    }
+    strValue[len] = '\0';
+    if (dot > 0)
+    {
+        for (int i = len; i >= dot; i--)
+        {
+            strValue[i + 1] = strValue[i];
+        }
+        strValue[dot] = separator;
+    }
+
+    if (remove_leading_zeros)
+    {
+        if (strValue[0] == '0')
+        {
+            strValue[0] = ' ';
+            if (strValue[1] == '0')
+                strValue[1] = ' ';
+        }
+    }
 }
