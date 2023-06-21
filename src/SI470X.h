@@ -645,6 +645,7 @@ public:
     char *getRdsLocalTime();
     bool getRdsSync();
     void clearRdsBuffer();
+    void adjustRdsText(char *text, int size);
 
     // Tools / Helper functions
     int checkI2C(uint8_t *addressArray);

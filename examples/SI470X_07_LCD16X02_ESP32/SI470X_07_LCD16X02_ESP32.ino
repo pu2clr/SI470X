@@ -298,6 +298,7 @@ void showProgramInfo() {
   clearLcdLine(0);
   programInfo[61] = '\0';  // Truncate the message to fit on display line
   strncpy(txtAux, &programInfo[progInfoIndex], 16);
+  rx.adjustRdsText(txtAux,sizeof(txtAux));
   txtAux[16] = '\0';
   progInfoIndex += 3;
   if (progInfoIndex > 60) progInfoIndex = 0;

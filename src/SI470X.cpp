@@ -1178,6 +1178,17 @@ bool SI470X::getRdsSync()
 }
 
 
+/**
+ * @brief Replace unwanted ASCII character to space
+ * @param text char array text to be processed 
+ * @param size size of char array
+ */
+void SI470X::adjustRdsText(char *text, int size) {
+    size--;
+    for (int i = 0; i < size; i++ ) 
+        if ( text[i] < 32 ) text[i] = ' ';
+    text[size ] = 0;   // ends the string char array with '\0'; 
+}
 
 
 /**
@@ -1258,3 +1269,6 @@ void SI470X::convertToChar(uint16_t value, char *strValue, uint8_t len, uint8_t 
         }
     }
 }
+
+
+

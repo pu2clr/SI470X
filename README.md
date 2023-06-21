@@ -40,6 +40,13 @@ I think the best way to start a project based on this device is to acquire a bre
 
 The board above or similar can be found on [Sparkfun](https://www.sparkfun.com/products/12938), [eBay](https://www.ebay.com/) and [Aliexpress](https://pt.aliexpress.com/af/SI4703.html?d=y&origin=n&SearchText=SI4703&catId=0&initiative_id=SB_20200626043355).  Also, there is the [Si4703 Evaluation Kit](https://www.silabs.com/products/development-tools/audio-and-radio/si4703-evaluation-kit) from Silicon Labs. 
 
+You can also use the module SI4702.
+
+![SI4702 Module](./extras/images/SI4702_module.jpg)
+
+
+
+
 
 ### See also
 
