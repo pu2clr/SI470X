@@ -18,6 +18,8 @@ echo "********************"
 arduino-cli compile -b arduino:avr:nano ./si470x_01_serial_monitor/si470x_00_CIRCUIT_TEST --output-dir ~/Downloads/hex/atmega/si470x_00_CIRCUIT_TEST  --warnings all
 arduino-cli compile -b arduino:avr:nano ./si470x_01_serial_monitor/si470x_01_RDS --output-dir ~/Downloads/hex/atmega/si470x_01_RDS  --warnings all
 arduino-cli compile -b arduino:avr:nano ./si470x_02_TFT_display --output-dir ~/Downloads/hex/atmega/si470x_02_TFT_display  --warnings all
+arduino-cli compile -b arduino:avr:nano ./SI470X_06_NOKIA5110_RDS --output-dir ~/Downloads/hex/atmega/SI470X_06_NOKIA5110_RDS  --warnings all
+
 
 echo "********************"
 echo "Arduino LGT8FX based board"
@@ -26,6 +28,7 @@ echo "********************"
 arduino-cli compile -b lgt8fx:avr:328 ./si470x_01_serial_monitor/si470x_00_CIRCUIT_TEST --output-dir ~/Downloads/hex/atmega/si470x_00_CIRCUIT_TEST  --warnings all
 arduino-cli compile -b lgt8fx:avr:328 ./si470x_01_serial_monitor/si470x_01_RDS --output-dir ~/Downloads/hex/atmega/si470x_01_RDS  --warnings all
 arduino-cli compile -b lgt8fx:avr:328 ./si470x_02_TFT_display --output-dir ~/Downloads/hex/atmega/si470x_02_TFT_display  --warnings all
+arduino-cli compile -b lgt8fx:avr:328 ./SI470X_06_NOKIA5110_RDS --output-dir ~/Downloads/hex/atmega/SI470X_06_NOKIA5110_RDS  --warnings all
 
 
 # compiles ESP32 LCD16x2_ALL_IN_ONE
@@ -33,7 +36,7 @@ arduino-cli compile -b lgt8fx:avr:328 ./si470x_02_TFT_display --output-dir ~/Dow
 #echo "ESP32"
 #echo "ESP32 LCD16x2"
 #echo "********************"
-#arduino-cli compile --fqbn esp32:esp32:esp32-poe-iso ./XXXXX --output-dir ~/Downloads/hex/ESP32/DEVM/XXXX  --warnings all
+arduino-cli compile --fqbn esp32:esp32:esp32-poe-iso ./SI470X_07_LCD16X02_ESP32 --output-dir ~/Downloads/hex/ESP32/DEVM/SI470X_07_LCD16X02_ESP32  --warnings all
 
 
 # compiles ATtiny84 and ATtiny85
