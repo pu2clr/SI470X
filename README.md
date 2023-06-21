@@ -41,6 +41,10 @@ I think the best way to start a project based on this device is to acquire a bre
 The board above or similar can be found on [Sparkfun](https://www.sparkfun.com/products/12938), [eBay](https://www.ebay.com/) and [Aliexpress](https://pt.aliexpress.com/af/SI4703.html?d=y&origin=n&SearchText=SI4703&catId=0&initiative_id=SB_20200626043355).  Also, there is the [Si4703 Evaluation Kit](https://www.silabs.com/products/development-tools/audio-and-radio/si4703-evaluation-kit) from Silicon Labs. 
 
 
+### The SI4702 
+
+Except for the SDR/RDBS feature, the SI4702 has all the functions available in the SI4703. It is easily found in the market and can be a cheaper alternative if the RDS/RBDS function is not needed.
+
 The photo below shows the SI4702 module.
 
 ![SI4702 Module](./extras/images/SI4702_module.jpg)
@@ -167,7 +171,7 @@ As previously reported, in general, the SI4703 device is already sold in kit or 
 
 | SI4703 / Description      |  Arduino Pin  |
 | --------------------      | ------------  |
-| RESET (pin 5)             |     14 / A0   |
+| RESET (pin 5)             |     15 / A1   |
 | SDIO (pin  8)             |     A4        |
 | SCLK (pin  7)             |     A5        |
 
