@@ -26,8 +26,7 @@ Contact: __pu2clr@gmail.com__.
 
 ## Preface
 
-This project is about an Arduino library for the SI470X device. __The communication protocol used by this library is the I²C__. This library can be freely distributed using the MIT Free Software model. 
-The SI470X is a FM DSP receiver from Silicon Labs with RDS/RBDS support. This document is aimed at the Arduino developers, radio experimenters, hobbyists and anyone interested in building a receiver based on the Si470X and will show you Arduino source codes, schematics, examples and tips to help you to build a receiver based on Arduino board and the SI470X devices. 
+This project is about an Arduino library for the SI470X device. __The communication protocol used by this library is the I²C__. This library can be freely distributed using the MIT Free Software model. The SI4703 is a FM DSP receiver from Silicon Labs with RDS/RBDS support. This document is intended for Arduino developers, radio enthusiasts, hobbyists, and anyone interested in constructing a receiver using the Si4702 or SI4703 with the Arduino development platform.
 
 
 {% include video01.html %}
