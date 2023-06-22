@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -101,7 +101,7 @@
 <layer number="154" name="FabDoc2" color="2" fill="1" visible="no" active="no"/>
 <layer number="155" name="FabDoc3" color="7" fill="15" visible="no" active="no"/>
 <layer number="199" name="Contour" color="7" fill="1" visible="no" active="yes"/>
-<layer number="200" name="200bmp" color="1" fill="10" visible="no" active="yes"/>
+<layer number="200" name="200bmp" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="201" name="201bmp" color="2" fill="1" visible="no" active="no"/>
 <layer number="202" name="202bmp" color="3" fill="1" visible="no" active="no"/>
 <layer number="203" name="203bmp" color="4" fill="10" visible="no" active="yes"/>
@@ -4421,6 +4421,10 @@ Ingenieurbüro ing-rb, &lt;i&gt;mail@ing-rb.de&lt;/i&gt;&lt;/p&gt;&lt;/author&gt
 <sheets>
 <sheet>
 <plain>
+<rectangle x1="40.64" y1="88.9" x2="66.04" y2="106.68" layer="200"/>
+<rectangle x1="68.58" y1="33.02" x2="91.44" y2="58.42" layer="200"/>
+<rectangle x1="116.84" y1="55.88" x2="139.7" y2="73.66" layer="200"/>
+<text x="33.02" y="109.22" size="1.778" layer="200">Not necessary if you are using module</text>
 </plain>
 <instances>
 <instance part="U1" gate="G$1" x="99.06" y="76.2" smashed="yes">

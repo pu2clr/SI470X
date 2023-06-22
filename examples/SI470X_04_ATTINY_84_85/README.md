@@ -38,6 +38,10 @@ The table below shows the pin functions of the ATTiny84 and ATTiny85  needed to 
 ![ATTiny84 pinout](../../extras/images/attiny84.png)
 
 
+### ATTiny84 schematic
+
+![ATTiny84 schematic](../../extras/images/circuit_attiny84.png)
+
 
 ## ATTiny85 and SI4703 wireup  
 
@@ -51,8 +55,14 @@ The table below shows the pin functions of the ATTiny84 and ATTiny85  needed to 
    
 <BR>
 
-#### ATTiny85 pinout
+## ATTiny85 pinout
 
 ![Schematic - ATTiny85 pinout](../../extras/images/attiny85_pinout.jpg)
+
+
+
+## ATTiny85 schematic
+
+![ATTiny85 schematic](../../extras/images/circuit_attiny85.png)
 
 
