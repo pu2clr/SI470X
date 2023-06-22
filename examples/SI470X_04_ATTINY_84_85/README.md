@@ -22,7 +22,7 @@ The table below shows the pin functions of the ATTiny84 and ATTiny85  needed to 
 
 ## ATTiny84 wireup
 
-| SI4703 pin     | ATTiny84 REF pin | Physical pin  | 
+| SI4703 pin      | ATTiny84 REF pin | Physical pin  | 
 | ----------------| -----------------| ------------- | 
 | SEEK_UP         |     3            |    10         | 
 | SEEK_DOWN       |     5            |     8         |
@@ -30,6 +30,7 @@ The table below shows the pin functions of the ATTiny84 and ATTiny85  needed to 
 | ENCODER_PIN_B   |     1            |    12         |  
 | SDIO / SDA      |     SDA          |     7         |
 | SCLK / CLK      |     SCL          |     9         |
+| RESET /RST      |     7            |     6         |
 
 
 
@@ -49,7 +50,7 @@ The table below shows the pin functions of the ATTiny84 and ATTiny85  needed to 
 | --------------| -----------------| ------------- | 
 | SEEK_UP       |     PB1          |     6         | 
 | SEEK_DOWN     |     PB4          |     3         |
-| AUDIO_MUTE    |     PB3          |     2         | 
+| RESET / RST   |     PB3          |     2         | 
 | SDIO / SDA    |     SDA          |     5         |
 | SCLK / CLK    |     SCL          |     7         |
    
