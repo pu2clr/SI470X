@@ -18,8 +18,9 @@ It is possible to use the Arduino IDE platform with the PU2CLR SI470X Arduino Li
 * Once installed, you can close the Boards Manager.
 * Now, go to the "Tools" menu and select "Board". You should see a new "ATTinyCore" section.
 * Select the appropriate ATtiny microcontroller you are using, along with the desired clock speed and other options. 
-* You are now ready to program and use ATtiny microcontrollers with the Arduino IDE using the AttinyCore. See image below.
-* Please note that the specific steps and menu options may vary slightly depending on the version of the Arduino IDE you are using.
+* You are now ready to program and use ATtiny microcontrollers with the Arduino IDE using the AttinyCore. 
+* Please note that the specific steps and menu options may vary slightly depending on the version of the Arduino IDE you are using. See image below.
+
 
 
 
@@ -32,6 +33,22 @@ It is possible to use the Arduino IDE platform with the PU2CLR SI470X Arduino Li
 
 
 ## Programming Interface (USBAsp 6 pin)
+
+
+After installing ATTiny Core on Arduino IDE, connect USBASP following the steps below:
+* Make sure your USBASP programmer is connected to your computer via USB.
+* Connect the USBASP to the target ATTiny microcontroller using the appropriate connections (MISO, MOSI, SCK, RST, VCC, and GND).
+* Select the Board and Programmer:
+* Go to "Tools" -> "Board" and select the ATTiny microcontroller you are using (e.g., ATTiny85).
+* Go to "Tools" -> "Programmer" and select "USBasp."
+* Compile the Sketch:
+* Write or open your Arduino sketch.
+* Go to "Sketch" -> "Verify/Compile" to compile the sketch for the selected ATTiny board.
+* Upload the Sketch:
+* Go to "Sketch" -> "Upload Using Programmer" or press Shift + Ctrl + U.
+* The Arduino IDE will compile the sketch and upload it to the ATTiny microcontroller using the USBASP programmer.
+* Verify the Upload.
+
 
 The table below shows the pin functions of the ATTiny84 and ATTiny85  needed to upload sketch via USBAsp interface.
 
