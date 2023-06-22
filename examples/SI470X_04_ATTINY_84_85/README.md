@@ -41,13 +41,13 @@ The table below shows the pin functions of the ATTiny84 and ATTiny85  needed to 
 
 ## ATTiny85 and SI4703 wireup  
 
-| SI4703 pin     | ATTiny85 REF pin | Physical pin | 
-| ----------------| -----------------| ------------- | 
-| SEEK_UP         |     PB1          |     6         | 
-| SEEK_DOWN       |     PB4          |     3         |
-| AUDIO_MUTE      |     PB3          |     2         | 
-| SDIO / SDA      |     SDA          |     5         |
-| SCLK / CLK      |     SCL          |     7         |
+| SI4703 pin    | ATTiny85 REF pin | Physical pin  | 
+| --------------| -----------------| ------------- | 
+| SEEK_UP       |     PB1          |     6         | 
+| SEEK_DOWN     |     PB4          |     3         |
+| AUDIO_MUTE    |     PB3          |     2         | 
+| SDIO / SDA    |     SDA          |     5         |
+| SCLK / CLK    |     SCL          |     7         |
    
 <BR>
 
