@@ -587,6 +587,12 @@ public:
     uint8_t getChipVersion();
 
     void setMute(bool value);
+    /**
+     * @ingroup GA03
+     * @brief Gets Audio Mute Status
+     * @return True if muted
+     */
+    inline bool isMuted() {return reg02->refined.DMUTE;};
     void setVolume(uint8_t value);
     uint8_t getVolume();
     void setVolumeUp();
