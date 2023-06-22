@@ -131,11 +131,14 @@ void processRdsInfo() {
 
   // Shows, with scrolling, station info on display each five seconds.
   if (stationInfo != NULL && strlen(stationInfo) > 1 && (currentmillis - delayStationInfo) > 1000) {
+    /**
+    // TO DO 
     strncpy(aux, &stationInfo[idxStationInfo], 20);
     aux[20] = 0;
     showRdsText(0, 1, aux);
     idxStationInfo += 2;  // shift left two character
     if (idxStationInfo > 31) idxStationInfo = 0;
+    */
     delayStationInfo = currentmillis;
   }
 

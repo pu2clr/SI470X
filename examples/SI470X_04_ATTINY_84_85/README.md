@@ -7,7 +7,7 @@ It is possible to use the Arduino IDE platform with the PU2CLR SI470X Arduino Li
 
 
 * Open the Arduino IDE on your computer.
-* Go to the "File" menu and select "Preferences".
+* Go to the "File" or "Arduino IDE" menu and select "Preferences".
 * In the Preferences window, look for the "Additional Boards Manager URLs" field and click on the icon to edit it.
 * Add the following URL to the field: [http://drazzy.com/package_drazzy.com_index.json](http://drazzy.com/package_drazzy.com_index.json)
 * Click "OK" to close the Preferences window.
