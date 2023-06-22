@@ -17,9 +17,15 @@ It is possible to use the Arduino IDE platform with the PU2CLR SI470X Arduino Li
 * Wait for the installation to complete.
 * Once installed, you can close the Boards Manager.
 * Now, go to the "Tools" menu and select "Board". You should see a new "ATTinyCore" section.
-* Select the appropriate ATtiny microcontroller you are using, along with the desired clock speed and other options.
-* You are now ready to program and use ATtiny microcontrollers with the Arduino IDE using the AttinyCore.
+* Select the appropriate ATtiny microcontroller you are using, along with the desired clock speed and other options. 
+* You are now ready to program and use ATtiny microcontrollers with the Arduino IDE using the AttinyCore. See image below.
 * Please note that the specific steps and menu options may vary slightly depending on the version of the Arduino IDE you are using.
+
+
+
+![ATTiny84 Arduino IDE setup](../../extras/images/ATTIny_Arduino_SETUP_01.jpg)
+
+
 
 [More details](https://github.com/SpenceKonde/ATTinyCore)
 
