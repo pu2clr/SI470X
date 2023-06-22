@@ -45,7 +45,7 @@ After installing ATTiny Core on Arduino IDE, connect USBASP following the steps 
     * Write or open your Arduino sketch.
     * Go to "Sketch" -> "Verify/Compile" to compile the sketch for the selected ATTiny board.
     * Upload the Sketch:
-    * Go to "Sketch" -> "Upload Using Programmer" or press Shift + Ctrl + U.
+    * Go to "Sketch" menu -> "Upload Using Programmer" or press Shift + Ctrl + U.
     * The Arduino IDE will compile the sketch and upload it to the ATTiny microcontroller using the USBASP programmer.
     * Verify the Upload.
 
