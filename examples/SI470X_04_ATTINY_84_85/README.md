@@ -3,6 +3,28 @@
 It is possible to use the Arduino IDE platform with the PU2CLR SI470X Arduino Library to implement receivers with the ATTiny84 and ATTiny85. You will find details on how to do this below.
 
 
+## Arduino IDE setup
+
+
+Open the Arduino IDE on your computer.
+Go to the "File" menu and select "Preferences".
+In the Preferences window, look for the "Additional Boards Manager URLs" field and click on the icon to edit it.
+Add the following URL to the field: [http://drazzy.com/package_drazzy.com_index.json](http://drazzy.com/package_drazzy.com_index.json)
+Click "OK" to close the Preferences window.
+Next, go to the "Tools" menu and select "Board" -> "Boards Manager".
+In the Boards Manager, type "attiny" in the search bar.
+Look for "ATTinyCore by Spence Konde" and click on the "Install" button next to it.
+Wait for the installation to complete.
+Once installed, you can close the Boards Manager.
+Now, go to the "Tools" menu and select "Board". You should see a new "ATTinyCore" section.
+Select the appropriate ATtiny microcontroller you are using, along with the desired clock speed and other options.
+You are now ready to program and use ATtiny microcontrollers with the Arduino IDE using the AttinyCore.
+Please note that the specific steps and menu options may vary slightly depending on the version of the Arduino IDE you are using.
+
+[More details](https://github.com/SpenceKonde/ATTinyCore)
+
+
+
 ## Programming Interface (USBAsp 6 pin)
 
 The table below shows the pin functions of the ATTiny84 and ATTiny85  needed to upload sketch via USBAsp interface.
