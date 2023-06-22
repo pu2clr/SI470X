@@ -201,7 +201,7 @@ void SI470X::powerDown()
  * @details sets the reset pin, interrupt pins and oscillator type you are using in your project.
  * @details You have to inform at least two parameters: RESET pin and I2C SDA pin of your MCU
  * @param resetPin         // Arduino pin used to reset control. 
- * @param sdaPin           // I2C data bus pin (SDA).       
+ * @param sdaPin           // I2C data bus pin (SDA). For some reason the SI4703 does not start with this pin HIGH      
  * @param rdsInterruptPin  // optional. Sets the Interrupt Arduino pin used to RDS function control.
  * @param seekInterruptPin // optional. Sets the Arduino pin used to Seek function control. 
  * @param oscillator_type  // optional. Sets the Oscillator type used Crystal (default) or Ref. Clock. 
