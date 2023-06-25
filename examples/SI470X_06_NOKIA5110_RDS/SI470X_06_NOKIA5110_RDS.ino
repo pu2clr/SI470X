@@ -331,7 +331,7 @@ void showProgramInfo() {
   display.setCursor(0, 24);
   display.print(aux);
   idxProgramInfo += 4;
-  if (idxProgramInfo > 60) idxProgramInfo = 0;
+  if (idxProgramInfo > (60 - sizeof(aux))) idxProgramInfo = 0;
   display.display();
   delayProgramInfo = millis();
 }
