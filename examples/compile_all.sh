@@ -42,5 +42,5 @@ arduino-cli compile --fqbn esp32:esp32:esp32-poe-iso ./SI470X_07_LCD16X02_ESP32 
 # compiles ATtiny84 and ATtiny85
 # echo "ATTINY84 and ATTINY84"
 # arduino-cli board -b ATTinyCore:avr:attinyx4  details   
-arduino-cli compile --fqbn ATTinyCore:avr:attinyx4:millis=enabled  ./si470x_04_attimy84 --output-dir ~/Downloads/hex/ATTIMY84/si470x_04_attimy84 --warnings all
-arduino-cli compile --fqbn ATTinyCore:avr:attinyx5:millis=enabled  ./si470x_05_attiny85 --output-dir ~/Downloads/hex/ATTIMY85/si470x_05_attiny85 --warnings all
+arduino-cli compile --fqbn ATTinyCore:avr:attinyx4:millis=enabled  ./SI470X_04_ATTINY_84_85/SI470X_02_ATTINY84_RDS_OLED96_EEPROM --output-dir ~/Downloads/hex/ATTIMY84/si470x_04_attimy84 --warnings all
+arduino-cli compile --fqbn ATTinyCore:avr:attinyx5:millis=enabled  ./SI470X_04_ATTINY_84_85/SI470X_04_ATTINY85_RDS_OLED96_EEPROM --output-dir ~/Downloads/hex/ATTIMY85/si470x_05_attiny85 --warnings all
