@@ -17,6 +17,12 @@ The [si470x_02_TFT_display](https://github.com/pu2clr/SI470X/tree/master/example
 
 The [si470x_03_STM32_OLED](https://github.com/pu2clr/SI470X/tree/master/examples/si470x_03_STM32_OLED) folder has an example with the traditional OLED I2C display and the breakout board SI3703. __In the sketch you will find the wireup with display and si470x device__.  
 
+## Donate 
+
+[If you find this project useful, consider making a donation so that the author of this library can purchase components and modules for improvements and testing of this library. Click here to donate.](https://www.paypal.com/donate/?business=LLV4PHKTXC4JW&no_recurring=0&item_name=Consider+making+a+donation.++So+I+can+purchase+components+and+modules+for+improvements+and+testing+of+this+library.&currency_code=USD)
+
+
+
 <BR>
 
 # TFT SCHEMATIC 
