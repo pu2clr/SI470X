@@ -59,7 +59,7 @@ void setup()
     while (!Serial) ;
 
     // The line below may be necessary to setup I2C pins on ESP32
-    Wire.begin(ESP32_I2C_SDA, ESP32_I2C_SCL);
+    Wire.setPins(ESP32_I2C_SDA, ESP32_I2C_SCL);
     
     rx.setup(RESET_PIN, ESP32_I2C_SDA);
 
